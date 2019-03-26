@@ -21,6 +21,10 @@ public class Subject {
         this.totalEnrollNum = this.numOfCohort * this.studNumPerCohort;
         this.classComponent = classComponent;
     }
+
+    public GenericClass[] getClassComponent() {
+        return classComponent;
+    }
 }
 
 enum SubjectType {
@@ -33,11 +37,11 @@ enum ClassType {
 }
 
 class GenericClass {
-    protected float duration;
+    protected double duration;
     protected ClassType classType;
     protected Classroom classroom = null;
 
-    GenericClass(ClassType classType, float duration, Classroom classroom) {
+    GenericClass(ClassType classType, double duration, Classroom classroom) {
         this.classType = classType;
         this.duration = duration;
         this.classroom = classroom;
@@ -51,14 +55,14 @@ class GenericClass {
         return classType;
     }
 
-    public float getDuration() {
+    public double getDuration() {
         return duration;
     }
 }
 
 class SpecificClass {
     private ClassType type;
-    private float duration;
+    private double duration;
     private Classroom classroom;
     private int session;
 
@@ -81,7 +85,7 @@ class SpecificClass {
         return type;
     }
 
-    public float getDuration() {
+    public double getDuration() {
         return duration;
     }
 }
