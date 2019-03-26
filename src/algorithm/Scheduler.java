@@ -1,13 +1,15 @@
 package algorithm;
 
 public class Scheduler {
+
+    private static Classroom[] roomList;
     public static void main(String[] args) {
         // build classroom array
         Classroom cohort = new Classroom("cohort", "2.501", 50, ClassType.CBL);
         Classroom lecture = new Classroom("Lec", "2.501", 150, ClassType.LEC);
         Classroom lab = new Classroom("lab", "2.501", 50, ClassType.LAB);
 
-        Classroom[] roomList = new Classroom[3];
+        roomList = new Classroom[3];
         roomList[0] = cohort;
         roomList[1] = lecture;
         roomList[2] = lab;
@@ -56,7 +58,9 @@ public class Scheduler {
     }
 
     //TODO: function that input is sClass mat and output is randomly generated calendar
-
+    public static Calendar randomGen(SpecificClass[][] sClassSet) {
+        Calendar calendar = new Calendar(roomList);
+    }
 
     //TODO: function that input is calendar and print it out
 }
