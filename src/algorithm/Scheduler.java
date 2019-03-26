@@ -25,25 +25,30 @@ public class Scheduler {
         arrange[2] = lec;
         Subject cse = new Subject("cse", 50005, SubjectType.CORE, null, 50, 3, arrange);
 
-        SpecificClass[][] ss = init(new Subject[]{cse}, 3);
-        System.out.println(ss[0][0].getDuration());
+        SpecificClass[][] ss = init(new Subject[]{cse}, 3, 3);
+        System.out.println(ss[0][8].getDuration());
 
     }
 
     //TODO: a function that input is list of subject and output is 2-d mat of SpecificClass (x:subject; y:session)
-    public static SpecificClass[][] init(Subject[] subjects, int sessionNum) {
+    public static SpecificClass[][] init(Subject[] subjects, int sessionNum, int cohortNum) {
         GenericClass[] gClassSet;
         SpecificClass sClass;
+        int cohortNo;
         int subjectNum = subjects.length;
         int maxSessionNum = sessionNum;
+        int maxCohortNum = cohortNum;
 
-        SpecificClass[][] result = new SpecificClass[subjectNum][maxSessionNum];
-
+        SpecificClass[][] result = new SpecificClass[subjectNum][maxSessionNum*maxCohortNum];
+        //order: coh1sess1, coh2sess1, coh3sess1, ...
         for (int i = 0; i < subjectNum; i++) {
             gClassSet = subjects[i].getClassComponent();
-            for (int j = 0; j < sessionNum; j++) {
-                sClass = new SpecificClass(gClassSet[j], j);
-                result[i][j] = sClass;
+            cohortNo = subjects[i].getNumOfCohort();
+            for (int j = 0; j < maxSessionNum; j++) {
+                for (int k = 0; k < cohortNo; k++) {
+                    sClass = new SpecificClass(gClassSet[j], j, k);
+                    result[i][j*maxSessionNum+k] = sClass;
+                }
             }
         }
 

@@ -25,6 +25,10 @@ public class Subject {
     public GenericClass[] getClassComponent() {
         return classComponent;
     }
+
+    public int getNumOfCohort() {
+        return numOfCohort;
+    }
 }
 
 enum SubjectType {
@@ -64,13 +68,15 @@ class SpecificClass {
     private ClassType type;
     private double duration;
     private Classroom classroom;
+    private int cohortNo;
     private int session;
 
-    SpecificClass(GenericClass gclass, int session) {
+    SpecificClass(GenericClass gclass, int session, int cohortNo) {
         this.type = gclass.getClassType();
         this.duration = gclass.getDuration();
         this.classroom = gclass.getClassroom();
         this.session = session;
+        this.cohortNo = cohortNo;
     }
 
     public int getSession() {
