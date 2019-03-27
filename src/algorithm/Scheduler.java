@@ -29,8 +29,9 @@ public class Scheduler {
         arrange[2] = lec;
         Subject cse = new Subject("cse", 50005, SubjectType.CORE, null, 50, 3, arrange);
         Subject esc = new Subject("esc", 50005, SubjectType.CORE, null, 50, 3, arrange);
+        Subject prob = new Subject("prob", 50005, SubjectType.CORE, null, 50, 3, arrange);
 
-        SpecificClass[][] ss = init(new Subject[]{cse, esc}, 3, 3);
+        SpecificClass[][] ss = init(new Subject[]{cse, esc, prob}, 3, 3);
 //        System.out.println(ss[0][8].getDuration());
         randomGen(ss);
 
