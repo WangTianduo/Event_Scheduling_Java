@@ -9,6 +9,7 @@ public class Subject {
     protected int numOfCohort;
     protected int totalEnrollNum;
     protected GenericClass[] classComponent;
+    protected int numOfSession;
 
     Subject(String name, int id, SubjectType type, Professor[] courseLead,
             int studNumPerCohort, int numOfCohort, GenericClass[] classComponent) {
@@ -20,6 +21,7 @@ public class Subject {
         this.numOfCohort = numOfCohort;
         this.totalEnrollNum = this.numOfCohort * this.studNumPerCohort;
         this.classComponent = classComponent;
+        this.numOfSession = classComponent.length;
     }
 
     public GenericClass[] getClassComponent() {
@@ -28,6 +30,14 @@ public class Subject {
 
     public int getNumOfCohort() {
         return numOfCohort;
+    }
+
+    public int getNumOfSession() {
+        return numOfSession;
+    }
+
+    public String getName() {
+        return name;
     }
 }
 
@@ -70,13 +80,20 @@ class SpecificClass {
     private Classroom classroom;
     private int cohortNo;
     private int session;
+    private Subject subject;
 
-    SpecificClass(GenericClass gclass, int session, int cohortNo) {
+    SpecificClass(GenericClass gclass, int session, int cohortNo,
+                  Subject subject, Classroom room) {
         this.type = gclass.getClassType();
         this.duration = gclass.getDuration();
-        this.classroom = gclass.getClassroom();
+        if (gclass.getClassroom() == null) {
+            this.classroom = room;
+        }else {
+            this.classroom = gclass.getClassroom();
+        }
         this.session = session;
         this.cohortNo = cohortNo;
+        this.subject = subject;
     }
 
     public int getSession() {
@@ -93,5 +110,13 @@ class SpecificClass {
 
     public double getDuration() {
         return duration;
+    }
+
+    public int getCohortNo() {
+        return cohortNo;
+    }
+
+    public Subject getSubject() {
+        return subject;
     }
 }
