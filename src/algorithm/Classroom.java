@@ -20,3 +20,27 @@ public class Classroom {
         return id;
     }
 }
+
+class RoomList {
+    private int lecRoomStart;
+    private int LabRoomStart;
+    private Classroom[] roomList;
+
+    RoomList(Classroom[] roomList, int lecStart, int labStart) {
+        this.lecRoomStart = lecStart;
+        this.LabRoomStart = labStart;
+        this.roomList = roomList;
+    }
+
+    public int getListNum() {
+        return roomList.length;
+    }
+
+    public int getLabRoomStart() {
+        return LabRoomStart;
+    }
+
+    public int getLecRoomStart() {
+        return lecRoomStart;
+    }
+}

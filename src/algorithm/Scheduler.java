@@ -2,7 +2,8 @@ package algorithm;
 
 public class Scheduler {
 
-    private static Classroom[] roomList;
+    private static Classroom[] classrooms;
+    private static RoomList roomList;
     public static void main(String[] args) {
         // build classroom array
         Classroom cohort1 = new Classroom("cohort", "2.501", 50, ClassType.CBL, 0);
@@ -11,59 +12,77 @@ public class Scheduler {
         Classroom lecture = new Classroom("Lec", "2.501", 150, ClassType.LEC, 1);
         Classroom lab = new Classroom("lab", "2.501", 50, ClassType.LAB, 2);
 
-        roomList = new Classroom[3];
-        roomList[0] = cohort1;
-        roomList[1] = cohort2;
-        roomList[2] = cohort3;
+        classrooms = new Classroom[4];
+        classrooms[0] = cohort1;
+        classrooms[1] = cohort2;
+        classrooms[2] = lecture;
+        classrooms[3] = lab;
 
-        // build class 3-d mat
-        SpecificClass[][][] calendar = new SpecificClass[3][5][20]; //room, weekday, time slot
+        roomList = new RoomList(classrooms, 2, 3);
 
         // init subject
         GenericClass coh1 = new GenericClass(ClassType.CBL, 1.5, null);
-        GenericClass coh2 = new GenericClass(ClassType.CBL, 1.5, null);
-        GenericClass lec = new GenericClass(ClassType.LEC, 2, null);
-        GenericClass[] arrange = new GenericClass[3];
-        arrange[0] = coh1;
-        arrange[1] = coh2;
-        arrange[2] = lec;
-        Subject cse = new Subject("cse", 50005, SubjectType.CORE, null, 50, 3, arrange);
-        Subject esc = new Subject("esc", 50005, SubjectType.CORE, null, 50, 3, arrange);
-        Subject prob = new Subject("prob", 50005, SubjectType.CORE, null, 50, 3, arrange);
+        GenericClass coh2 = new GenericClass(ClassType.CBL, 2, null);
+        GenericClass lec1 = new GenericClass(ClassType.LEC, 2, null);
+        GenericClass lec2 = new GenericClass(ClassType.LEC, 1.5, null);
+        GenericClass[] ESCarr = new GenericClass[3];
+        ESCarr[0] = coh1;
+        ESCarr[1] = coh1;
+        ESCarr[2] = coh2;
+        GenericClass[] CSEarr = new GenericClass[3];
+        CSEarr[0] = coh1;
+        CSEarr[1] = coh1;
+        CSEarr[2] = lec1;
+        GenericClass[] probArr = new GenericClass[3];
+        probArr[0] = lec2;
+        probArr[1] = lec2;
+        probArr[2] = coh2;
 
-        SpecificClass[][] ss = init(new Subject[]{cse, esc, prob}, 3, 3);
+        Subject cse = new Subject("cse", 50005, SubjectType.CORE, null, 50, 3, CSEarr);
+        Subject esc = new Subject("esc", 50005, SubjectType.CORE, null, 50, 3, ESCarr);
+        Subject prob = new Subject("prob", 50005, SubjectType.CORE, null, 50, 3, probArr);
+
+        SpecificClass[][][] ss = init(new Subject[]{cse/*, esc, prob*/}, 3, 3);
 //        System.out.println(ss[0][8].getDuration());
         randomGen(ss);
 
     }
 
-    //TODO: a function that input is list of subject and output is 2-d mat of SpecificClass (x:subject; y:session)
-    public static SpecificClass[][] init(Subject[] subjects, int sessionNum, int cohortNum) {
+    //TODO: a function that input is list of subject and output is 3-d mat of SpecificClass (x:subject; y:cohort; z:session)
+    public static SpecificClass[][][] init(Subject[] subjects, int MaxSessionNum, int MaxCohortNum) {
         GenericClass[] gClassSet;
         SpecificClass sClass;
-        int cohortNo;
+        int cohortNum;
+        int sessionNum;
         int subjectNum = subjects.length;
-        int maxSessionNum = sessionNum;
-        int maxCohortNum = cohortNum;
+        int maxSessionNum = MaxSessionNum;
+        int maxCohortNum = MaxCohortNum;
 
-        SpecificClass[][] result = new SpecificClass[subjectNum][maxSessionNum*maxCohortNum];
+        SpecificClass[][][] result = new SpecificClass[subjectNum][maxCohortNum][maxSessionNum];
         //order: coh1sess1, coh2sess1, coh3sess1, ...
         for (int i = 0; i < subjectNum; i++) {
             gClassSet = subjects[i].getClassComponent();
-            cohortNo = subjects[i].getNumOfCohort();
-            for (int j = 0; j < maxSessionNum; j++) {
-                for (int k = 0; k < cohortNo; k++) {
-                    sClass = new SpecificClass(gClassSet[j], j, k, subjects[i], roomList[k]);
-                    result[i][j*maxSessionNum+k] = sClass;
+            cohortNum = subjects[i].getNumOfCohort();
+            sessionNum = gClassSet.length;
+            for (int j = 0; j < cohortNum; j++) {
+                for (int k = 0; k < sessionNum; k++) {
+                    sClass = new SpecificClass(gClassSet[k], k, j, subjects[i], null);
+                    result[i][j][k] = sClass;
                 }
             }
+//            for (int j = 0; j < maxSessionNum; j++) {
+//                for (int k = 0; k < cohortNo; k++) {
+//                    sClass = new SpecificClass(gClassSet[j], j, k, subjects[i], roomList[k]);
+//                    result[i][j*maxSessionNum+k] = sClass;
+//                }
+//            }
         }
 
         return result;
     }
 
     //TODO: function that input is sClass mat and output is randomly generated calendar
-    public static Calendar randomGen(SpecificClass[][] sClassSet) {
+    public static Calendar randomGen(SpecificClass[][][] sClassSet) {
         Calendar calendar = new Calendar(roomList, sClassSet);
         calendar.randomInit();
         calendar.printOut();
