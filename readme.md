@@ -7,6 +7,7 @@ users (Prof, student) can submit a proposal and admin will determine whether gra
 - 修复了lecture上三遍的bug
 - studentGroup 有自己的 classList
 - 每个 sClass 在 scheduling 完事后都知道自己的 时间和教室
+- 明天任务：如何检查存在conflict
 # 29/03/2019
 - 重构了input2D，使之变成input3D，session 与 cohort 分立
 - 添加随机教室功能，也支持指定教室功能

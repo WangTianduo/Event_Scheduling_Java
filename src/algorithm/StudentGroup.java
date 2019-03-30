@@ -64,6 +64,10 @@ public class StudentGroup {
         }
     }
 
+    // pre-condition: assume after scheduling
+    public boolean checkConflict() {
+
+    }
     public ArrayList<SpecificClass> getsClassSet() {
         return sClassSet;
     }
