@@ -2,7 +2,9 @@ A repo for learning java web and developing scheduler algorithm use java
 
 Add event function:
 users (Prof, student) can submit a proposal and admin will determine whether grant
-
+# 30/03/2019
+- 需要 database 那里直接给sClass， 每个sClass对应一个 profArray & studentGroup array
+- 修复了lecture上三遍的bug
 # 29/03/2019
 - 重构了input2D，使之变成input3D，session 与 cohort 分立
 - 添加随机教室功能，也支持指定教室功能

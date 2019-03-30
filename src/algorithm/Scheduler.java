@@ -1,5 +1,7 @@
 package algorithm;
 
+import java.util.ArrayList;
+
 public class Scheduler {
 
     private static Classroom[] classrooms;
@@ -23,8 +25,12 @@ public class Scheduler {
         // init subject
         GenericClass coh1 = new GenericClass(ClassType.CBL, 1.5, null);
         GenericClass coh2 = new GenericClass(ClassType.CBL, 2, null);
-        GenericClass lec1 = new GenericClass(ClassType.LEC, 2, null);
-        GenericClass lec2 = new GenericClass(ClassType.LEC, 1.5, null);
+        ArrayList<Integer> cohorts = new ArrayList<>();
+        cohorts.add(0);
+        cohorts.add(1);
+        cohorts.add(2);
+        GenericClass lec1 = new GenericClass(ClassType.LEC, 2, null, cohorts);
+        GenericClass lec2 = new GenericClass(ClassType.LEC, 1.5, null, cohorts);
         GenericClass[] ESCarr = new GenericClass[3];
         ESCarr[0] = coh1;
         ESCarr[1] = coh1;
@@ -42,7 +48,7 @@ public class Scheduler {
         Subject esc = new Subject("esc", 50005, SubjectType.CORE, null, 50, 3, ESCarr);
         Subject prob = new Subject("prob", 50005, SubjectType.CORE, null, 50, 3, probArr);
 
-        SpecificClass[][][] ss = init(new Subject[]{cse/*, esc, prob*/}, 3, 3);
+        SpecificClass[][][] ss = init(new Subject[]{/*cse, esc,*/ prob}, 3, 3);
 //        System.out.println(ss[0][8].getDuration());
         randomGen(ss);
 
@@ -59,6 +65,7 @@ public class Scheduler {
         int maxCohortNum = MaxCohortNum;
 
         SpecificClass[][][] result = new SpecificClass[subjectNum][maxCohortNum][maxSessionNum];
+        int sClassNum = 0;
         //order: coh1sess1, coh2sess1, coh3sess1, ...
         for (int i = 0; i < subjectNum; i++) {
             gClassSet = subjects[i].getClassComponent();
@@ -66,8 +73,17 @@ public class Scheduler {
             sessionNum = gClassSet.length;
             for (int j = 0; j < cohortNum; j++) {
                 for (int k = 0; k < sessionNum; k++) {
-                    sClass = new SpecificClass(gClassSet[k], k, j, subjects[i], null);
-                    result[i][j][k] = sClass;
+                    if (gClassSet[k].getClassType() == ClassType.LEC) {
+                        if (j == 0) {
+                            sClass = new SpecificClass(gClassSet[k], k, j, subjects[i], null);
+                            result[i][j][k] = sClass;
+                            sClassNum++;
+                        }
+                    }else {
+                        sClass = new SpecificClass(gClassSet[k], k, j, subjects[i], null);
+                        result[i][j][k] = sClass;
+                        sClassNum++;
+                    }
                 }
             }
 //            for (int j = 0; j < maxSessionNum; j++) {
@@ -77,7 +93,7 @@ public class Scheduler {
 //                }
 //            }
         }
-
+        System.out.println("total sClass number is: " + sClassNum);
         return result;
     }
 

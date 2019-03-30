@@ -44,7 +44,8 @@ public class Calendar {
                 preWeekDay = -1;
                 for (int k = 0; k < sessionNum; k++) {
                     if (input3D[i][j][k] == null) {
-                        break;
+                        preWeekDay = 2;
+                        continue;
                     }else{
                         // ------------------------------------------------ \\
                         // Randomly choose a weekday
@@ -119,7 +120,7 @@ public class Calendar {
                         }
                         if (timeSlotPoiner == 16) {
                             if (possibleRoomPointer == possibleRoomSelect.length) {
-                                System.out.println("Fail to find suitable slot");
+                                System.out.println("Fail to find suitable slot"); // 没有考虑换天的情况
                             }else {
                                 roomID = possibleRoomSelect[++possibleRoomPointer];
                                 timeSlotPoiner = 0;

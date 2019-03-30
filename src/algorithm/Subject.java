@@ -1,5 +1,7 @@
 package algorithm;
 
+import java.util.ArrayList;
+
 public class Subject {
     protected String name;
     protected int id;
@@ -10,6 +12,10 @@ public class Subject {
     protected int totalEnrollNum;
     protected GenericClass[] classComponent;
     protected int numOfSession;
+
+    Subject() {
+
+    }
 
     Subject(String name, int id, SubjectType type, Professor[] courseLead,
             int studNumPerCohort, int numOfCohort, GenericClass[] classComponent) {
@@ -51,14 +57,22 @@ enum ClassType {
 }
 
 class GenericClass {
-    protected double duration;
-    protected ClassType classType;
-    protected Classroom classroom = null;
+    private double duration;
+    private ClassType classType;
+    private Classroom classroom = null;
+    private ArrayList<Integer> cohorts = null;
 
     GenericClass(ClassType classType, double duration, Classroom classroom) {
         this.classType = classType;
         this.duration = duration;
         this.classroom = classroom;
+    }
+
+    GenericClass(ClassType classType, double duration, Classroom classroom, ArrayList<Integer> cohorts) {
+        this.classType = classType;
+        this.duration = duration;
+        this.classroom = classroom;
+        this.cohorts = cohorts;
     }
 
     public Classroom getClassroom() {
@@ -72,18 +86,28 @@ class GenericClass {
     public double getDuration() {
         return duration;
     }
+
+    public ArrayList<Integer> getCohorts() {
+        return cohorts;
+    }
 }
 
 class SpecificClass {
     private ClassType type;
     private double duration;
     private Classroom classroom;
-    private int cohortNo;
+    private ArrayList<Integer> cohortNo; // lecture can have multiple cohorts
     private int session;
     private Subject subject;
 
     SpecificClass(GenericClass gclass, int session, int cohortNo,
                   Subject subject, Classroom room) {
+        this.cohortNo = new ArrayList<>();
+        if (gclass.getCohorts() == null) {
+            this.cohortNo.add(cohortNo);
+        }else {
+            this.cohortNo = gclass.getCohorts();
+        }
         this.type = gclass.getClassType();
         this.duration = gclass.getDuration();
         if (gclass.getClassroom() == null) {
@@ -92,7 +116,6 @@ class SpecificClass {
             this.classroom = gclass.getClassroom();
         }
         this.session = session;
-        this.cohortNo = cohortNo;
         this.subject = subject;
     }
 
@@ -112,7 +135,7 @@ class SpecificClass {
         return duration;
     }
 
-    public int getCohortNo() {
+    public ArrayList<Integer> getCohortNo() {
         return cohortNo;
     }
 
