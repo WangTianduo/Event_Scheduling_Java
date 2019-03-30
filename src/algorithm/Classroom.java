@@ -43,4 +43,8 @@ class RoomList {
     public int getLecRoomStart() {
         return lecRoomStart;
     }
+
+    public Classroom[] getRoomList() {
+        return roomList;
+    }
 }

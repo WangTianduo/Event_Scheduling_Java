@@ -6,9 +6,10 @@ import java.util.HashMap;
 import java.util.Random;
 
 public class Calendar {
-    SpecificClass[][][] timetable;
-    SpecificClass[][][] input3D; // x: subject; y: cohort; z: session
-    int roomNum;
+    private SpecificClass[][][] timetable;
+    private SpecificClass[][][] input3D; // x: subject; y: cohort; z: session
+    private int roomNum;
+    private RoomList roomList;
 
     //roomList is a list with the order: cohort, lecture, lab
     int cohRoomStart = 0;
@@ -17,6 +18,7 @@ public class Calendar {
 
     Calendar(RoomList roomList, SpecificClass[][][] sClass) {
         this.roomNum = roomList.getListNum();
+        this.roomList = roomList;
         this.lecRoomStart = roomList.getLecRoomStart();
         this.labRoomStart = roomList.getLabRoomStart();
         timetable = new SpecificClass[roomNum][5][20]; //  room, weekday, half-hour
@@ -109,6 +111,7 @@ public class Calendar {
                                 }
                             }
                             if (putIn == numOfSlot) {
+                                input3D[i][j][k].setTimeAndPos(currentWeekday, timeSlotPoiner, roomList.getRoomList()[roomID]);
                                 for (int sln = 0; sln < numOfSlot; sln++) {
                                     timetable[roomID][currentWeekday][timeSlotPoiner+sln] =
                                             input3D[i][j][k];

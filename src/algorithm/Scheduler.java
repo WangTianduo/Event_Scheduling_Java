@@ -48,10 +48,25 @@ public class Scheduler {
         Subject esc = new Subject("esc", 50005, SubjectType.CORE, null, 50, 3, ESCarr);
         Subject prob = new Subject("prob", 50005, SubjectType.CORE, null, 50, 3, probArr);
 
-        SpecificClass[][][] ss = init(new Subject[]{/*cse, esc,*/ prob}, 3, 3);
-//        System.out.println(ss[0][8].getDuration());
-        randomGen(ss);
+        ArrayList<Subject> subjects = new ArrayList<>();
+        subjects.add(cse);
+        subjects.add(esc);
+        subjects.add(prob);
+        StudentGroup t5c1 = new StudentGroup(0, "t5c1", Pillar.ISTD, 5,
+        0, subjects, 50);
+        StudentGroup t5c2 = new StudentGroup(0, "t5c2", Pillar.ISTD, 5,
+                1, subjects, 50);
+        StudentGroup t5c3 = new StudentGroup(0, "t5c3", Pillar.ISTD, 5,
+                2, subjects, 50);
 
+        SpecificClass[][][] ss = init(new Subject[]{cse, esc, prob}, 3, 3);
+        t5c1.setsClassSet(ss);
+        t5c2.setsClassSet(ss);
+        t5c3.setsClassSet(ss);
+        randomGen(ss);
+        for (SpecificClass c: t5c1.getsClassSet()) {
+            c.printInfo();
+        }
     }
 
     //TODO: a function that input is list of subject and output is 3-d mat of SpecificClass (x:subject; y:cohort; z:session)
@@ -65,7 +80,6 @@ public class Scheduler {
         int maxCohortNum = MaxCohortNum;
 
         SpecificClass[][][] result = new SpecificClass[subjectNum][maxCohortNum][maxSessionNum];
-        int sClassNum = 0;
         //order: coh1sess1, coh2sess1, coh3sess1, ...
         for (int i = 0; i < subjectNum; i++) {
             gClassSet = subjects[i].getClassComponent();
@@ -77,12 +91,10 @@ public class Scheduler {
                         if (j == 0) {
                             sClass = new SpecificClass(gClassSet[k], k, j, subjects[i], null);
                             result[i][j][k] = sClass;
-                            sClassNum++;
                         }
                     }else {
                         sClass = new SpecificClass(gClassSet[k], k, j, subjects[i], null);
                         result[i][j][k] = sClass;
-                        sClassNum++;
                     }
                 }
             }
@@ -93,7 +105,6 @@ public class Scheduler {
 //                }
 //            }
         }
-        System.out.println("total sClass number is: " + sClassNum);
         return result;
     }
 

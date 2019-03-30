@@ -100,6 +100,10 @@ class SpecificClass {
     private int session;
     private Subject subject;
 
+    // below will be set after scheduling
+    private int weekday;
+    private int startTime;
+
     SpecificClass(GenericClass gclass, int session, int cohortNo,
                   Subject subject, Classroom room) {
         this.cohortNo = new ArrayList<>();
@@ -117,6 +121,24 @@ class SpecificClass {
         }
         this.session = session;
         this.subject = subject;
+    }
+
+    public void setTimeAndPos(int weekday, int startTime, Classroom room) {
+        this.weekday = weekday;
+        this.startTime = startTime;
+        if (this.classroom == null) {
+            this.classroom = room;
+        }else {
+            assert(this.classroom == room);
+        }
+    }
+
+    public int getStartTime() {
+        return startTime;
+    }
+
+    public int getWeekday() {
+        return weekday;
     }
 
     public int getSession() {
@@ -141,5 +163,10 @@ class SpecificClass {
 
     public Subject getSubject() {
         return subject;
+    }
+
+    public void printInfo() {
+        System.out.println("name: " + this.subject.name + "; cohort: " + this.cohortNo + "; session: " + this.session
+        + "; Weekday: " + this.weekday + "; startTime: " + this.startTime);
     }
 }

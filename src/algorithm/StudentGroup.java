@@ -39,13 +39,23 @@ public class StudentGroup {
             if (this.subjects.contains(input3D[i][0][0].getSubject())) {
                 cohortNum = input3D[i].length;
                 for (int j = 0; j < cohortNum; j++) {
-                    if (input3D[i][j][0].getCohortNo().contains(this.cohort)) {
-                        sessionNum = input3D[i][j].length;
-                        for (int k = 0; k < sessionNum; k++) {
-                            sClassSet.add(input3D[i][j][k]);
+                    sessionNum = input3D[i][j].length;
+                    if (input3D[i][j][0] == null) {
+                        if (input3D[i][j][sessionNum-1].getCohortNo().contains(this.cohort)) {// because of lecture, some slots may be empty
+                            for (int k = 0; k < sessionNum; k++) {
+                                sClassSet.add(input3D[i][j][k]);
+                            }
+                        }else {
+                            continue;
                         }
                     }else {
-                        continue;
+                        if (input3D[i][j][0].getCohortNo().contains(this.cohort)) {
+                            for (int k = 0; k < sessionNum; k++) {
+                                sClassSet.add(input3D[i][j][k]);
+                            }
+                        }else {
+                            continue;
+                        }
                     }
                 }
             }else {
@@ -54,4 +64,7 @@ public class StudentGroup {
         }
     }
 
+    public ArrayList<SpecificClass> getsClassSet() {
+        return sClassSet;
+    }
 }
