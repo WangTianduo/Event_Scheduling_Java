@@ -2,6 +2,9 @@ A repo for learning java web and developing scheduler algorithm use java
 
 Add event function:
 users (Prof, student) can submit a proposal and admin will determine whether grant
+# 31/03/2019
+- 检查student group conflicts：return int (num of conflict course)
+- 添加 common slot 和 周五周三下午没课
 # 30/03/2019
 - 需要 database 那里直接给sClass， 每个sClass对应一个 profArray & studentGroup array
 - 修复了lecture上三遍的bug

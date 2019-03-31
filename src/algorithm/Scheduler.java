@@ -67,6 +67,7 @@ public class Scheduler {
         for (SpecificClass c: t5c1.getsClassSet()) {
             c.printInfo();
         }
+        System.out.println(t5c1.checkConflict());
     }
 
     //TODO: a function that input is list of subject and output is 3-d mat of SpecificClass (x:subject; y:cohort; z:session)

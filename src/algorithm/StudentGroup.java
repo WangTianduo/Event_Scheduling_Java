@@ -65,8 +65,29 @@ public class StudentGroup {
     }
 
     // pre-condition: assume after scheduling
-    public boolean checkConflict() {
+    // If detects one conflict, result++
+    public int checkConflict() {
+        int[][] timeTable = new int[5][20];
+        int startTime;
+        int timeSlotNum;
+        int weekday;
+        int result = 0;
+        for (SpecificClass c: sClassSet) {
+            weekday = c.getWeekday();
+            startTime = c.getStartTime();
+            timeSlotNum = (int)(c.getDuration()/0.5);
 
+            for (int sln = 0; sln < timeSlotNum; sln++) {
+                if (timeTable[weekday][startTime + sln] == 0) { //empty in slot
+                    timeTable[weekday][startTime + sln] = 1;
+                }else {
+                    c.printInfo();
+                    result++;
+                    break;
+                }
+            }
+        }
+        return result;
     }
     public ArrayList<SpecificClass> getsClassSet() {
         return sClassSet;
