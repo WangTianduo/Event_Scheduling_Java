@@ -32,6 +32,7 @@ public class StudentGroup {
     }
 
     public void setsClassSet(SpecificClass[][][] input3D) {
+        this.sClassSet.clear();
         int subjectNum = input3D.length;
         int cohortNum;
         int sessionNum;
@@ -40,21 +41,11 @@ public class StudentGroup {
                 cohortNum = input3D[i].length;
                 for (int j = 0; j < cohortNum; j++) {
                     sessionNum = input3D[i][j].length;
-                    if (input3D[i][j][0] == null) {
-                        if (input3D[i][j][sessionNum-1].getCohortNo().contains(this.cohort)) {// because of lecture, some slots may be empty
-                            for (int k = 0; k < sessionNum; k++) {
+                    for (int k = 0; k < sessionNum; k++) {
+                        if (input3D[i][j][k] != null) {
+                            if (input3D[i][j][k].getCohortNo().contains(this.cohort)) {
                                 sClassSet.add(input3D[i][j][k]);
                             }
-                        }else {
-                            continue;
-                        }
-                    }else {
-                        if (input3D[i][j][0].getCohortNo().contains(this.cohort)) {
-                            for (int k = 0; k < sessionNum; k++) {
-                                sClassSet.add(input3D[i][j][k]);
-                            }
-                        }else {
-                            continue;
                         }
                     }
                 }
@@ -82,11 +73,11 @@ public class StudentGroup {
                     timeTable[weekday][startTime + sln] = 1;
                 }else {
                     if (c.getClassroom() == null) {
-                        c.printInfoWithoutRoom();
+//                        c.printInfoWithoutRoom();
                     }else if (c == null) {
-                        System.out.println("No sClass");
+//                        System.out.println("No sClass");
                     }else {
-                        c.printInfo();
+//                        c.printInfo();
                     }
                     result++;
                     break;

@@ -105,6 +105,9 @@ class SpecificClass {
     private int weekday = -1;
     private int startTime = -1;
 
+    // for printing
+    private boolean printed = false;
+
     SpecificClass(GenericClass gclass, int session, int cohortNo,
                   Subject subject, Classroom room) {
         this.cohortNo = new ArrayList<>();

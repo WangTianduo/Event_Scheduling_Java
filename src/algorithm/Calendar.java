@@ -64,7 +64,7 @@ public class Calendar {
         }
     }
 
-    public void randomInit() {
+    public boolean randomInit() {
         // assume the instance has been created and classrooms are assigned already
         Random rand = new Random();
         int subjectNum = input3D.length;// length of sClass column
@@ -96,7 +96,7 @@ public class Calendar {
                                 currentWeekday = (int)Math.floor(rand.nextDouble()*2);
                                 preWeekDay = currentWeekday;
                             }else if (k == 1) {
-                                currentWeekday = (int)Math.floor(rand.nextDouble()*(2-preWeekDay));
+                                currentWeekday = (int)Math.floor(rand.nextDouble()*(2-preWeekDay)+preWeekDay+1);
                                 preWeekDay = currentWeekday;
                             }else { // k = 3
                                 currentWeekday = (int)Math.floor(rand.nextDouble()*2 + 3);
@@ -158,7 +158,8 @@ public class Calendar {
                         int putIn = 0;
                         classDuration = input3D[i][j][k].getDuration();
                         numOfSlot = (int) (classDuration / 0.5);
-                        while(timeSlotPointer < 16) {
+
+                        while(timeSlotPointer < 18) {
                             for (int sln = 0; sln < numOfSlot; sln++) {
                                 if(timetable[roomID][currentWeekday][timeSlotPointer+sln] != null) {
                                     break;
@@ -177,25 +178,26 @@ public class Calendar {
 //                                timeSlotPointer += numOfSlot - 1;
                                 timeSlotPointer++;
                             }
-                            if (timeSlotPointer >= 17) {
+                            if (timeSlotPointer >= 18) {
                                 if (possibleRoomPointer == possibleRoomSelect.length-1) {
                                     if(k==2 && currentWeekday != 3) {
-                                        System.out.println("session2 change to Thursday");
+//                                        System.out.println("session2 change to Thursday");
                                         currentWeekday = 3;
                                         possibleRoomPointer = 0;
-                                        roomID = possibleRoomSelect[++possibleRoomPointer];
+                                        roomID = possibleRoomSelect[possibleRoomPointer];
                                         timeSlotPointer = 0;
                                     }else if(k < 2 && currentWeekday != 1) {
-                                        System.out.println("session0,1 change to Tuesday");
+//                                        System.out.println("session0,1 change to Tuesday");
                                         currentWeekday = 1;
                                         possibleRoomPointer = 0;
-                                        roomID = possibleRoomSelect[++possibleRoomPointer];
+                                        roomID = possibleRoomSelect[possibleRoomPointer];
                                         timeSlotPointer = 0;
                                     }
                                     else {
-                                        input3D[i][j][k].printInfoWithoutRoom();
-                                        System.out.println("Fail to find suitable slot"); // 没有考虑换天的情况
-                                        System.out.println();
+//                                        input3D[i][j][k].printInfoWithoutRoom();
+////                                        System.out.println("Fail to find suitable slot"); // 考虑换天的情况
+//                                        System.out.println();
+                                        return false;
                                     }
                                 }else {
                                     roomID = possibleRoomSelect[++possibleRoomPointer];
@@ -207,6 +209,7 @@ public class Calendar {
                 }
             }
         }
+        return true;
     }
 
     public void printOut() {

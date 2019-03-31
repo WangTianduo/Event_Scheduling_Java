@@ -1,6 +1,7 @@
 package algorithm;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Scheduler {
 
@@ -59,15 +60,38 @@ public class Scheduler {
         StudentGroup t5c3 = new StudentGroup(0, "t5c3", Pillar.ISTD, 5,
                 2, subjects, 50);
 
-        SpecificClass[][][] ss = init(new Subject[]{cse, esc, prob}, 3, 3);
-        t5c1.setsClassSet(ss);
-        t5c2.setsClassSet(ss);
-        t5c3.setsClassSet(ss);
-        randomGen(ss);
-//        for (SpecificClass c: t5c1.getsClassSet()) {
-//            c.printInfo();
-//        }
-//        System.out.println(t5c1.checkConflict());
+        SpecificClass[][][] chromosome1 = init(new Subject[]{cse, esc, prob}, 3, 3);
+        randomGen(chromosome1);
+        SpecificClass[][][] chromosome2 = init(new Subject[]{cse, esc, prob}, 3, 3);
+        randomGen(chromosome2);
+
+//        printChromosome(chromosome1);
+//        System.out.println("------------");
+//        printChromosome(chromosome2);
+
+        t5c1.setsClassSet(chromosome1);
+        t5c2.setsClassSet(chromosome1);
+        t5c3.setsClassSet(chromosome1);
+
+        int conflictNum = t5c2.checkConflict() + t5c2.checkConflict() +t5c3.checkConflict();
+        Chromosome c1 = new Chromosome(chromosome1, 3, 3, 3);
+        c1.setScore(conflictNum);
+        System.out.println(conflictNum);
+
+        t5c1.setsClassSet(chromosome2);
+        t5c2.setsClassSet(chromosome2);
+        t5c3.setsClassSet(chromosome2);
+        conflictNum = t5c2.checkConflict() + t5c2.checkConflict() +t5c3.checkConflict();
+        Chromosome c2 = new Chromosome(chromosome2, 3, 3, 3);
+        c2.setScore(conflictNum);
+        System.out.println(conflictNum);
+
+        Chromosome merge = Chromosome.merge(c1, c2);
+        t5c1.setsClassSet(merge.getChromosome());
+        t5c2.setsClassSet(merge.getChromosome());
+        t5c3.setsClassSet(merge.getChromosome());
+        conflictNum = t5c2.checkConflict() + t5c2.checkConflict() +t5c3.checkConflict();
+        System.out.println(conflictNum);
     }
 
     //TODO: a function that input is list of subject and output is 3-d mat of SpecificClass (x:subject; y:cohort; z:session)
@@ -111,13 +135,89 @@ public class Scheduler {
 
     //TODO: function that input is sClass mat and output is randomly generated calendar
     public static Calendar randomGen(SpecificClass[][][] sClassSet) {
-        Calendar calendar = new Calendar(roomList, sClassSet);
-        calendar.randomInit();
+        Calendar calendar;
+        while (true){
+            calendar = new Calendar(roomList, sClassSet);
+            boolean s = calendar.randomInit();
+            if (s == true) {
+                break;
+            }
+        }
 //        calendar.printOut();
         return calendar;
     }
 
     //TODO: function that input is calendar and print it out
+    public static void printChromosome(SpecificClass[][][] chromosome) {
+        for (int i = 0; i < chromosome.length; i++) {
+            for (int j = 0; j < chromosome[0].length; j++) {
+                for (int k = 0; k < chromosome[0][0].length; k++) {
+                    if (chromosome[i][j][k] != null) {
+                        if (chromosome[i][j][k].getClassroom() == null) {
+                            chromosome[i][j][k].printInfoWithoutRoom();
+                        }else {
+                            chromosome[i][j][k].printInfo();
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
+
+class Chromosome {
+    private SpecificClass[][][] chromosome;
+    private int subjectNum;
+    private int cohortNum;
+    private int sessionNum;
+    private double score;
+
+    Chromosome(SpecificClass[][][] chromosome, int x, int y, int z) {
+        this.chromosome = chromosome;
+        this.subjectNum = x;
+        this.cohortNum = y;
+        this.sessionNum = z;
+        this.score = 0;
+    }
+    public void setScore(double score) {
+        this.score = score;
+    }
+
+    public SpecificClass[][][] getChromosome() {
+        return chromosome;
+    }
+
+    public int getXdim(){
+        return subjectNum;
+    }
+
+    public int getYdim() {
+        return cohortNum;
+    }
+
+    public int getZdim() {
+        return sessionNum;
+    }
+
+    public static Chromosome merge(Chromosome c1, Chromosome c2) {
+        SpecificClass[][][] newChromosome = new SpecificClass[c1.getXdim()][c1.getYdim()][c1.getZdim()];
+        SpecificClass[][][] c1set = c1.getChromosome();
+        SpecificClass[][][] c2set = c2.getChromosome();
+        Random r = new Random();
+        for (int i = 0; i < c1.getXdim(); i++) {
+            for (int j = 0; j < c1.getYdim(); j++) {
+                for (int k = 0; k < c1.getZdim(); k++) {
+                    if (r.nextDouble() > 0.5) {
+                        newChromosome[i][j][k] = c1set[i][j][k];
+                    }else {
+                        newChromosome[i][j][k] = c2set[i][j][k];
+                    }
+                }
+            }
+        }
+        return new Chromosome(newChromosome, c1.getXdim(), c1.getYdim(), c1.getZdim());
+    }
+}
+
 
 
