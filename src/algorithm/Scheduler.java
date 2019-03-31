@@ -8,9 +8,9 @@ public class Scheduler {
     private static RoomList roomList;
     public static void main(String[] args) {
         // build classroom array
-        Classroom cohort1 = new Classroom("cohort", "2.501", 50, ClassType.CBL, 0);
-        Classroom cohort2 = new Classroom("cohort", "2.501", 50, ClassType.CBL, 1);
-        Classroom cohort3 = new Classroom("cohort", "2.501", 50, ClassType.CBL, 2);
+        Classroom cohort1 = new Classroom("cohort1", "2.501", 50, ClassType.CBL, 0);
+        Classroom cohort2 = new Classroom("cohort2", "2.501", 50, ClassType.CBL, 1);
+        Classroom cohort3 = new Classroom("cohort3", "2.501", 50, ClassType.CBL, 2);
         Classroom lecture = new Classroom("Lec", "2.501", 150, ClassType.LEC, 1);
         Classroom lab = new Classroom("lab", "2.501", 50, ClassType.LAB, 2);
 
@@ -64,10 +64,10 @@ public class Scheduler {
         t5c2.setsClassSet(ss);
         t5c3.setsClassSet(ss);
         randomGen(ss);
-        for (SpecificClass c: t5c1.getsClassSet()) {
-            c.printInfo();
-        }
-        System.out.println(t5c1.checkConflict());
+//        for (SpecificClass c: t5c1.getsClassSet()) {
+//            c.printInfo();
+//        }
+//        System.out.println(t5c1.checkConflict());
     }
 
     //TODO: a function that input is list of subject and output is 3-d mat of SpecificClass (x:subject; y:cohort; z:session)
@@ -113,7 +113,7 @@ public class Scheduler {
     public static Calendar randomGen(SpecificClass[][][] sClassSet) {
         Calendar calendar = new Calendar(roomList, sClassSet);
         calendar.randomInit();
-        calendar.printOut();
+//        calendar.printOut();
         return calendar;
     }
 

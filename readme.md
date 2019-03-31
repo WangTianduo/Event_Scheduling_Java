@@ -5,6 +5,7 @@ users (Prof, student) can submit a proposal and admin will determine whether gra
 # 31/03/2019
 - 检查student group conflicts：return int (num of conflict course)
 - 添加 common slot 和 周五周三下午没课
+- 尝试解决无法全部放置sClass的问题 （可以改变天数了）
 # 30/03/2019
 - 需要 database 那里直接给sClass， 每个sClass对应一个 profArray & studentGroup array
 - 修复了lecture上三遍的bug

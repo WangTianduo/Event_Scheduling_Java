@@ -23,6 +23,45 @@ public class Calendar {
         this.labRoomStart = roomList.getLabRoomStart();
         timetable = new SpecificClass[roomNum][5][20]; //  room, weekday, half-hour
         this.input3D = sClass;
+
+        initTimeTable();
+    }
+
+    private void initTimeTable() {
+        SpecificClass fifthRow = new SpecificClass("fifthRow");
+        SpecificClass hass = new SpecificClass("HASS");
+
+        int[] fifthRowWeekday = {2, 4}; // Wednesday and Friday
+        for (int i = 0; i < roomNum; i++) {
+            for (int j : fifthRowWeekday) {
+                for (int k = 9; k < 20; k++) { // start from 13:00
+                    timetable[i][j][k] = fifthRow;
+                }
+            }
+        }
+        for (int i = 0; i < roomNum; i++) { // Monday HASS
+            for (int j = 13; j < 20; j++) {
+                timetable[i][0][j] = hass;
+            }
+        }
+
+        for (int i = 0; i < roomNum; i++) { // Tuesday HASS
+            for (int j = 0; j < 3; j++) {
+                timetable[i][1][j] = hass;
+            }
+        }
+
+        for (int i = 0; i < roomNum; i++) { // Thursday HASS
+            for (int j = 13; j < 20; j++) {
+                timetable[i][3][j] = hass;
+            }
+        }
+
+        for (int i = 0; i < roomNum; i++) { // Friday HASS
+            for (int j = 6; j < 10; j++) {
+                timetable[i][4][j] = hass;
+            }
+        }
     }
 
     public void randomInit() {
@@ -52,12 +91,29 @@ public class Calendar {
                         // ------------------------------------------------ \\
                         // Randomly choose a weekday
                         // Policy: Assume that possible session number is {2, 3}
-                        currentWeekday = (int) Math.ceil(rand.nextDouble()*(5-sessionNum) + preWeekDay);
-                        if (currentWeekday >= 5) {
-                            currentWeekday --;
-                        }else {
-                            preWeekDay = currentWeekday;
+                        if (sessionNum == 3) {
+                            if (k == 0) {
+                                currentWeekday = (int)Math.floor(rand.nextDouble()*2);
+                                preWeekDay = currentWeekday;
+                            }else if (k == 1) {
+                                currentWeekday = (int)Math.floor(rand.nextDouble()*(2-preWeekDay));
+                                preWeekDay = currentWeekday;
+                            }else { // k = 3
+                                currentWeekday = (int)Math.floor(rand.nextDouble()*2 + 3);
+                            }
+                        }else { // sessionNum = 2
+                            if (k == 0) {
+                                currentWeekday = (int)Math.floor(rand.nextDouble()*2);
+                            }else { // k = 1
+                                currentWeekday = (int)Math.floor(rand.nextDouble()*2+2);
+                            }
                         }
+//                        currentWeekday = (int) Math.ceil(rand.nextDouble()*(5-sessionNum) + preWeekDay);
+//                        if (currentWeekday >= 5) {
+//                            currentWeekday --;
+//                        }else {
+//                            preWeekDay = currentWeekday;
+//                        }
                         // ------------------------------------------------ \\
                         // Randomly choose a classroom
                         // Policy: if the specific class has been assigned a classroom (case 1)
@@ -78,7 +134,7 @@ public class Calendar {
                                 case LEC:
                                     possibleRoomSelect = new int[labRoomStart - lecRoomStart];
                                     for (int idx = 0; idx < labRoomStart - lecRoomStart; idx++) {
-                                        possibleRoomSelect[idx] = idx+labRoomStart;
+                                        possibleRoomSelect[idx] = idx+lecRoomStart;
                                     }
                                     possibleRoomSelect = randomSort(possibleRoomSelect);
                                     break;
@@ -98,35 +154,53 @@ public class Calendar {
                         roomID = possibleRoomSelect[possibleRoomPointer];
 
                         // below random choose a begin time slot
-                        int timeSlotPoiner = 0;
+                        int timeSlotPointer = 0;
                         int putIn = 0;
                         classDuration = input3D[i][j][k].getDuration();
                         numOfSlot = (int) (classDuration / 0.5);
-                        while(timeSlotPoiner < 16) {
+                        while(timeSlotPointer < 16) {
                             for (int sln = 0; sln < numOfSlot; sln++) {
-                                if(timetable[roomID][currentWeekday][timeSlotPoiner+sln] != null) {
+                                if(timetable[roomID][currentWeekday][timeSlotPointer+sln] != null) {
                                     break;
                                 }else {
                                     putIn++;
                                 }
                             }
                             if (putIn == numOfSlot) {
-                                input3D[i][j][k].setTimeAndPos(currentWeekday, timeSlotPoiner, roomList.getRoomList()[roomID]);
+                                input3D[i][j][k].setTimeAndPos(currentWeekday, timeSlotPointer, roomList.getRoomList()[roomID]);
                                 for (int sln = 0; sln < numOfSlot; sln++) {
-                                    timetable[roomID][currentWeekday][timeSlotPoiner+sln] =
+                                    timetable[roomID][currentWeekday][timeSlotPointer+sln] =
                                             input3D[i][j][k];
                                 }
                                 break;
                             }else {
-                                timeSlotPoiner += numOfSlot - 1;
+//                                timeSlotPointer += numOfSlot - 1;
+                                timeSlotPointer++;
                             }
-                        }
-                        if (timeSlotPoiner == 16) {
-                            if (possibleRoomPointer == possibleRoomSelect.length) {
-                                System.out.println("Fail to find suitable slot"); // 没有考虑换天的情况
-                            }else {
-                                roomID = possibleRoomSelect[++possibleRoomPointer];
-                                timeSlotPoiner = 0;
+                            if (timeSlotPointer >= 17) {
+                                if (possibleRoomPointer == possibleRoomSelect.length-1) {
+                                    if(k==2 && currentWeekday != 3) {
+                                        System.out.println("session2 change to Thursday");
+                                        currentWeekday = 3;
+                                        possibleRoomPointer = 0;
+                                        roomID = possibleRoomSelect[++possibleRoomPointer];
+                                        timeSlotPointer = 0;
+                                    }else if(k < 2 && currentWeekday != 1) {
+                                        System.out.println("session0,1 change to Tuesday");
+                                        currentWeekday = 1;
+                                        possibleRoomPointer = 0;
+                                        roomID = possibleRoomSelect[++possibleRoomPointer];
+                                        timeSlotPointer = 0;
+                                    }
+                                    else {
+                                        input3D[i][j][k].printInfoWithoutRoom();
+                                        System.out.println("Fail to find suitable slot"); // 没有考虑换天的情况
+                                        System.out.println();
+                                    }
+                                }else {
+                                    roomID = possibleRoomSelect[++possibleRoomPointer];
+                                    timeSlotPointer = 0;
+                                }
                             }
                         }
                     }
@@ -142,10 +216,7 @@ public class Calendar {
                     if (timetable[k][i][j] == null) {
                         System.out.print(" ");
                     }else {
-                        System.out.println("classroom:" + k + " "+" cohort:"+timetable[k][i][j].getCohortNo()+" "+
-                                timetable[k][i][j].getSubject().getName() + " session:" +
-                                timetable[k][i][j].getSession()
-                                + " Weekday:" + i + " slot:" + j + " ");
+                        timetable[k][i][j].printInfo();
                     }
                 }
                 System.out.println();

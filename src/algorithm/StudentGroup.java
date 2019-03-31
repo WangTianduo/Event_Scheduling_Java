@@ -78,10 +78,16 @@ public class StudentGroup {
             timeSlotNum = (int)(c.getDuration()/0.5);
 
             for (int sln = 0; sln < timeSlotNum; sln++) {
-                if (timeTable[weekday][startTime + sln] == 0) { //empty in slot
+                if (weekday != -1 && timeTable[weekday][startTime + sln] == 0) { //empty in slot
                     timeTable[weekday][startTime + sln] = 1;
                 }else {
-                    c.printInfo();
+                    if (c.getClassroom() == null) {
+                        c.printInfoWithoutRoom();
+                    }else if (c == null) {
+                        System.out.println("No sClass");
+                    }else {
+                        c.printInfo();
+                    }
                     result++;
                     break;
                 }

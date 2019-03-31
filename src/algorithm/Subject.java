@@ -99,10 +99,11 @@ class SpecificClass {
     private ArrayList<Integer> cohortNo; // lecture can have multiple cohorts
     private int session;
     private Subject subject;
+    private String specialType; // HASS or 5-th Row
 
     // below will be set after scheduling
-    private int weekday;
-    private int startTime;
+    private int weekday = -1;
+    private int startTime = -1;
 
     SpecificClass(GenericClass gclass, int session, int cohortNo,
                   Subject subject, Classroom room) {
@@ -121,6 +122,10 @@ class SpecificClass {
         }
         this.session = session;
         this.subject = subject;
+    }
+
+    SpecificClass(String specialType) {
+        this.specialType = specialType;
     }
 
     public void setTimeAndPos(int weekday, int startTime, Classroom room) {
@@ -166,7 +171,15 @@ class SpecificClass {
     }
 
     public void printInfo() {
-        System.out.println("name: " + this.subject.name + "; cohort: " + this.cohortNo + "; session: " + this.session
-        + "; Weekday: " + this.weekday + "; startTime: " + this.startTime);
+        if (specialType == null) {
+            System.out.println("name: " + this.subject.name + "; cohort: " + this.cohortNo + "; session: " + this.session
+                    + "; Weekday: " + this.weekday + "; startTime: " + this.startTime + " Classroom: " + this.classroom.getName());
+        }
+    }
+    public void printInfoWithoutRoom() {
+        if (specialType == null) {
+            System.out.println("name: " + this.subject.name + "; cohort: " + this.cohortNo + "; session: " + this.session
+                    + "; Weekday: " + this.weekday + "; startTime: " + this.startTime );
+        }
     }
 }
