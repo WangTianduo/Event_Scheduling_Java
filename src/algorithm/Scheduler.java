@@ -7,7 +7,12 @@ public class Scheduler {
 
     private static Classroom[] classrooms;
     private static RoomList roomList;
+    private static ArrayList<StudentGroup> studentGroupSet;
     public static void main(String[] args) {
+
+        // init data structure
+        studentGroupSet = new ArrayList<>();
+
         // build classroom array
         Classroom cohort1 = new Classroom("cohort1", "2.501", 50, ClassType.CBL, 0);
         Classroom cohort2 = new Classroom("cohort2", "2.501", 50, ClassType.CBL, 1);
@@ -53,6 +58,7 @@ public class Scheduler {
         subjects.add(cse);
         subjects.add(esc);
         subjects.add(prob);
+
         StudentGroup t5c1 = new StudentGroup(0, "t5c1", Pillar.ISTD, 5,
         0, subjects, 50);
         StudentGroup t5c2 = new StudentGroup(0, "t5c2", Pillar.ISTD, 5,
@@ -60,38 +66,20 @@ public class Scheduler {
         StudentGroup t5c3 = new StudentGroup(0, "t5c3", Pillar.ISTD, 5,
                 2, subjects, 50);
 
+        studentGroupSet.add(t5c1);
+        studentGroupSet.add(t5c2);
+        studentGroupSet.add(t5c3);
+
         SpecificClass[][][] chromosome1 = init(new Subject[]{cse, esc, prob}, 3, 3);
         randomGen(chromosome1);
         SpecificClass[][][] chromosome2 = init(new Subject[]{cse, esc, prob}, 3, 3);
         randomGen(chromosome2);
 
-//        printChromosome(chromosome1);
-//        System.out.println("------------");
-//        printChromosome(chromosome2);
-
-        t5c1.setsClassSet(chromosome1);
-        t5c2.setsClassSet(chromosome1);
-        t5c3.setsClassSet(chromosome1);
-
-        int conflictNum = t5c2.checkConflict() + t5c2.checkConflict() +t5c3.checkConflict();
         Chromosome c1 = new Chromosome(chromosome1, 3, 3, 3);
-        c1.setScore(conflictNum);
-        System.out.println(conflictNum);
-
-        t5c1.setsClassSet(chromosome2);
-        t5c2.setsClassSet(chromosome2);
-        t5c3.setsClassSet(chromosome2);
-        conflictNum = t5c2.checkConflict() + t5c2.checkConflict() +t5c3.checkConflict();
         Chromosome c2 = new Chromosome(chromosome2, 3, 3, 3);
-        c2.setScore(conflictNum);
-        System.out.println(conflictNum);
 
-        Chromosome merge = Chromosome.merge(c1, c2);
-        t5c1.setsClassSet(merge.getChromosome());
-        t5c2.setsClassSet(merge.getChromosome());
-        t5c3.setsClassSet(merge.getChromosome());
-        conflictNum = t5c2.checkConflict() + t5c2.checkConflict() +t5c3.checkConflict();
-        System.out.println(conflictNum);
+        rate(c1);
+        rate(c2);
     }
 
     //TODO: a function that input is list of subject and output is 3-d mat of SpecificClass (x:subject; y:cohort; z:session)
@@ -163,6 +151,35 @@ public class Scheduler {
             }
         }
     }
+
+    //TODO：rating automatically
+    public static void rate(Chromosome chromosome) { // need StudentGroupSet and ProfSet
+        int conflictNum = 0;
+
+        for (StudentGroup sg: studentGroupSet) {
+            sg.setsClassSet(chromosome.getChromosome());
+            conflictNum = sg.checkConflict();
+        }
+        System.out.println("The studentG conflict number is: " + conflictNum);
+        chromosome.setScore(conflictNum);
+
+        int sessionError = 0;
+        SpecificClass[][][] temp = chromosome.getChromosome();
+        for (int i = 0; i < chromosome.getXdim(); i++) {
+            for (int j = 0; j < chromosome.getYdim(); j++) {
+                for (int k = 0; k < chromosome.getZdim()-1; k++) {
+                    if (temp[i][j][k] == null || temp[i][j][k+1] == null) {
+                        continue; // not complete
+                    }else {
+                        if (temp[i][j][k].getWeekday() >= temp[i][j][k+1].getWeekday()) {
+                            sessionError ++;
+                        }
+                    }
+                }
+            }
+        }
+        System.out.println("The session error is: " + sessionError);
+    }
 }
 
 class Chromosome {
@@ -218,6 +235,7 @@ class Chromosome {
         return new Chromosome(newChromosome, c1.getXdim(), c1.getYdim(), c1.getZdim());
     }
 }
+
 
 
 
