@@ -15,11 +15,22 @@ public class Scheduler {
 
         importDatabase();
 
-        Chromosome c1 = new Chromosome(3, 3, 3); //x: subjectNum; y: cohortNum; z: sessionNum
-        Chromosome c2 = new Chromosome(3, 3, 3);
-
-        rate(c1);
-        rate(c2);
+        Chromosome c1;// = new Chromosome(3, 3, 3); //x: subjectNum; y: cohortNum; z: sessionNum
+//        Chromosome c2 = new Chromosome(3, 3, 3);
+//
+//        rate(c1);
+//        rate(c2);
+        for(int i = 0; i < 1; i++) {
+            c1 = new Chromosome(3, 3,3);
+            rate(c1);
+            System.out.println();
+//            printChromosome(c1);
+            if (c1.getScore() == 0) {
+                printChromosome(c1);
+                break;
+            }
+            System.out.println();
+        }
     }
 
     private static void importDatabase() {
@@ -174,9 +185,9 @@ public class Scheduler {
         // check studentG conflict
         for (StudentGroup sg: studentGroupSet) {
             sg.setsClassSet(chromosome.getChromosome());
-            conflictNum = sg.checkConflict();
+            conflictNum += sg.checkConflict();
         }
-        System.out.println("The studentG conflict number is: " + conflictNum);
+//        System.out.println("The studentG conflict number is: " + conflictNum);
 
         // check session error
         int sessionError = 0;
@@ -209,15 +220,16 @@ public class Scheduler {
                 }
             }
         }
-        System.out.println("The session error is: " + sessionError);
+//        System.out.println("The session error is: " + sessionError);
 
         // check prof conflict
         int profConflict = 0;
         for (Professor prof: professorSet) {
             prof.setsClassSet(chromosome.getChromosome());
-            conflictNum = prof.checkConflict();
+            profConflict += prof.checkConflict();
         }
-        System.out.println("The prof conflict number is: " + profConflict);
+//        System.out.println("The prof conflict number is: " + profConflict);
+        System.out.println("score: " + conflictNum + " " + sessionError + " " + profConflict);
         chromosome.setScore(conflictNum + profConflict + sessionError);
     }
 }
@@ -264,6 +276,10 @@ class Chromosome {
 
     public int getZdim() {
         return sessionNum;
+    }
+
+    public double getScore() {
+        return score;
     }
 
     public static Chromosome merge(Chromosome c1, Chromosome c2) {

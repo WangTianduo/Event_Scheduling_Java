@@ -72,13 +72,10 @@ public class StudentGroup {
                 if (weekday != -1 && timeTable[weekday][startTime + sln] == 0) { //empty in slot
                     timeTable[weekday][startTime + sln] = 1;
                 }else {
-                    if (c.getClassroom() == null) {
-//                        c.printInfoWithoutRoom();
-                    }else if (c == null) {
-//                        System.out.println("No sClass");
-                    }else {
-//                        c.printInfo();
+                    for(int i = 0; i <= sln; i++) {
+                        timeTable[weekday][startTime + i] = 0;
                     }
+//                    c.printInfo();
                     result++;
                     break;
                 }

@@ -5,6 +5,8 @@ users (Prof, student) can submit a proposal and admin will determine whether gra
 # 01/04/2019
 - 实现自动化评分
 - 添加评分标准：different session， different day
+- 实现 prof conflict check （只检查了上部分cohort的情况， 没有检查上部分时间的情况）
+- 接下来尝试进化
 # 31/03/2019
 - 检查student group conflicts：return int (num of conflict course)
 - 添加 common slot 和 周五周三下午没课

@@ -41,7 +41,9 @@ public class Professor {
                             for (StudentGroup sg: courseTable.get(input3D[i][0][0].getSubject())) {
                                 if (input3D[i][0][0].getSubject().getTerm() == sg.getTerm()) {
                                     if (input3D[i][j][k].getCohortNo().contains(sg.getCohort())) {
-                                        sClassSet.add(input3D[i][j][k]);
+                                        if (!sClassSet.contains(input3D[i][j][k])) {
+                                            sClassSet.add(input3D[i][j][k]);
+                                        }
                                     }
                                 }
                             }
@@ -62,6 +64,7 @@ public class Professor {
         int timeSlotNum;
         int weekday;
         int result = 0;
+
         for (SpecificClass c: sClassSet) {
             weekday = c.getWeekday();
             startTime = c.getStartTime();
@@ -71,6 +74,17 @@ public class Professor {
                 if (weekday != -1 && timeTable[weekday][startTime + sln] == 0) { //empty in slot
                     timeTable[weekday][startTime + sln] = 1;
                 }else {
+                    for(int i = 0; i < sln; i++) {
+                        timeTable[weekday][startTime + i] = 0;
+                    }
+//                    c.printInfo();
+//                    for (int i = 0; i < 5; i++) {
+//                        for (int j = 0; j < 20; j++) {
+//                            System.out.print(timeTable[i][j] + " ");
+//                        }
+//                        System.out.println();
+//                    }
+//                    System.out.println("-------------");
                     result++;
                     break;
                 }
