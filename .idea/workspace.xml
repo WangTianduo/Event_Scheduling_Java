@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98cc51b5-bed0-4b3d-bc66-3a2b6d62185b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/algorithm/Professor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithm/Professor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/algorithm/Scheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithm/Scheduler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algorithm/StudentGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithm/StudentGroup.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/algorithm/Subject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithm/Subject.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -39,13 +41,13 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="15772" />
+          <entry key="java" value="16427" />
           <entry key="md" value="1165" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="15772" />
+          <entry key="JAVA" value="16427" />
           <entry key="PLAIN_TEXT" value="1165" />
         </counts>
       </usages-collector>
@@ -56,23 +58,16 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/algorithm/Scheduler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1171">
-              <caret line="146" column="60" lean-forward="true" selection-start-line="146" selection-start-column="60" selection-end-line="146" selection-end-column="60" />
+            <state relative-caret-position="224">
+              <caret line="214" column="29" lean-forward="true" selection-start-line="214" selection-start-column="29" selection-end-line="214" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#importDatabase#0;class#Scheduler#0" />
+                <element signature="method#init#0;class#Scheduler#0" />
                 <element signature="method#randomGen#0;class#Scheduler#0" />
-                <element signature="method#rate#0;class#Scheduler#0" />
-                <element signature="e#8054#8055#0" expanded="true" />
-                <element signature="e#8096#8097#0" expanded="true" />
-                <element signature="e#8150#8151#0" expanded="true" />
-                <element signature="e#8191#8192#0" expanded="true" />
-                <element signature="e#8222#8223#0" expanded="true" />
-                <element signature="e#8263#8264#0" expanded="true" />
-                <element signature="e#8295#8296#0" expanded="true" />
-                <element signature="e#8335#8336#0" expanded="true" />
-                <element signature="e#8367#8368#0" expanded="true" />
-                <element signature="e#8408#8409#0" expanded="true" />
+                <element signature="method#printChromosome#0;class#Scheduler#0" />
+                <element signature="method#Chromosome#0;class#Chromosome#0" />
+                <element signature="method#Chromosome#1;class#Chromosome#0" />
+                <element signature="method#merge#0;class#Chromosome#0" />
               </folding>
             </state>
           </provider>
@@ -105,14 +100,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/algorithm/Subject.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-730">
-              <caret line="65" column="20" selection-start-line="65" selection-start-column="20" selection-end-line="65" selection-end-column="20" />
+            <state relative-caret-position="201">
+              <caret line="50" column="8" selection-start-line="50" selection-start-column="8" selection-end-line="50" selection-end-column="20" />
               <folding>
                 <element signature="method#Subject#0;class#Subject#0" />
-                <element signature="e#1092#1093#0" expanded="true" />
-                <element signature="e#1127#1128#0" expanded="true" />
-                <element signature="e#1158#1159#0" expanded="true" />
-                <element signature="e#1185#1186#0" expanded="true" />
                 <element signature="e#2057#2058#0" expanded="true" />
                 <element signature="e#2089#2090#0" expanded="true" />
                 <element signature="e#2128#2129#0" expanded="true" />
@@ -166,18 +157,21 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/algorithm/Professor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="703">
-              <caret line="37" column="40" selection-start-line="37" selection-start-column="40" selection-end-line="37" selection-end-column="40" />
+            <state relative-caret-position="254">
+              <caret line="72" column="23" selection-start-line="72" selection-start-column="23" selection-end-line="72" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1267#1268#0" expanded="true" />
-                <element signature="e#1292#1293#0" expanded="true" />
-                <element signature="e#1323#1324#0" expanded="true" />
-                <element signature="e#1350#1351#0" expanded="true" />
-                <element signature="e#1403#1404#0" expanded="true" />
-                <element signature="e#1434#1435#0" expanded="true" />
-                <element signature="e#1506#1507#0" expanded="true" />
-                <element signature="e#1540#1541#0" expanded="true" />
+                <element signature="method#addSubject#0;class#Professor#0" />
+                <element signature="method#addSpecificClass#0;class#Professor#0" />
+                <element signature="method#addSpecificClass#1;class#Professor#0" />
+                <element signature="e#2735#2736#0" expanded="true" />
+                <element signature="e#2760#2761#0" expanded="true" />
+                <element signature="e#2791#2792#0" expanded="true" />
+                <element signature="e#2818#2819#0" expanded="true" />
+                <element signature="e#2871#2872#0" expanded="true" />
+                <element signature="e#2903#2904#0" expanded="true" />
+                <element signature="e#2976#2977#0" expanded="true" />
+                <element signature="e#3010#3011#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -186,8 +180,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/algorithm/StudentGroup.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
-              <caret line="34" column="31" selection-start-line="34" selection-start-column="31" selection-end-line="34" selection-end-column="31" />
+            <state relative-caret-position="428">
+              <caret line="87" column="5" lean-forward="true" selection-start-line="57" selection-start-column="4" selection-end-line="87" selection-end-column="5" />
               <folding>
                 <element signature="e#2803#2804#0" expanded="true" />
                 <element signature="e#2835#2836#0" expanded="true" />
@@ -219,12 +213,12 @@
       <list>
         <option value="$PROJECT_DIR$/src/algorithm/CalendarTest.java" />
         <option value="$PROJECT_DIR$/src/algorithm/ProfessorTest.java" />
-        <option value="$PROJECT_DIR$/src/algorithm/Professor.java" />
         <option value="$PROJECT_DIR$/src/algorithm/Classroom.java" />
-        <option value="$PROJECT_DIR$/src/algorithm/StudentGroup.java" />
         <option value="$PROJECT_DIR$/readme.md" />
         <option value="$PROJECT_DIR$/src/algorithm/Calendar.java" />
         <option value="$PROJECT_DIR$/src/algorithm/Subject.java" />
+        <option value="$PROJECT_DIR$/src/algorithm/StudentGroup.java" />
+        <option value="$PROJECT_DIR$/src/algorithm/Professor.java" />
         <option value="$PROJECT_DIR$/src/algorithm/Scheduler.java" />
       </list>
     </option>
@@ -281,7 +275,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554124193815" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554126943898" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="create.test.in.the.same.root" value="true" />
@@ -506,6 +500,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/readme.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" column="41" lean-forward="true" selection-start-line="6" selection-start-column="41" selection-end-line="6" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algorithm/Calendar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" column="79" selection-start-line="8" selection-start-column="79" selection-end-line="8" selection-end-column="79" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#initTimeTable#0;class#Calendar#0" />
+            <element signature="e#6301#6302#0" expanded="true" />
+            <element signature="e#6341#6342#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/algorithm/Classroom.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19">
@@ -523,48 +537,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/algorithm/Calendar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" column="79" selection-start-line="8" selection-start-column="79" selection-end-line="8" selection-end-column="79" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#initTimeTable#0;class#Calendar#0" />
-            <element signature="e#6301#6302#0" expanded="true" />
-            <element signature="e#6341#6342#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/readme.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="6" column="41" lean-forward="true" selection-start-line="6" selection-start-column="41" selection-end-line="6" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/algorithm/Professor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="703">
-          <caret line="37" column="40" selection-start-line="37" selection-start-column="40" selection-end-line="37" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1267#1268#0" expanded="true" />
-            <element signature="e#1292#1293#0" expanded="true" />
-            <element signature="e#1323#1324#0" expanded="true" />
-            <element signature="e#1350#1351#0" expanded="true" />
-            <element signature="e#1403#1404#0" expanded="true" />
-            <element signature="e#1434#1435#0" expanded="true" />
-            <element signature="e#1506#1507#0" expanded="true" />
-            <element signature="e#1540#1541#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/algorithm/StudentGroup.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="34" column="31" selection-start-line="34" selection-start-column="31" selection-end-line="34" selection-end-column="31" />
+        <state relative-caret-position="428">
+          <caret line="87" column="5" lean-forward="true" selection-start-line="57" selection-start-column="4" selection-end-line="87" selection-end-column="5" />
           <folding>
             <element signature="e#2803#2804#0" expanded="true" />
             <element signature="e#2835#2836#0" expanded="true" />
@@ -572,16 +548,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/algorithm/Professor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="72" column="23" selection-start-line="72" selection-start-column="23" selection-end-line="72" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#addSubject#0;class#Professor#0" />
+            <element signature="method#addSpecificClass#0;class#Professor#0" />
+            <element signature="method#addSpecificClass#1;class#Professor#0" />
+            <element signature="e#2735#2736#0" expanded="true" />
+            <element signature="e#2760#2761#0" expanded="true" />
+            <element signature="e#2791#2792#0" expanded="true" />
+            <element signature="e#2818#2819#0" expanded="true" />
+            <element signature="e#2871#2872#0" expanded="true" />
+            <element signature="e#2903#2904#0" expanded="true" />
+            <element signature="e#2976#2977#0" expanded="true" />
+            <element signature="e#3010#3011#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/algorithm/Subject.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-730">
-          <caret line="65" column="20" selection-start-line="65" selection-start-column="20" selection-end-line="65" selection-end-column="20" />
+        <state relative-caret-position="201">
+          <caret line="50" column="8" selection-start-line="50" selection-start-column="8" selection-end-line="50" selection-end-column="20" />
           <folding>
             <element signature="method#Subject#0;class#Subject#0" />
-            <element signature="e#1092#1093#0" expanded="true" />
-            <element signature="e#1127#1128#0" expanded="true" />
-            <element signature="e#1158#1159#0" expanded="true" />
-            <element signature="e#1185#1186#0" expanded="true" />
             <element signature="e#2057#2058#0" expanded="true" />
             <element signature="e#2089#2090#0" expanded="true" />
             <element signature="e#2128#2129#0" expanded="true" />
@@ -614,23 +607,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/algorithm/Scheduler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1171">
-          <caret line="146" column="60" lean-forward="true" selection-start-line="146" selection-start-column="60" selection-end-line="146" selection-end-column="60" />
+        <state relative-caret-position="224">
+          <caret line="214" column="29" lean-forward="true" selection-start-line="214" selection-start-column="29" selection-end-line="214" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#importDatabase#0;class#Scheduler#0" />
+            <element signature="method#init#0;class#Scheduler#0" />
             <element signature="method#randomGen#0;class#Scheduler#0" />
-            <element signature="method#rate#0;class#Scheduler#0" />
-            <element signature="e#8054#8055#0" expanded="true" />
-            <element signature="e#8096#8097#0" expanded="true" />
-            <element signature="e#8150#8151#0" expanded="true" />
-            <element signature="e#8191#8192#0" expanded="true" />
-            <element signature="e#8222#8223#0" expanded="true" />
-            <element signature="e#8263#8264#0" expanded="true" />
-            <element signature="e#8295#8296#0" expanded="true" />
-            <element signature="e#8335#8336#0" expanded="true" />
-            <element signature="e#8367#8368#0" expanded="true" />
-            <element signature="e#8408#8409#0" expanded="true" />
+            <element signature="method#printChromosome#0;class#Scheduler#0" />
+            <element signature="method#Chromosome#0;class#Chromosome#0" />
+            <element signature="method#Chromosome#1;class#Chromosome#0" />
+            <element signature="method#merge#0;class#Chromosome#0" />
           </folding>
         </state>
       </provider>

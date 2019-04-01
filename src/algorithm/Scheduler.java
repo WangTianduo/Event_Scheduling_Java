@@ -9,14 +9,15 @@ public class Scheduler {
     private static RoomList roomList;
     public static ArrayList<Subject> subjects;
     private static ArrayList<StudentGroup> studentGroupSet;
+    private static ArrayList<Professor> professorSet;
 
     public static void main(String[] args) {
 
         importDatabase();
 
-        Chromosome c1 = new Chromosome(3, 3, 3);
+        Chromosome c1 = new Chromosome(3, 3, 3); //x: subjectNum; y: cohortNum; z: sessionNum
         Chromosome c2 = new Chromosome(3, 3, 3);
-        
+
         rate(c1);
         rate(c2);
     }
@@ -66,11 +67,11 @@ public class Scheduler {
         probArr[2] = coh2;
 
         Subject cse = new Subject("cse", 50005, SubjectType.CORE,
-                null, 50, 3, CSEarr);
+                5, 50, 3, CSEarr);
         Subject esc = new Subject("esc", 50003, SubjectType.CORE,
-                null, 50, 3, ESCarr);
+                5, 50, 3, ESCarr);
         Subject prob = new Subject("prob", 50034, SubjectType.CORE,
-                null, 50, 3, probArr);
+                5, 50, 3, probArr);
 
         subjects = new ArrayList<>();
         subjects.add(cse);
@@ -89,6 +90,15 @@ public class Scheduler {
         studentGroupSet.add(t5c1);
         studentGroupSet.add(t5c2);
         studentGroupSet.add(t5c3);
+
+        //---------------------------------------\\
+        // import Prof
+        professorSet = new ArrayList<>();
+
+        Professor nat = new Professor("Nat", 0);
+        nat.addSubject(cse, t5c1);
+        nat.addSubject(cse, t5c2);
+        professorSet.add(nat);
 
     }
 
@@ -161,20 +171,20 @@ public class Scheduler {
     public static void rate(Chromosome chromosome) { // need StudentGroupSet and ProfSet
         int conflictNum = 0;
 
+        // check studentG conflict
         for (StudentGroup sg: studentGroupSet) {
             sg.setsClassSet(chromosome.getChromosome());
             conflictNum = sg.checkConflict();
         }
         System.out.println("The studentG conflict number is: " + conflictNum);
-        chromosome.setScore(conflictNum);
 
+        // check session error
         int sessionError = 0;
         SpecificClass[][][] temp = chromosome.getChromosome();
         for (int i = 0; i < chromosome.getXdim(); i++) {
             for (int j = 0; j < chromosome.getYdim(); j++) {
                 for (int k = 0; k < chromosome.getZdim()-1; k++) {
                     if (temp[i][j][k] == null || temp[i][j][k+1] == null) {
-//                        continue; // not complete
                         if (temp[i][j][k] == null && temp[i][j][k+1] == null) {// Lec + Lec + Coh
                             if (temp[i][0][1].getWeekday() >= temp[i][j][2].getWeekday()) {
                                 sessionError++;
@@ -200,6 +210,15 @@ public class Scheduler {
             }
         }
         System.out.println("The session error is: " + sessionError);
+
+        // check prof conflict
+        int profConflict = 0;
+        for (Professor prof: professorSet) {
+            prof.setsClassSet(chromosome.getChromosome());
+            conflictNum = prof.checkConflict();
+        }
+        System.out.println("The prof conflict number is: " + profConflict);
+        chromosome.setScore(conflictNum + profConflict + sessionError);
     }
 }
 
@@ -226,6 +245,7 @@ class Chromosome {
         this.sessionNum = z;
         this.score = 0;
     }
+
     public void setScore(double score) {
         this.score = score;
     }

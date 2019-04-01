@@ -6,7 +6,8 @@ public class Subject {
     protected String name;
     protected int id;
     protected SubjectType type;
-    protected Professor[] courseLead;
+//    protected Professor[] courseLead;
+    protected int term;
     protected int studNumPerCohort; // 50 students each class
     protected int numOfCohort;
     protected int totalEnrollNum;
@@ -17,12 +18,12 @@ public class Subject {
 
     }
 
-    Subject(String name, int id, SubjectType type, Professor[] courseLead,
+    Subject(String name, int id, SubjectType type, int term    ,
             int studNumPerCohort, int numOfCohort, GenericClass[] classComponent) {
         this.name = name;
         this.id = id;
         this.type = type;
-        this.courseLead = courseLead;
+        this.term = term;
         this.studNumPerCohort = studNumPerCohort;
         this.numOfCohort = numOfCohort;
         this.totalEnrollNum = this.numOfCohort * this.studNumPerCohort;
@@ -44,6 +45,10 @@ public class Subject {
 
     public String getName() {
         return name;
+    }
+
+    public int getTerm() {
+        return term;
     }
 }
 

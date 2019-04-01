@@ -12,10 +12,10 @@ public class ProfessorTest {
         Subject s = new Subject();
 
         Professor p = new Professor("Nat", 12);
-        p.addSubject("sss", sg1);
+        p.addSubject(s, sg1);
 
         System.out.println(p.getCourseTable().get("sss").size());
-        p.addSubject("sss", sg2);
+        p.addSubject(s, sg2);
         System.out.println(p.getCourseTable().get("sss").size());
     }
 }

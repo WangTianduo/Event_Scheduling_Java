@@ -89,4 +89,12 @@ public class StudentGroup {
     public ArrayList<SpecificClass> getsClassSet() {
         return sClassSet;
     }
+
+    public int getCohort() {
+        return cohort;
+    }
+
+    public int getTerm() {
+        return term;
+    }
 }
