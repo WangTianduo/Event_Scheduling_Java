@@ -6,13 +6,12 @@ import java.util.HashMap;
 import java.util.Random;
 
 public class Calendar {
-    private SpecificClass[][][] timetable;
+    private SpecificClass[][][] timetable; // x: room; y: weekday; z: time slot
     private SpecificClass[][][] input3D; // x: subject; y: cohort; z: session
     private int roomNum;
     private RoomList roomList;
 
     //roomList is a list with the order: cohort, lecture, lab
-    int cohRoomStart = 0;
     int lecRoomStart;
     int labRoomStart;
 
@@ -68,8 +67,6 @@ public class Calendar {
         // assume the instance has been created and classrooms are assigned already
         Random rand = new Random();
         int subjectNum = input3D.length;// length of sClass column
-        SpecificClass tempClass;
-        int maxSessionNum;
         int sessionNum;
         int cohortNum;
         double classDuration;
@@ -108,12 +105,6 @@ public class Calendar {
                                 currentWeekday = (int)Math.floor(rand.nextDouble()*2+2);
                             }
                         }
-//                        currentWeekday = (int) Math.ceil(rand.nextDouble()*(5-sessionNum) + preWeekDay);
-//                        if (currentWeekday >= 5) {
-//                            currentWeekday --;
-//                        }else {
-//                            preWeekDay = currentWeekday;
-//                        }
                         // ------------------------------------------------ \\
                         // Randomly choose a classroom
                         // Policy: if the specific class has been assigned a classroom (case 1)
