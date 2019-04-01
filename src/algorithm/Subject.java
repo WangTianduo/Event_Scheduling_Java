@@ -56,6 +56,13 @@ enum ClassType {
     LEC, CBL, LAB
 }
 
+/*
+ * Construction Policy:
+ *
+ * 1. If CBL or LAB, no need set cohorts since every cohorts and each time only one
+ * 2. if LEC, need to set cohorts since may not every cohort takes at one time
+ *
+ */
 class GenericClass {
     private double duration;
     private ClassType classType;

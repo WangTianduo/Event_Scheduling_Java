@@ -7,8 +7,19 @@ public class Scheduler {
 
     private static Classroom[] classrooms;
     private static RoomList roomList;
-    private static ArrayList<Subject> subjects;
+    public static ArrayList<Subject> subjects;
     private static ArrayList<StudentGroup> studentGroupSet;
+
+    public static void main(String[] args) {
+
+        importDatabase();
+
+        Chromosome c1 = new Chromosome(3, 3, 3);
+        Chromosome c2 = new Chromosome(3, 3, 3);
+        
+        rate(c1);
+        rate(c2);
+    }
 
     private static void importDatabase() {
 
@@ -48,15 +59,18 @@ public class Scheduler {
         CSEarr[0] = coh1;
         CSEarr[1] = coh1;
         CSEarr[2] = lec1;
-        
+
         GenericClass[] probArr = new GenericClass[3];
         probArr[0] = lec2;
         probArr[1] = lec2;
         probArr[2] = coh2;
 
-        Subject cse = new Subject("cse", 50005, SubjectType.CORE, null, 50, 3, CSEarr);
-        Subject esc = new Subject("esc", 50005, SubjectType.CORE, null, 50, 3, ESCarr);
-        Subject prob = new Subject("prob", 50005, SubjectType.CORE, null, 50, 3, probArr);
+        Subject cse = new Subject("cse", 50005, SubjectType.CORE,
+                null, 50, 3, CSEarr);
+        Subject esc = new Subject("esc", 50003, SubjectType.CORE,
+                null, 50, 3, ESCarr);
+        Subject prob = new Subject("prob", 50034, SubjectType.CORE,
+                null, 50, 3, probArr);
 
         subjects = new ArrayList<>();
         subjects.add(cse);
@@ -77,24 +91,9 @@ public class Scheduler {
         studentGroupSet.add(t5c3);
 
     }
-    public static void main(String[] args) {
-
-        importDatabase();
-
-        SpecificClass[][][] chromosome1 = init(subjects, 3, 3);
-        randomGen(chromosome1);
-        SpecificClass[][][] chromosome2 = init(subjects, 3, 3);
-        randomGen(chromosome2);
-
-        Chromosome c1 = new Chromosome(chromosome1, 3, 3, 3);
-        Chromosome c2 = new Chromosome(chromosome2, 3, 3, 3);
-
-        rate(c1);
-        rate(c2);
-    }
 
     //TODO: a function that input is list of subject and output is 3-d mat of SpecificClass (x:subject; y:cohort; z:session)
-    public static SpecificClass[][][] init(ArrayList<Subject> subjects, int MaxSessionNum, int MaxCohortNum) {
+    public static SpecificClass[][][] init(int MaxSessionNum, int MaxCohortNum) {
         GenericClass[] gClassSet;
         SpecificClass sClass;
         int cohortNum;
@@ -122,12 +121,6 @@ public class Scheduler {
                     }
                 }
             }
-//            for (int j = 0; j < maxSessionNum; j++) {
-//                for (int k = 0; k < cohortNo; k++) {
-//                    sClass = new SpecificClass(gClassSet[j], j, k, subjects[i], roomList[k]);
-//                    result[i][j*maxSessionNum+k] = sClass;
-//                }
-//            }
         }
         return result;
     }
@@ -147,7 +140,8 @@ public class Scheduler {
     }
 
     //TODO: function that input is calendar and print it out
-    public static void printChromosome(SpecificClass[][][] chromosome) {
+    public static void printChromosome(Chromosome c) {
+        SpecificClass[][][] chromosome = c.getChromosome();
         for (int i = 0; i < chromosome.length; i++) {
             for (int j = 0; j < chromosome[0].length; j++) {
                 for (int k = 0; k < chromosome[0][0].length; k++) {
@@ -216,8 +210,17 @@ class Chromosome {
     private int sessionNum;
     private double score;
 
-    Chromosome(SpecificClass[][][] chromosome, int x, int y, int z) {
-        this.chromosome = chromosome;
+    Chromosome(int x, int y, int z) {
+        this.chromosome = Scheduler.init(y, z); // y: cohort number; z: session number
+        Scheduler.randomGen(this.chromosome);
+        this.subjectNum = x;
+        this.cohortNum = y;
+        this.sessionNum = z;
+        this.score = 0;
+    }
+
+    Chromosome(SpecificClass[][][] sClassSet, int x, int y, int z) {
+        this.chromosome = sClassSet;
         this.subjectNum = x;
         this.cohortNum = y;
         this.sessionNum = z;
