@@ -3,7 +3,7 @@ package algorithm;
 import java.util.ArrayList;
 
 enum Pillar {
-    Freshmore, ASD, EPD, ESD, ISTD
+    Freshmore, ASD, EPD, ESD, ISTD, HASS
 }
 
 public class StudentGroup {

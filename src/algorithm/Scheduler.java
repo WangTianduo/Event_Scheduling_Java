@@ -1,6 +1,5 @@
 package algorithm;
 
-import javax.xml.parsers.SAXParser;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -26,14 +25,14 @@ public class Scheduler {
 
         int[] score = {10, 10, 10};
         for (int i = 0; i < currentGen.length; i++) {
-            do {
-                currentGen[i] = new Chromosome(3, 3, 3);
-                score = rate(currentGen[i]);
-                studentConflict = score[0];
-                sessionConflict = score[1];
-                proConflict = score[2];
-                scoreSet[i] = currentGen[i].getScore();
-            }while (sessionConflict != 0 || studentConflict >= 4 || proConflict != 0);
+            currentGen[i] = new Chromosome(3, 3, 3);
+            score = rate(currentGen[i]);
+            studentConflict = score[0];
+            sessionConflict = score[1];
+            proConflict = score[2];
+            scoreSet[i] = currentGen[i].getScore();
+//            do {
+//            }while (sessionConflict != 0 || studentConflict >= 4 || proConflict >= 2);
         }
         for(int i: scoreSet) {
             System.out.print(i + " ");
@@ -47,6 +46,7 @@ public class Scheduler {
         System.out.println("---------------");
         printChromosome(answer, 2);
         System.out.println("---------------");
+        
 //        int[] d = {2, 2, 2, 1, 1, 2, 1};
 //        ArrayList<Integer> s = findThreeSmallestPos(scoreSet);
 //
@@ -221,6 +221,24 @@ public class Scheduler {
         nat.addSubject(cse, t5c1);
         nat.addSubject(cse, t5c2);
         professorSet.add(nat);
+
+        Professor david = new Professor("David", 1);
+        david.addSubject(esc, t5c1);
+        david.addSubject(esc, t5c2);
+        david.addSubject(esc, t5c3);
+        professorSet.add(david);
+
+        Professor sj = new Professor("Sun Jun", 2);
+        sj.addSubject(esc, t5c1);
+        sj.addSubject(esc, t5c2);
+        sj.addSubject(esc, t5c3);
+        professorSet.add(sj);
+
+        Professor tq = new Professor("Tony", 3);
+        sj.addSubject(prob, t5c1);
+        sj.addSubject(prob, t5c2);
+        sj.addSubject(prob, t5c3);
+        professorSet.add(tq);
 
     }
 
