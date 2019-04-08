@@ -269,7 +269,90 @@ public class JsonUtils {
         }
     }
 
-    public static void readJson() {
+    public static RoomList readJsonRoomList() {
+        StringBuilder jsonStr = new StringBuilder();
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(new File("input.json"))); //或者使用Scanner
+            String temp = "";
+            while((temp = reader.readLine())!= null)
+                jsonStr.append(temp);
+                reader.close();
+        }catch (IOException ex){
+            ex.printStackTrace();
+        }
 
+        try {
+            JSONObject json = new JSONObject(jsonStr.toString());
+            JSONArray jsonRoom = json.getJSONArray("classroom");
+            Classroom[] rooms = new Classroom[jsonRoom.length()];
+            int lecStart = -1;
+            int labStart = -1;
+            for (int i = 0; i < jsonRoom.length(); i++) {
+                JSONObject room = (JSONObject) jsonRoom.get(i);
+                String name = room.getString("name");
+                String location = room.getString("location");
+                int id = room.getInt("id");
+                int roomType = room.getInt("roomType");
+                if (lecStart == -1 && roomType == 1) { // first lecture hall
+                    lecStart = i;
+                }
+                if (labStart == -1 && roomType == 2) { // first lecture hall
+                    labStart = i;
+                }
+                ClassType type = ClassType.CBL;
+                    switch (roomType) {
+                        case 0:
+                            type = ClassType.CBL;
+                            break;
+                        case 1:
+                            type = ClassType.LEC;
+                            break;
+                        case 2:
+                            type = ClassType.LAB;
+                            break;
+                }
+                int capacity = room.getInt("capacity");
+                Classroom classroom = new Classroom(name, location, capacity, type, id);
+                rooms[i] = classroom;
+            }
+            if (labStart == -1) {
+                labStart = rooms.length;
+            }
+            return new RoomList(rooms, lecStart, labStart);
+        }catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static void readJsonProfessor() {
+
+        StringBuilder jsonStr = new StringBuilder();
+        try{
+            BufferedReader reader = new BufferedReader(new FileReader(new File("input.json"))); //或者使用Scanner
+            String temp = "";
+            while((temp = reader.readLine())!= null)
+                jsonStr.append(temp);
+            reader.close();
+        }catch (IOException ex){
+            ex.printStackTrace();
+        }
+
+        try {
+            JSONObject json = new JSONObject(jsonStr.toString());
+            JSONArray jsonProf = json.getJSONArray("professor");
+            for(int i=0;i<jsonProf.length();i++){
+                JSONObject person = (JSONObject)jsonProf.get(i);
+                String name = (String)person.get("name"); //获取JSON对象的键值对
+                int id = (int)person.get("id");
+                JSONObject coursetable = (JSONObject) person.get("coursetable");
+                for (String key: coursetable.keySet()) {
+                    System.out.println(key);
+                }
+                System.out.println("name:"+name+"\nhome:"+id);
+            }
+        }catch(JSONException ex){
+            ex.printStackTrace();
+        }
     }
 }

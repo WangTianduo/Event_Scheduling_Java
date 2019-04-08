@@ -14,6 +14,7 @@ public class Scheduler {
     public static void main(String[] args) {
 
         importDatabase();
+//        roomList = JsonUtils.readJsonRoomList();
 
         Chromosome[] currentGen = new Chromosome[15];
         int[] scoreSet = new int[15];
@@ -46,7 +47,8 @@ public class Scheduler {
         System.out.println("---------------");
         printChromosome(answer, 2);
         System.out.println("---------------");
-        
+
+//        JsonUtils.readJson(roomList, subjects, studentGroupSet, professorSet);
 //        int[] d = {2, 2, 2, 1, 1, 2, 1};
 //        ArrayList<Integer> s = findThreeSmallestPos(scoreSet);
 //
@@ -148,18 +150,19 @@ public class Scheduler {
 
         //---------------------------------------\\
         // import classrooms info
-        Classroom cohort1 = new Classroom("cohort1", "2.501", 50, ClassType.CBL, 0);
-        Classroom cohort2 = new Classroom("cohort2", "2.501", 50, ClassType.CBL, 1);
-        Classroom cohort3 = new Classroom("cohort3", "2.501", 50, ClassType.CBL, 2);
-        Classroom lecture = new Classroom("Lec", "2.501", 150, ClassType.LEC, 1);
-        Classroom lab = new Classroom("lab", "2.501", 50, ClassType.LAB, 2);
-        classrooms = new Classroom[4];
-        classrooms[0] = cohort1;
-        classrooms[1] = cohort2;
-        classrooms[2] = lecture;
-        classrooms[3] = lab;
-        roomList = new RoomList(classrooms, 2, 3);
+//        Classroom cohort1 = new Classroom("cohort1", "2.501", 50, ClassType.CBL, 0);
+//        Classroom cohort2 = new Classroom("cohort2", "2.501", 50, ClassType.CBL, 1);
+//        Classroom cohort3 = new Classroom("cohort3", "2.501", 50, ClassType.CBL, 2);
+//        Classroom lecture = new Classroom("Lec", "2.501", 150, ClassType.LEC, 1);
+//        Classroom lab = new Classroom("lab", "2.501", 50, ClassType.LAB, 2);
+//        classrooms = new Classroom[4];
+//        classrooms[0] = cohort1;
+//        classrooms[1] = cohort2;
+//        classrooms[2] = lecture;
+//        classrooms[3] = lab;
+//        roomList = new RoomList(classrooms, 2, 3);
 
+        roomList = JsonUtils.readJsonRoomList();
         //---------------------------------------\\
         // import subjects
         GenericClass coh1 = new GenericClass(ClassType.CBL, 1.5, null);
