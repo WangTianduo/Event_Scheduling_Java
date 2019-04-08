@@ -1,5 +1,6 @@
 package algorithm;
 
+import javax.xml.parsers.SAXParser;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -15,21 +16,131 @@ public class Scheduler {
 
         importDatabase();
 
-        Chromosome c1;// = new Chromosome(3, 3, 3); //x: subjectNum; y: cohortNum; z: sessionNum
-//        Chromosome c2 = new Chromosome(3, 3, 3);
+        Chromosome[] currentGen = new Chromosome[15];
+        int[] scoreSet = new int[15];
+        Chromosome[] tempPool = new Chromosome[6];
+        int tempPoolKey = 0;
+        int sessionConflict = 0;
+        int proConflict = 0;
+        int studentConflict = 0;
+
+        int[] score = {10, 10, 10};
+        for (int i = 0; i < currentGen.length; i++) {
+            do {
+                currentGen[i] = new Chromosome(3, 3, 3);
+                score = rate(currentGen[i]);
+                studentConflict = score[0];
+                sessionConflict = score[1];
+                proConflict = score[2];
+                scoreSet[i] = currentGen[i].getScore();
+            }while (sessionConflict != 0 || studentConflict >= 4 || proConflict != 0);
+        }
+        for(int i: scoreSet) {
+            System.out.print(i + " ");
+        }
+        System.out.println();
+
+        Chromosome answer = evolution(14, currentGen);
+        printChromosome(answer, 0);
+        System.out.println("---------------");
+        printChromosome(answer, 1);
+        System.out.println("---------------");
+        printChromosome(answer, 2);
+        System.out.println("---------------");
+//        int[] d = {2, 2, 2, 1, 1, 2, 1};
+//        ArrayList<Integer> s = findThreeSmallestPos(scoreSet);
 //
-//        rate(c1);
-//        rate(c2);
-        for(int i = 0; i < 1; i++) {
-            c1 = new Chromosome(3, 3,3);
-            rate(c1);
-            System.out.println();
-//            printChromosome(c1);
-            if (c1.getScore() == 0) {
-                printChromosome(c1);
-                break;
+//        tempPool[0] = Chromosome.merge(currentGen[s.get(0)],currentGen[s.get(1)]);
+//        System.out.println(rate(tempPool[0])[0]);
+//        tempPool[1] = Chromosome.merge(currentGen[s.get(1)],currentGen[s.get(0)]);
+//        System.out.println(rate(tempPool[1])[0]);
+//        tempPool[2] = Chromosome.merge(currentGen[s.get(1)],currentGen[s.get(2)]);
+//        System.out.println(rate(tempPool[2])[0]);
+//        tempPool[3] = Chromosome.merge(currentGen[s.get(2)],currentGen[s.get(1)]);
+//        System.out.println(rate(tempPool[3])[0]);
+//        tempPool[4] = Chromosome.merge(currentGen[s.get(0)],currentGen[s.get(2)]);
+//        System.out.println(rate(tempPool[4])[0]);
+//        tempPool[5] = Chromosome.merge(currentGen[s.get(2)],currentGen[s.get(0)]);
+//        System.out.println(rate(tempPool[5])[0]);
+//
+//        ArrayList<Integer> usedNextGen = new ArrayList<>();
+//        for (int i = 0; i < currentGen.length; i++) {
+//            for (int j = 0; j < tempPool.length; j++) {
+//                if (currentGen[i].getScore() > tempPool[j].getScore() && !usedNextGen.contains(j)) {
+//                    currentGen[i] = tempPool[j];
+//                    usedNextGen.add(j);
+//                    break;
+//                }
+//            }
+//            scoreSet[i] = currentGen[i].getScore();
+//        }
+//        for(int i: scoreSet) {
+//            System.out.print(i + " ");
+//        }
+//        System.out.println();
+    }
+
+    private static Chromosome evolution(int gen, Chromosome[] initGen) {
+        Chromosome[] tempPool = new Chromosome[6];
+        Chromosome[] currentGen = initGen;
+        int[] scoreSet = new int[currentGen.length];
+        for (int g = 0; g < gen; g++) {
+            for (int i = 0; i < currentGen.length; i++) {
+                scoreSet[i] = currentGen[i].getScore();
+            }
+            ArrayList<Integer> s = findThreeSmallestPos(scoreSet);
+            tempPool[0] = Chromosome.merge(currentGen[s.get(0)],currentGen[s.get(1)]);
+            rate(tempPool[0]);
+            tempPool[1] = Chromosome.merge(currentGen[s.get(1)],currentGen[s.get(0)]);
+            rate(tempPool[1]);
+            tempPool[2] = Chromosome.merge(currentGen[s.get(1)],currentGen[s.get(2)]);
+            rate(tempPool[2]);
+            tempPool[3] = Chromosome.merge(currentGen[s.get(2)],currentGen[s.get(1)]);
+            rate(tempPool[3]);
+            tempPool[4] = Chromosome.merge(currentGen[s.get(0)],currentGen[s.get(2)]);
+            rate(tempPool[4]);
+            tempPool[5] = Chromosome.merge(currentGen[s.get(2)],currentGen[s.get(0)]);
+            rate(tempPool[5]);
+
+            ArrayList<Integer> usedNextGen = new ArrayList<>();
+            for (int i = 0; i < currentGen.length; i++) {
+                for (int j = 0; j < tempPool.length; j++) {
+                    if (currentGen[i].getScore() > tempPool[j].getScore() && !usedNextGen.contains(j)) {
+                        currentGen[i] = tempPool[j];
+                        usedNextGen.add(j);
+                        break;
+                    }
+                }
+                scoreSet[i] = currentGen[i].getScore();
+            }
+
+            System.out.print("Generation" + g + ": ");
+            for (Chromosome c: currentGen) {
+                System.out.print(c.getScore() + " ");
+//                System.out.println(rate(c)[0] + " " + rate(c)[1] + " " + rate(c)[2]);
             }
             System.out.println();
+        }
+        return currentGen[0];
+    }
+
+    private static ArrayList<Integer> findThreeSmallestPos(int[] l) {
+        if (l.length < 3) {
+            System.out.println("Too short array");
+            return null;
+        }else {
+            ArrayList<Integer> result = new ArrayList<>();
+            int idx = 0;
+            for (int i = 0; i < 3; i++) {
+                idx = 0;
+                for (int j = 0; j < l.length; j++) {
+                    if (l[j] < l[idx] && !result.contains(j)) {
+                        idx = j;
+                    }
+                }
+                result.add(idx);
+            }
+            return result;
         }
     }
 
@@ -177,10 +288,28 @@ public class Scheduler {
             }
         }
     }
-
+    public static void printChromosome(Chromosome c, int cohortNo) {
+        SpecificClass[][][] chromosome = c.getChromosome();
+        for (int i = 0; i < chromosome.length; i++) {
+            for (int j = 0; j < chromosome[0].length; j++) {
+                for (int k = 0; k < chromosome[0][0].length; k++) {
+                    if (chromosome[i][j][k] != null) {
+                        if (chromosome[i][j][k].getClassroom() == null) {
+                            chromosome[i][j][k].printInfoWithoutRoom();
+                        }else {
+                            if (chromosome[i][j][k].getCohortNo().contains(cohortNo)) {
+                                chromosome[i][j][k].printInfo();
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
     //TODO：rating automatically
-    public static void rate(Chromosome chromosome) { // need StudentGroupSet and ProfSet
+    public static int[] rate(Chromosome chromosome) { // need StudentGroupSet and ProfSet
         int conflictNum = 0;
+        int[] result = new int[3]; // 0: student conflict; 1: session conflict; 2: teacher conflict
 
         // check studentG conflict
         for (StudentGroup sg: studentGroupSet) {
@@ -229,36 +358,53 @@ public class Scheduler {
             profConflict += prof.checkConflict();
         }
 //        System.out.println("The prof conflict number is: " + profConflict);
-        System.out.println("score: " + conflictNum + " " + sessionError + " " + profConflict);
+//        System.out.println("score: " + conflictNum + " " + sessionError + " " + profConflict);
         chromosome.setScore(conflictNum + profConflict + sessionError);
+        result[0] = conflictNum;
+        result[1] = sessionError;
+        result[2] = profConflict;
+        return result;
     }
 }
 
 class Chromosome {
     private SpecificClass[][][] chromosome;
+    private SpecificClass[] lineChromosome;
     private int subjectNum;
     private int cohortNum;
     private int sessionNum;
-    private double score;
+    private int score;
 
-    Chromosome(int x, int y, int z) {
-        this.chromosome = Scheduler.init(y, z); // y: cohort number; z: session number
+    Chromosome(int subjectNum, int cohortNum, int sessionNum) {
+        this.chromosome = Scheduler.init(cohortNum, sessionNum); // y: cohort number; z: session number
         Scheduler.randomGen(this.chromosome);
-        this.subjectNum = x;
-        this.cohortNum = y;
-        this.sessionNum = z;
+        this.subjectNum = subjectNum;
+        this.cohortNum = cohortNum;
+        this.sessionNum = sessionNum;
         this.score = 0;
+        lineChromosome = convertToArray();
     }
 
     Chromosome(SpecificClass[][][] sClassSet, int x, int y, int z) {
         this.chromosome = sClassSet;
+        lineChromosome = convertToArray();
         this.subjectNum = x;
         this.cohortNum = y;
         this.sessionNum = z;
         this.score = 0;
     }
 
-    public void setScore(double score) {
+    Chromosome(SpecificClass[] lineC, int x, int y, int z) {
+        this.subjectNum = x;
+        this.cohortNum = y;
+        this.sessionNum = z;
+        this.score = 0;
+        this.lineChromosome = lineC;
+        this.chromosome = convertTo3d();
+
+    }
+
+    public void setScore(int score) {
         this.score = score;
     }
 
@@ -266,39 +412,99 @@ class Chromosome {
         return chromosome;
     }
 
+    public SpecificClass[] getLineChromosome() {
+        return lineChromosome;
+    }
+
     public int getXdim(){
-        return subjectNum;
+        return this.subjectNum;
     }
 
     public int getYdim() {
-        return cohortNum;
+        return this.cohortNum;
     }
 
     public int getZdim() {
-        return sessionNum;
+        return this.sessionNum;
     }
 
-    public double getScore() {
+    public int getScore() {
         return score;
     }
 
-    public static Chromosome merge(Chromosome c1, Chromosome c2) {
-        SpecificClass[][][] newChromosome = new SpecificClass[c1.getXdim()][c1.getYdim()][c1.getZdim()];
-        SpecificClass[][][] c1set = c1.getChromosome();
-        SpecificClass[][][] c2set = c2.getChromosome();
-        Random r = new Random();
-        for (int i = 0; i < c1.getXdim(); i++) {
-            for (int j = 0; j < c1.getYdim(); j++) {
-                for (int k = 0; k < c1.getZdim(); k++) {
-                    if (r.nextDouble() > 0.5) {
-                        newChromosome[i][j][k] = c1set[i][j][k];
-                    }else {
-                        newChromosome[i][j][k] = c2set[i][j][k];
-                    }
+    private SpecificClass[] convertToArray() {
+        SpecificClass[] result = new SpecificClass[getXdim()*getZdim()*getZdim()];
+        for(int i = 0; i < getXdim(); i++) {
+            for (int j = 0; j < getYdim(); j++) {
+                for (int k = 0; k < getZdim(); k++) {
+                    result[i*getXdim()*getYdim() + j*getYdim() + k] = this.chromosome[i][j][k];
                 }
             }
         }
-        return new Chromosome(newChromosome, c1.getXdim(), c1.getYdim(), c1.getZdim());
+        return result;
+    }
+
+    private SpecificClass[][][] convertTo3d() {
+        SpecificClass[][][] result = new SpecificClass[getXdim()][getYdim()][getZdim()];
+        for(int i = 0; i < getXdim(); i++) {
+            for (int j = 0; j < getYdim(); j++) {
+                for (int k = 0; k < getZdim(); k++) {
+                    result[i][j][k] = this.lineChromosome[i*getXdim()*getYdim() + j*getYdim() + k];
+                }
+            }
+        }
+//        System.out.println(result.length + " " + result[0].length + " " + result[0][0].length);
+        return result;
+    }
+
+    public static Chromosome merge(Chromosome c1, Chromosome c2) {
+//        SpecificClass[][][] newChromosome = new SpecificClass[c1.getXdim()][c1.getYdim()][c1.getZdim()];
+//        SpecificClass[][][] c1set = c1.getChromosome();
+//        SpecificClass[][][] c2set = c2.getChromosome();
+//        Random r = new Random();
+//        for (int i = 0; i < c1.getXdim(); i++) {
+//            for (int j = 0; j < c1.getYdim(); j++) {
+//                for (int k = 0; k < c1.getZdim(); k++) {
+//                    if (r.nextDouble() > 0.5) {
+//                        newChromosome[i][j][k] = c1set[i][j][k];
+//                    }else {
+//                        newChromosome[i][j][k] = c2set[i][j][k];
+//                    }
+//                }
+//            }
+//        }
+//        return new Chromosome(newChromosome, c1.getXdim(), c1.getYdim(), c1.getZdim());
+        int chromosomeLength = c1.getXdim()*c1.getYdim()*c1.getZdim();
+        SpecificClass[] lineC = new SpecificClass[chromosomeLength];
+
+        Random r = new Random();
+        int lowCut, highCut;
+
+        lowCut = r.nextInt(chromosomeLength);
+        highCut = r.nextInt(chromosomeLength);
+
+        if (lowCut > highCut) {
+            int temp = highCut;
+            highCut = lowCut;
+            lowCut = temp;
+        }
+
+        for (int i = 0; i < lowCut; i++) {
+            lineC[i] = c1.getLineChromosome()[i];
+        }
+        for (int i = lowCut; i < highCut; i++) {
+            lineC[i] = c2.getLineChromosome()[i];
+        }
+        for (int i = highCut; i < chromosomeLength; i++) {
+            lineC[i] = c1.getLineChromosome()[i];
+        }
+        return new Chromosome(lineC, c1.getXdim(), c1.getYdim(), c1.getZdim());
+    }
+
+    public static Chromosome mutate(Chromosome c) {
+        SpecificClass[][][] newChromosome = new SpecificClass[c.getXdim()][c.getYdim()][c.getZdim()];
+        SpecificClass[][][] cSet = c.getChromosome();
+        return null;
     }
 }
 
