@@ -14,7 +14,6 @@ public class Scheduler {
     public static void main(String[] args) {
 
         importDatabase();
-//        roomList = JsonUtils.readJsonRoomList();
 
         Chromosome[] currentGen = new Chromosome[25];
         int[] scoreSet = new int[25];
@@ -26,22 +25,24 @@ public class Scheduler {
 
         int[] score = {10, 10, 10};
         for (int i = 0; i < currentGen.length; i++) {
-            do {
-                currentGen[i] = new Chromosome(3, 3, 3);
-                score = rate(currentGen[i]);
-                studentConflict = score[0];
-                sessionConflict = score[1];
-                proConflict = score[2];
-                scoreSet[i] = currentGen[i].getScore();
-            }while (sessionConflict != 0 || studentConflict >= 5 || proConflict >= 2);
+            currentGen[i] = new Chromosome(3, 3, 3);
+            score = rate(currentGen[i]);
+            studentConflict = score[0];
+            sessionConflict = score[1];
+            proConflict = score[2];
+            scoreSet[i] = currentGen[i].getScore();
+//            do {
+//            }while (sessionConflict != 0 || studentConflict >= 5 || proConflict >= 2);
         }
         for(int i: scoreSet) {
             System.out.print(i + " ");
         }
         System.out.println();
 
-        Chromosome answer = evolution(500, currentGen);
-        JsonUtils.writeToJson(answer);
+        Chromosome answer = evolution(1500, currentGen);
+//        JsonUtils.writeToJson(answer);
+
+
 //        printChromosome(answer, 0);
 //        System.out.println("---------------");
 //        printChromosome(answer, 1);
@@ -122,43 +123,43 @@ public class Scheduler {
             rate(tempPool[4]);
             tempPool[5] = Chromosome.merge(currentGen[s.get(2)],currentGen[s.get(0)]);
             rate(tempPool[5]);
-            tempPool[6] = Chromosome.merge(currentGen[s.get(2)],currentGen[r.nextInt(14)]);
+            tempPool[6] = Chromosome.merge(currentGen[s.get(0)],currentGen[s.get(1)]);
             rate(tempPool[6]);
-            tempPool[7] = Chromosome.merge(currentGen[s.get(r.nextInt(3))],currentGen[r.nextInt(10)+4]);
+            tempPool[7] = Chromosome.merge(currentGen[s.get(1)],currentGen[s.get(0)]);
             rate(tempPool[7]);
-            tempPool[8] = Chromosome.merge(currentGen[s.get(r.nextInt(3))],currentGen[r.nextInt(10)+4]);
+            tempPool[8] = Chromosome.merge(currentGen[s.get(0)],currentGen[s.get(2)]);
             rate(tempPool[8]);
-            tempPool[9] = Chromosome.merge(currentGen[s.get(r.nextInt(3))],currentGen[r.nextInt(10)+4]);
+            tempPool[9] = Chromosome.merge(currentGen[s.get(2)],currentGen[s.get(0)]);
             rate(tempPool[9]);
-            tempPool[10] = Chromosome.merge(currentGen[s.get(r.nextInt(3))],currentGen[r.nextInt(10)+4]);
+            tempPool[10] = Chromosome.merge(currentGen[s.get(2)],currentGen[s.get(1)]);
             rate(tempPool[10]);
-            tempPool[11] = Chromosome.merge(currentGen[s.get(r.nextInt(3))],currentGen[r.nextInt(10)+4]);
+            tempPool[11] = Chromosome.merge(currentGen[s.get(1)],currentGen[s.get(2)]);
             rate(tempPool[11]);
-            tempPool[12] = Chromosome.merge(currentGen[s.get(r.nextInt(3))],currentGen[r.nextInt(10)+4]);
+            tempPool[12] = Chromosome.merge(currentGen[s.get(1)],currentGen[s.get(2)]);
             rate(tempPool[12]);
-            tempPool[13] = Chromosome.merge(currentGen[s.get(r.nextInt(3))],currentGen[r.nextInt(10)+4]);
+            tempPool[13] = Chromosome.merge(currentGen[s.get(0)],currentGen[s.get(1)]);
             rate(tempPool[13]);
-            tempPool[14] = Chromosome.merge(currentGen[s.get(r.nextInt(3))],currentGen[r.nextInt(10)+4]);
+            tempPool[14] = Chromosome.merge(currentGen[s.get(0)],currentGen[s.get(1)]);
             rate(tempPool[14]);
-            tempPool[15] = Chromosome.merge(currentGen[s.get(0)],currentGen[s.get(2)]);
+            tempPool[15] = Chromosome.merge(currentGen[r.nextInt(25)],currentGen[r.nextInt(25)]);
             rate(tempPool[15]);
-            tempPool[16] = Chromosome.merge(currentGen[s.get(2)],currentGen[s.get(0)]);
+            tempPool[16] = Chromosome.merge(currentGen[r.nextInt(25)],currentGen[r.nextInt(25)]);
             rate(tempPool[16]);
-            tempPool[17] = Chromosome.merge(currentGen[s.get(r.nextInt(3))],currentGen[r.nextInt(10)+4]);
+            tempPool[17] = Chromosome.merge(currentGen[r.nextInt(25)],currentGen[r.nextInt(25)]);
             rate(tempPool[17]);
-            tempPool[18] = Chromosome.merge(currentGen[s.get(r.nextInt(3))],currentGen[r.nextInt(10)+4]);
+            tempPool[18] = Chromosome.merge(currentGen[r.nextInt(25)],currentGen[r.nextInt(25)]);
             rate(tempPool[18]);
-            tempPool[19] = Chromosome.merge(currentGen[s.get(r.nextInt(3))],currentGen[r.nextInt(10)+4]);
+            tempPool[19] = Chromosome.merge(currentGen[r.nextInt(25)],currentGen[r.nextInt(25)]);
             rate(tempPool[19]);
-            tempPool[20] = Chromosome.merge(currentGen[s.get(r.nextInt(3))],currentGen[r.nextInt(10)+4]);
+            tempPool[20] = Chromosome.merge(currentGen[r.nextInt(25)],currentGen[r.nextInt(25)]);
             rate(tempPool[20]);
-            tempPool[21] = Chromosome.merge(currentGen[s.get(r.nextInt(3))],currentGen[r.nextInt(10)+4]);
+            tempPool[21] = Chromosome.merge(currentGen[r.nextInt(25)],currentGen[r.nextInt(25)]);
             rate(tempPool[21]);
-            tempPool[22] = Chromosome.merge(currentGen[s.get(r.nextInt(3))],currentGen[r.nextInt(10)+4]);
+            tempPool[22] = Chromosome.merge(currentGen[r.nextInt(25)],currentGen[r.nextInt(25)]);
             rate(tempPool[22]);
-            tempPool[23] = Chromosome.merge(currentGen[s.get(r.nextInt(3))],currentGen[r.nextInt(10)+4]);
+            tempPool[23] = Chromosome.merge(currentGen[r.nextInt(25)],currentGen[r.nextInt(25)]);
             rate(tempPool[23]);
-            tempPool[24] = Chromosome.merge(currentGen[s.get(r.nextInt(3))],currentGen[r.nextInt(10)+4]);
+            tempPool[24] = Chromosome.merge(currentGen[r.nextInt(25)],currentGen[r.nextInt(25)]);
             rate(tempPool[24]);
 
             ArrayList<Integer> usedNextGen = new ArrayList<>();
@@ -170,8 +171,13 @@ public class Scheduler {
                     currentGen[i] = tempPool[i];
                 }else {
 //                    Random r1 = new Random();
-                    if (r.nextDouble() > 0.7) {
-                        currentGen[i] = new Chromosome(3, 3, 3);
+                    if (r.nextDouble() > 0.6) {
+//                        currentGen[i] = new Chromosome(3, 3, 3);
+                        if (r.nextDouble() > 0.6) {
+                            currentGen[i] = new Chromosome(3, 3, 3);
+                        }else {
+                            currentGen[i] = Chromosome.merge(currentGen[i], tempPool[i]);
+                        }
                         rate(currentGen[i]);
                     }
                 }
@@ -200,7 +206,7 @@ public class Scheduler {
                 break;
             }
         }
-
+        System.out.println(rate(currentGen[0])[0] + " " + rate(currentGen[0])[1] + " " +rate(currentGen[0])[2]);
         return currentGen[0];
     }
 
@@ -363,16 +369,23 @@ public class Scheduler {
 
     //TODO: function that input is sClass mat and output is randomly generated calendar
     public static Calendar randomGen(SpecificClass[][][] sClassSet) {
-        Calendar calendar;
-        while (true){
+        Calendar calendar = null;
+        int count = 5000;
+        while (count > 0){
             calendar = new Calendar(roomList, sClassSet);
             boolean s = calendar.randomInit();
             if (s == true) {
                 break;
             }
+            count--;
         }
 //        calendar.printOut();
-        return calendar;
+        if (count==0) {
+            System.out.println("null");
+            return null;
+        }else {
+            return calendar;
+        }
     }
 
     //TODO: function that input is calendar and print it out

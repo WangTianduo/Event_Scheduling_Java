@@ -22,7 +22,6 @@ public class Calendar {
         this.labRoomStart = roomList.getLabRoomStart();
         timetable = new SpecificClass[roomNum][5][21]; //  room, weekday, half-hour
         this.input3D = sClass;
-
         initTimeTable();
     }
 
@@ -76,13 +75,20 @@ public class Calendar {
         int preWeekDay = -1; // previous session weekday
         int currentWeekday = 0;
         int numOfSlot; // if duration == 1.5, numOfSlot = 3
+
+        int[] s = new int[subjectNum];
+        for (int d = 0; d < subjectNum; d++) {
+            s[d] = d;
+        }
+        s = randomSort(s);
+
         for (int i = 0; i < subjectNum; i++) {
-            sessionNum = input3D[i][0][0].getSubject().getClassComponent().length;
-            cohortNum = input3D[i][0][0].getSubject().getNumOfCohort();
+            sessionNum = input3D[s[i]][0][0].getSubject().getClassComponent().length;
+            cohortNum = input3D[s[i]][0][0].getSubject().getNumOfCohort();
             for (int j = 0; j < cohortNum; j++) {
                 preWeekDay = -1;
                 for (int k = 0; k < sessionNum; k++) {
-                    if (input3D[i][j][k] == null) {
+                    if (input3D[s[i]][j][k] == null) {
                         preWeekDay = 2;
                         continue;
                     }else{
@@ -111,10 +117,10 @@ public class Calendar {
                         // Policy: if the specific class has been assigned a classroom (case 1)
                         //         if has not been assigned, then get type and randomly choose (case 2)
                         int[] possibleRoomSelect;
-                        if (input3D[i][j][k].getClassroom() != null) {
-                            possibleRoomSelect = new int[]{input3D[i][j][k].getClassroom().getId()};
+                        if (input3D[s[i]][j][k].getClassroom() != null) {
+                            possibleRoomSelect = new int[]{input3D[s[i]][j][k].getClassroom().getId()};
                         }else {
-                            roomType = input3D[i][j][k].getType();
+                            roomType = input3D[s[i]][j][k].getType();
                             switch (roomType) {
                                 case CBL:
                                     possibleRoomSelect = new int[lecRoomStart];
@@ -148,7 +154,7 @@ public class Calendar {
                         // below random choose a begin time slot
                         int timeSlotPointer = 0;
                         int putIn = 0;
-                        classDuration = input3D[i][j][k].getDuration();
+                        classDuration = input3D[s[i]][j][k].getDuration();
                         numOfSlot = (int) (classDuration / 0.5);
 
                         while(timeSlotPointer < 18) {
@@ -160,10 +166,10 @@ public class Calendar {
                                 }
                             }
                             if (putIn == numOfSlot) {
-                                input3D[i][j][k].setTimeAndPos(currentWeekday, timeSlotPointer, roomList.getRoomList()[roomID]);
+                                input3D[s[i]][j][k].setTimeAndPos(currentWeekday, timeSlotPointer, roomList.getRoomList()[roomID]);
                                 for (int sln = 0; sln < numOfSlot; sln++) {
                                     timetable[roomID][currentWeekday][timeSlotPointer+sln] =
-                                            input3D[i][j][k];
+                                            input3D[s[i]][j][k];
                                 }
                                 break;
                             }else {

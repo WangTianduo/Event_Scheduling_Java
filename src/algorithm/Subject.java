@@ -118,8 +118,8 @@ class SpecificClass {
     private String specialType; // HASS or 5-th Row
 
     // below will be set after scheduling
-    private int weekday = -1;
-    private int startTime = -1;
+    private int weekday = 0;
+    private int startTime = 0;
 
     // for printing
     private boolean printed = false;
