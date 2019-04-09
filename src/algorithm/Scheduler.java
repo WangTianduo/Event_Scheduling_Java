@@ -41,6 +41,7 @@ public class Scheduler {
         System.out.println();
 
         Chromosome answer = evolution(500, currentGen);
+        JsonUtils.writeToJson(answer);
 //        printChromosome(answer, 0);
 //        System.out.println("---------------");
 //        printChromosome(answer, 1);
