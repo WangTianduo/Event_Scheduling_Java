@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="98cc51b5-bed0-4b3d-bc66-3a2b6d62185b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algorithm/Calendar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithm/Calendar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algorithm/JsonUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithm/JsonUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algorithm/Scheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithm/Scheduler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algorithm/StudentGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithm/StudentGroup.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algorithm/Subject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithm/Subject.java" afterDir="false" />
-    </list>
+    <list default="true" id="98cc51b5-bed0-4b3d-bc66-3a2b6d62185b" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -46,13 +39,13 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="28903" />
+          <entry key="java" value="28909" />
           <entry key="md" value="1246" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="28903" />
+          <entry key="JAVA" value="28909" />
           <entry key="PLAIN_TEXT" value="1246" />
         </counts>
       </usages-collector>
@@ -63,7 +56,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/algorithm/Scheduler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
+            <state relative-caret-position="172">
               <caret line="35" column="78" selection-start-line="35" selection-start-column="78" selection-end-line="35" selection-end-column="78" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -97,8 +90,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/algorithm/Calendar.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="139">
-              <caret line="67" column="33" selection-start-line="67" selection-start-column="33" selection-end-line="67" selection-end-column="33" />
+            <state relative-caret-position="1085">
+              <caret line="59" column="52" selection-start-line="59" selection-start-column="52" selection-end-line="59" selection-end-column="52" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -219,8 +212,8 @@
         <option value="$PROJECT_DIR$/src/algorithm/Subject.java" />
         <option value="$PROJECT_DIR$/src/algorithm/StudentGroup.java" />
         <option value="$PROJECT_DIR$/src/algorithm/JsonUtils.java" />
-        <option value="$PROJECT_DIR$/src/algorithm/Calendar.java" />
         <option value="$PROJECT_DIR$/src/algorithm/Scheduler.java" />
+        <option value="$PROJECT_DIR$/src/algorithm/Calendar.java" />
       </list>
     </option>
   </component>
@@ -297,7 +290,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554783744184" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554795293393" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="create.test.in.the.same.root" value="true" />
@@ -672,8 +665,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/algorithm/Calendar.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="67" column="33" selection-start-line="67" selection-start-column="33" selection-end-line="67" selection-end-column="33" />
+        <state relative-caret-position="1085">
+          <caret line="59" column="52" selection-start-line="59" selection-start-column="52" selection-end-line="59" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -682,7 +675,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/algorithm/Scheduler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
+        <state relative-caret-position="172">
           <caret line="35" column="78" selection-start-line="35" selection-start-column="78" selection-end-line="35" selection-end-column="78" />
           <folding>
             <element signature="imports" expanded="true" />
