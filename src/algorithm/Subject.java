@@ -50,6 +50,10 @@ public class Subject {
     public int getTerm() {
         return term;
     }
+
+    public int getId() {
+        return id;
+    }
 }
 
 enum SubjectType {

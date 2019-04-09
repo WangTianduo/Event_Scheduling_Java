@@ -20,7 +20,7 @@ public class Calendar {
         this.roomList = roomList;
         this.lecRoomStart = roomList.getLecRoomStart();
         this.labRoomStart = roomList.getLabRoomStart();
-        timetable = new SpecificClass[roomNum][5][20]; //  room, weekday, half-hour
+        timetable = new SpecificClass[roomNum][5][21]; //  room, weekday, half-hour
         this.input3D = sClass;
 
         initTimeTable();
@@ -29,6 +29,7 @@ public class Calendar {
     private void initTimeTable() {
         SpecificClass fifthRow = new SpecificClass("fifthRow");
         SpecificClass hass = new SpecificClass("HASS");
+//        SpecificClass hass = null;
 
         int[] fifthRowWeekday = {2, 4}; // Wednesday and Friday
         for (int i = 0; i < roomNum; i++) {
@@ -56,11 +57,11 @@ public class Calendar {
             }
         }
 
-        for (int i = 0; i < roomNum; i++) { // Friday HASS
-            for (int j = 6; j < 10; j++) {
-                timetable[i][4][j] = hass;
-            }
-        }
+//        for (int i = 0; i < roomNum; i++) { // Friday HASS
+//            for (int j = 6; j < 10; j++) {
+//                timetable[i][4][j] = hass;
+//            }
+//        }
     }
 
     public boolean randomInit() {

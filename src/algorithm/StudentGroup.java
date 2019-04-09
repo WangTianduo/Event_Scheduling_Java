@@ -94,4 +94,8 @@ public class StudentGroup {
     public int getTerm() {
         return term;
     }
+
+    public ArrayList<Subject> getSubjects() {
+        return subjects;
+    }
 }

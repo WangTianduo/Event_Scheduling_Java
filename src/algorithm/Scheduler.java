@@ -16,8 +16,8 @@ public class Scheduler {
         importDatabase();
 //        roomList = JsonUtils.readJsonRoomList();
 
-        Chromosome[] currentGen = new Chromosome[15];
-        int[] scoreSet = new int[15];
+        Chromosome[] currentGen = new Chromosome[25];
+        int[] scoreSet = new int[25];
         Chromosome[] tempPool = new Chromosome[6];
         int tempPoolKey = 0;
         int sessionConflict = 0;
@@ -26,28 +26,45 @@ public class Scheduler {
 
         int[] score = {10, 10, 10};
         for (int i = 0; i < currentGen.length; i++) {
-            currentGen[i] = new Chromosome(3, 3, 3);
-            score = rate(currentGen[i]);
-            studentConflict = score[0];
-            sessionConflict = score[1];
-            proConflict = score[2];
-            scoreSet[i] = currentGen[i].getScore();
-//            do {
-//            }while (sessionConflict != 0 || studentConflict >= 4 || proConflict >= 2);
+            do {
+                currentGen[i] = new Chromosome(3, 3, 3);
+                score = rate(currentGen[i]);
+                studentConflict = score[0];
+                sessionConflict = score[1];
+                proConflict = score[2];
+                scoreSet[i] = currentGen[i].getScore();
+            }while (sessionConflict != 0 || studentConflict >= 5 || proConflict >= 2);
         }
         for(int i: scoreSet) {
             System.out.print(i + " ");
         }
         System.out.println();
 
-        Chromosome answer = evolution(14, currentGen);
-        printChromosome(answer, 0);
-        System.out.println("---------------");
-        printChromosome(answer, 1);
-        System.out.println("---------------");
-        printChromosome(answer, 2);
-        System.out.println("---------------");
+        Chromosome answer = evolution(500, currentGen);
+//        printChromosome(answer, 0);
+//        System.out.println("---------------");
+//        printChromosome(answer, 1);
+//        System.out.println("---------------");
+//        printChromosome(answer, 2);
+//        System.out.println("---------------");
 
+//        for (StudentGroup sg: studentGroupSet) {
+//            System.out.println(sg.getCohort());
+//            for (Subject sub: sg.getSubjects()) {
+//                System.out.println(sub.getName());
+//            }
+//            System.out.println("------------");
+//        }
+//
+//        for (Professor p: professorSet) {
+//            System.out.println(p.getName());
+//            for (Subject sub: p.getCourseTable().keySet()) {
+//                for (StudentGroup sg: p.getCourseTable().get(sub)) {
+//                    System.out.println(sub.getName() + " " + sg.getCohort());
+//                }
+//            }
+//            System.out.println("-------------");
+//        }
 //        JsonUtils.readJson(roomList, subjects, studentGroupSet, professorSet);
 //        int[] d = {2, 2, 2, 1, 1, 2, 1};
 //        ArrayList<Integer> s = findThreeSmallestPos(scoreSet);
@@ -83,7 +100,7 @@ public class Scheduler {
     }
 
     private static Chromosome evolution(int gen, Chromosome[] initGen) {
-        Chromosome[] tempPool = new Chromosome[6];
+        Chromosome[] tempPool = new Chromosome[25];
         Chromosome[] currentGen = initGen;
         int[] scoreSet = new int[currentGen.length];
         for (int g = 0; g < gen; g++) {
@@ -91,6 +108,7 @@ public class Scheduler {
                 scoreSet[i] = currentGen[i].getScore();
             }
             ArrayList<Integer> s = findThreeSmallestPos(scoreSet);
+            Random r = new Random();
             tempPool[0] = Chromosome.merge(currentGen[s.get(0)],currentGen[s.get(1)]);
             rate(tempPool[0]);
             tempPool[1] = Chromosome.merge(currentGen[s.get(1)],currentGen[s.get(0)]);
@@ -103,18 +121,73 @@ public class Scheduler {
             rate(tempPool[4]);
             tempPool[5] = Chromosome.merge(currentGen[s.get(2)],currentGen[s.get(0)]);
             rate(tempPool[5]);
+            tempPool[6] = Chromosome.merge(currentGen[s.get(2)],currentGen[r.nextInt(14)]);
+            rate(tempPool[6]);
+            tempPool[7] = Chromosome.merge(currentGen[s.get(r.nextInt(3))],currentGen[r.nextInt(10)+4]);
+            rate(tempPool[7]);
+            tempPool[8] = Chromosome.merge(currentGen[s.get(r.nextInt(3))],currentGen[r.nextInt(10)+4]);
+            rate(tempPool[8]);
+            tempPool[9] = Chromosome.merge(currentGen[s.get(r.nextInt(3))],currentGen[r.nextInt(10)+4]);
+            rate(tempPool[9]);
+            tempPool[10] = Chromosome.merge(currentGen[s.get(r.nextInt(3))],currentGen[r.nextInt(10)+4]);
+            rate(tempPool[10]);
+            tempPool[11] = Chromosome.merge(currentGen[s.get(r.nextInt(3))],currentGen[r.nextInt(10)+4]);
+            rate(tempPool[11]);
+            tempPool[12] = Chromosome.merge(currentGen[s.get(r.nextInt(3))],currentGen[r.nextInt(10)+4]);
+            rate(tempPool[12]);
+            tempPool[13] = Chromosome.merge(currentGen[s.get(r.nextInt(3))],currentGen[r.nextInt(10)+4]);
+            rate(tempPool[13]);
+            tempPool[14] = Chromosome.merge(currentGen[s.get(r.nextInt(3))],currentGen[r.nextInt(10)+4]);
+            rate(tempPool[14]);
+            tempPool[15] = Chromosome.merge(currentGen[s.get(0)],currentGen[s.get(2)]);
+            rate(tempPool[15]);
+            tempPool[16] = Chromosome.merge(currentGen[s.get(2)],currentGen[s.get(0)]);
+            rate(tempPool[16]);
+            tempPool[17] = Chromosome.merge(currentGen[s.get(r.nextInt(3))],currentGen[r.nextInt(10)+4]);
+            rate(tempPool[17]);
+            tempPool[18] = Chromosome.merge(currentGen[s.get(r.nextInt(3))],currentGen[r.nextInt(10)+4]);
+            rate(tempPool[18]);
+            tempPool[19] = Chromosome.merge(currentGen[s.get(r.nextInt(3))],currentGen[r.nextInt(10)+4]);
+            rate(tempPool[19]);
+            tempPool[20] = Chromosome.merge(currentGen[s.get(r.nextInt(3))],currentGen[r.nextInt(10)+4]);
+            rate(tempPool[20]);
+            tempPool[21] = Chromosome.merge(currentGen[s.get(r.nextInt(3))],currentGen[r.nextInt(10)+4]);
+            rate(tempPool[21]);
+            tempPool[22] = Chromosome.merge(currentGen[s.get(r.nextInt(3))],currentGen[r.nextInt(10)+4]);
+            rate(tempPool[22]);
+            tempPool[23] = Chromosome.merge(currentGen[s.get(r.nextInt(3))],currentGen[r.nextInt(10)+4]);
+            rate(tempPool[23]);
+            tempPool[24] = Chromosome.merge(currentGen[s.get(r.nextInt(3))],currentGen[r.nextInt(10)+4]);
+            rate(tempPool[24]);
 
             ArrayList<Integer> usedNextGen = new ArrayList<>();
             for (int i = 0; i < currentGen.length; i++) {
-                for (int j = 0; j < tempPool.length; j++) {
-                    if (currentGen[i].getScore() > tempPool[j].getScore() && !usedNextGen.contains(j)) {
-                        currentGen[i] = tempPool[j];
-                        usedNextGen.add(j);
-                        break;
+                if (currentGen[i].getScore() == 0) {
+                    return currentGen[i];
+                }
+                if (currentGen[i].getScore() > tempPool[i].getScore()) {
+                    currentGen[i] = tempPool[i];
+                }else {
+//                    Random r1 = new Random();
+                    if (r.nextDouble() > 0.7) {
+                        currentGen[i] = new Chromosome(3, 3, 3);
+                        rate(currentGen[i]);
                     }
                 }
-                scoreSet[i] = currentGen[i].getScore();
             }
+//            for (int i = 0; i < currentGen.length; i++) {
+//                for (int j = 0; j < tempPool.length; j++) {
+//                    if (currentGen[i].getScore() > tempPool[j].getScore() && !usedNextGen.contains(j)) {
+//                        currentGen[i] = tempPool[j];
+//                        usedNextGen.add(j);
+//                        break;
+//                    }else {
+//                        currentGen[i] = new Chromosome(3, 3,3);
+//                        rate(currentGen[i]);
+//                    }
+//                }
+//                scoreSet[i] = currentGen[i].getScore();
+//            }
 
             System.out.print("Generation" + g + ": ");
             for (Chromosome c: currentGen) {
@@ -122,7 +195,11 @@ public class Scheduler {
 //                System.out.println(rate(c)[0] + " " + rate(c)[1] + " " + rate(c)[2]);
             }
             System.out.println();
+            if (currentGen[0].getScore() == 0) {
+                break;
+            }
         }
+
         return currentGen[0];
     }
 
@@ -148,100 +225,105 @@ public class Scheduler {
 
     private static void importDatabase() {
 
-        //---------------------------------------\\
-        // import classrooms info
-//        Classroom cohort1 = new Classroom("cohort1", "2.501", 50, ClassType.CBL, 0);
-//        Classroom cohort2 = new Classroom("cohort2", "2.501", 50, ClassType.CBL, 1);
-//        Classroom cohort3 = new Classroom("cohort3", "2.501", 50, ClassType.CBL, 2);
-//        Classroom lecture = new Classroom("Lec", "2.501", 150, ClassType.LEC, 1);
-//        Classroom lab = new Classroom("lab", "2.501", 50, ClassType.LAB, 2);
-//        classrooms = new Classroom[4];
-//        classrooms[0] = cohort1;
-//        classrooms[1] = cohort2;
-//        classrooms[2] = lecture;
-//        classrooms[3] = lab;
-//        roomList = new RoomList(classrooms, 2, 3);
+//        ---------------------------------------\\
+//         import classrooms info
+        Classroom cohort1 = new Classroom("cohort1", "2.501", 50, ClassType.CBL, 0);
+        Classroom cohort2 = new Classroom("cohort2", "2.501", 50, ClassType.CBL, 1);
+        Classroom cohort3 = new Classroom("cohort3", "2.501", 50, ClassType.CBL, 2);
+        Classroom lecture = new Classroom("Lec", "2.501", 150, ClassType.LEC, 1);
+        Classroom lab = new Classroom("lab", "2.501", 50, ClassType.LAB, 2);
+        classrooms = new Classroom[4];
+        classrooms[0] = cohort1;
+        classrooms[1] = cohort2;
+        classrooms[2] = lecture;
+        classrooms[3] = lab;
+        roomList = new RoomList(classrooms, 2, 3);
+
+
+//        ---------------------------------------\\
+//         import subjects
+//        GenericClass coh1 = new GenericClass(ClassType.CBL, 1.5, null);
+//        GenericClass coh2 = new GenericClass(ClassType.CBL, 2, null);
+//
+//        ArrayList<Integer> cohorts = new ArrayList<>();
+//        cohorts.add(0);
+//        cohorts.add(1);
+//        cohorts.add(2);
+//
+//        GenericClass lec1 = new GenericClass(ClassType.LEC, 2, null, cohorts);
+//        GenericClass lec2 = new GenericClass(ClassType.LEC, 1.5, null, cohorts);
+//
+//        GenericClass[] ESCarr = new GenericClass[3];
+//        ESCarr[0] = coh1;
+//        ESCarr[1] = coh1;
+//        ESCarr[2] = coh2;
+//
+//        GenericClass[] CSEarr = new GenericClass[3];
+//        CSEarr[0] = coh1;
+//        CSEarr[1] = coh1;
+//        CSEarr[2] = lec1;
+//
+//        GenericClass[] probArr = new GenericClass[3];
+//        probArr[0] = lec2;
+//        probArr[1] = lec2;
+//        probArr[2] = coh2;
+//
+//        Subject cse = new Subject("cse", 50005, SubjectType.CORE,
+//                5, 50, 3, CSEarr);
+//        Subject esc = new Subject("esc", 50003, SubjectType.CORE,
+//                5, 50, 3, ESCarr);
+//        Subject prob = new Subject("prob", 50034, SubjectType.CORE,
+//                5, 50, 3, probArr);
+//
+//        subjects = new ArrayList<>();
+//        subjects.add(cse);
+//        subjects.add(esc);
+//        subjects.add(prob);
+//        //---------------------------------------\\
+//        // import studentG
+//        studentGroupSet = new ArrayList<>();
+//        StudentGroup t5c1 = new StudentGroup(0, "t5c1", Pillar.ISTD, 5,
+//                0, subjects, 50);
+//        StudentGroup t5c2 = new StudentGroup(0, "t5c2", Pillar.ISTD, 5,
+//                1, subjects, 50);
+//        StudentGroup t5c3 = new StudentGroup(0, "t5c3", Pillar.ISTD, 5,
+//                2, subjects, 50);
+//
+//        studentGroupSet.add(t5c1);
+//        studentGroupSet.add(t5c2);
+//        studentGroupSet.add(t5c3);
+//        //---------------------------------------\\
+//        // import Prof
+//        professorSet = new ArrayList<>();
+//
+//        Professor nat = new Professor("Nat", 0);
+//        nat.addSubject(cse, t5c1);
+//        nat.addSubject(cse, t5c2);
+//        professorSet.add(nat);
+//
+//        Professor david = new Professor("David", 1);
+//        david.addSubject(esc, t5c1);
+//        david.addSubject(esc, t5c2);
+//        david.addSubject(esc, t5c3);
+//        professorSet.add(david);
+//
+//        Professor sj = new Professor("Sun Jun", 2);
+//        sj.addSubject(esc, t5c1);
+//        sj.addSubject(esc, t5c2);
+//        sj.addSubject(esc, t5c3);
+//        professorSet.add(sj);
+//
+//        Professor tq = new Professor("Tony", 3);
+//        sj.addSubject(prob, t5c1);
+//        sj.addSubject(prob, t5c2);
+//        sj.addSubject(prob, t5c3);
+//        professorSet.add(tq);
+
 
         roomList = JsonUtils.readJsonRoomList();
-        //---------------------------------------\\
-        // import subjects
-        GenericClass coh1 = new GenericClass(ClassType.CBL, 1.5, null);
-        GenericClass coh2 = new GenericClass(ClassType.CBL, 2, null);
-
-        ArrayList<Integer> cohorts = new ArrayList<>();
-        cohorts.add(0);
-        cohorts.add(1);
-        cohorts.add(2);
-
-        GenericClass lec1 = new GenericClass(ClassType.LEC, 2, null, cohorts);
-        GenericClass lec2 = new GenericClass(ClassType.LEC, 1.5, null, cohorts);
-
-        GenericClass[] ESCarr = new GenericClass[3];
-        ESCarr[0] = coh1;
-        ESCarr[1] = coh1;
-        ESCarr[2] = coh2;
-
-        GenericClass[] CSEarr = new GenericClass[3];
-        CSEarr[0] = coh1;
-        CSEarr[1] = coh1;
-        CSEarr[2] = lec1;
-
-        GenericClass[] probArr = new GenericClass[3];
-        probArr[0] = lec2;
-        probArr[1] = lec2;
-        probArr[2] = coh2;
-
-        Subject cse = new Subject("cse", 50005, SubjectType.CORE,
-                5, 50, 3, CSEarr);
-        Subject esc = new Subject("esc", 50003, SubjectType.CORE,
-                5, 50, 3, ESCarr);
-        Subject prob = new Subject("prob", 50034, SubjectType.CORE,
-                5, 50, 3, probArr);
-
-        subjects = new ArrayList<>();
-        subjects.add(cse);
-        subjects.add(esc);
-        subjects.add(prob);
-        //---------------------------------------\\
-        // import studentG
-        studentGroupSet = new ArrayList<>();
-        StudentGroup t5c1 = new StudentGroup(0, "t5c1", Pillar.ISTD, 5,
-                0, subjects, 50);
-        StudentGroup t5c2 = new StudentGroup(0, "t5c2", Pillar.ISTD, 5,
-                1, subjects, 50);
-        StudentGroup t5c3 = new StudentGroup(0, "t5c3", Pillar.ISTD, 5,
-                2, subjects, 50);
-
-        studentGroupSet.add(t5c1);
-        studentGroupSet.add(t5c2);
-        studentGroupSet.add(t5c3);
-
-        //---------------------------------------\\
-        // import Prof
-        professorSet = new ArrayList<>();
-
-        Professor nat = new Professor("Nat", 0);
-        nat.addSubject(cse, t5c1);
-        nat.addSubject(cse, t5c2);
-        professorSet.add(nat);
-
-        Professor david = new Professor("David", 1);
-        david.addSubject(esc, t5c1);
-        david.addSubject(esc, t5c2);
-        david.addSubject(esc, t5c3);
-        professorSet.add(david);
-
-        Professor sj = new Professor("Sun Jun", 2);
-        sj.addSubject(esc, t5c1);
-        sj.addSubject(esc, t5c2);
-        sj.addSubject(esc, t5c3);
-        professorSet.add(sj);
-
-        Professor tq = new Professor("Tony", 3);
-        sj.addSubject(prob, t5c1);
-        sj.addSubject(prob, t5c2);
-        sj.addSubject(prob, t5c3);
-        professorSet.add(tq);
+        subjects = JsonUtils.readJsonSubject(roomList);
+        studentGroupSet = JsonUtils.readJsonStudentGroup(subjects);
+        professorSet = JsonUtils.readJsonProfessor(subjects, studentGroupSet);
 
     }
 

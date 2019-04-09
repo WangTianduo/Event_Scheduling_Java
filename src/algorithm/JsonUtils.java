@@ -4,6 +4,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONArray;
 
+import javax.swing.*;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -325,9 +326,181 @@ public class JsonUtils {
         }
     }
 
-    public static void readJsonProfessor() {
+    public static ArrayList<Subject> readJsonSubject(RoomList roomList) {
+        ArrayList<Subject> subjects = new ArrayList<>();
+        StringBuilder jsonStr = new StringBuilder();
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(new File("input.json"))); //或者使用Scanner
+            String temp = "";
+            while((temp = reader.readLine())!= null)
+                jsonStr.append(temp);
+            reader.close();
+        }catch (IOException ex){
+            ex.printStackTrace();
+        }
+
+        try {
+            JSONObject json = new JSONObject(jsonStr.toString());
+            JSONArray jsonSubject = json.getJSONArray("subject");
+
+            for (int i = 0; i < jsonSubject.length(); i++) {
+                JSONObject subject = (JSONObject) jsonSubject.get(i);
+                String name = subject.getString("name");
+                int term = subject.getInt("term");
+                int pillar = subject.getInt("pillar");
+
+                Pillar pillarType = Pillar.ISTD;
+                switch (pillar) {
+                    case 0:
+                        pillarType = Pillar.HASS;
+                        break;
+                    case 1:
+                        pillarType = Pillar.ASD;
+                        break;
+                    case 2:
+                        pillarType = Pillar.EPD;
+                        break;
+                    case 3:
+                        pillarType = Pillar.ESD;
+                        break;
+                    case 4:
+                        pillarType = Pillar.ISTD;
+                        break;
+                    case 5:
+                        pillarType = Pillar.Freshmore;
+                        break;
+                }
+
+                String courseId = subject.getString("courseId");
+                int type = subject.getInt("type");
+                SubjectType subjectType;
+                if (type == 0) {
+                    subjectType = SubjectType.CORE;
+                }else {
+                    subjectType = SubjectType.ELECTIVE;
+                }
+                int sessionNum = subject.getInt("sessionNumber");
+                int cohortNum = subject.getInt("cohortNumber");
+                int totalEnrollNumber = subject.getInt("totalEnrollNumber");
+
+                GenericClass[] subjectComp = new GenericClass[sessionNum];
+                JSONArray component = subject.getJSONArray("component");
+                for (int j = 0; j < component.length(); j++) {
+                    JSONObject g = component.getJSONObject(j);
+                    double duration = g.getDouble("duration");
+                    int classroomNo = g.getInt("classroom");
+                    Classroom room;
+                    if (classroomNo == -1) {
+                        room = null;
+                    }else {
+                        room = roomList.getRoomList()[classroomNo];
+                    }
+                    int sessionType = g.getInt("sessionType");
+                    ClassType stype;
+                    if (sessionType == 0) {
+                        stype = ClassType.CBL;
+                    }else if (sessionType == 1) {
+                        stype = ClassType.LEC;
+                    }else {
+                        stype = ClassType.LAB;
+                    }
+                    JSONArray cohorts =  g.getJSONArray("cohorts");
+                    if (cohorts.length() == 0) {
+                        subjectComp[j] = new GenericClass(stype, duration, room);
+                    }else {
+                        ArrayList<Integer> s = new ArrayList<>();
+                        for (int k = 0; k < cohorts.length(); k++) {
+                            s.add((int)cohorts.get(k));
+                        }
+                        subjectComp[j] = new GenericClass(stype, duration, room, s);
+                    }
+                }
+                String s = String.valueOf(courseId.charAt(0)) + String.valueOf(courseId.charAt(1)) +
+                        String.valueOf(courseId.charAt(3)) + String.valueOf(courseId.charAt(4)) +
+                        String.valueOf(courseId.charAt(5));
+                int id = Integer.valueOf(s);
+//                System.out.println(id);
+                Subject subject1 = new Subject(name, id, subjectType, term, totalEnrollNumber/cohortNum,
+                        cohortNum, subjectComp);
+                subjects.add(subject1);
+            }
+
+            return subjects;
+        }catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static ArrayList<StudentGroup> readJsonStudentGroup(ArrayList<Subject> subjectList) {
+        StringBuilder jsonStr = new StringBuilder();
+        ArrayList<StudentGroup> studentGroups = new ArrayList<>();
+        try{
+            BufferedReader reader = new BufferedReader(new FileReader(new File("input.json"))); //或者使用Scanner
+            String temp = "";
+            while((temp = reader.readLine())!= null)
+                jsonStr.append(temp);
+            reader.close();
+        }catch (IOException ex){
+            ex.printStackTrace();
+        }
+
+        try {
+            JSONObject json = new JSONObject(jsonStr.toString());
+            JSONArray jsonStudent = json.getJSONArray("studentGroup");
+            for(int i=0;i<jsonStudent.length();i++){
+                JSONObject studentGroup = jsonStudent.getJSONObject(i);
+                int pillarNo = studentGroup.getInt("pillar");
+                Pillar pillar = Pillar.ISTD;
+                switch (pillarNo) {
+                    case 0:
+                        pillar = Pillar.HASS;
+                        break;
+                    case 1:
+                        pillar = Pillar.ASD;
+                        break;
+                    case 2:
+                        pillar = Pillar.EPD;
+                        break;
+                    case 3:
+                        pillar = Pillar.ESD;
+                        break;
+                    case 4:
+                        pillar = Pillar.ISTD;
+                        break;
+                    case 5:
+                        pillar = Pillar.Freshmore;
+                        break;
+                }
+
+                int size = studentGroup.getInt("size");
+                String name = studentGroup.getString("name");
+                int cohort = studentGroup.getInt("cohort");
+                int term = studentGroup.getInt("term");
+                JSONArray subjects = studentGroup.getJSONArray("subjects");
+                ArrayList<Subject> subjectSet = new ArrayList<>();
+                for (int j = 0; j < subjects.length(); j++) {
+                    int subjectId = subjects.getInt(j);
+                    for (Subject s: subjectList) {
+                        if (s.getId() == subjectId) {
+                            subjectSet.add(s);
+                            break;
+                        }
+                    }
+                }
+                StudentGroup studentGroup1 = new StudentGroup(0, name, pillar, term, cohort, subjectSet, size);
+                studentGroups.add(studentGroup1);
+            }
+        }catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return studentGroups;
+    }
+
+    public static ArrayList<Professor> readJsonProfessor(ArrayList<Subject> subjects, ArrayList<StudentGroup> studentGroups) {
 
         StringBuilder jsonStr = new StringBuilder();
+        ArrayList<Professor> professors = new ArrayList<>();
         try{
             BufferedReader reader = new BufferedReader(new FileReader(new File("input.json"))); //或者使用Scanner
             String temp = "";
@@ -345,14 +518,26 @@ public class JsonUtils {
                 JSONObject person = (JSONObject)jsonProf.get(i);
                 String name = (String)person.get("name"); //获取JSON对象的键值对
                 int id = (int)person.get("id");
+                Professor p = new Professor(name, id);
+
                 JSONObject coursetable = (JSONObject) person.get("coursetable");
-                for (String key: coursetable.keySet()) {
-                    System.out.println(key);
+                for (String courseId: coursetable.keySet()) {
+                    JSONArray student = coursetable.getJSONArray(courseId);
+                    for (int cohortNo = 0; cohortNo < student.length(); cohortNo++) {
+                        for (StudentGroup sg: studentGroups) {
+                            for (Subject sub: sg.getSubjects()) {
+                                if (sg.getCohort() == cohortNo && sub.getId() == Integer.valueOf(courseId)) {
+                                    p.addSubject(sub, sg);
+                                }
+                            }
+                        }
+                    }
                 }
-                System.out.println("name:"+name+"\nhome:"+id);
+                professors.add(p);
             }
         }catch(JSONException ex){
             ex.printStackTrace();
         }
+        return professors;
     }
 }
