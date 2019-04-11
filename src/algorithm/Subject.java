@@ -75,24 +75,24 @@ enum ClassType {
 class GenericClass {
     private double duration;
     private ClassType classType;
-    private Classroom classroom = null;
+    private Classroom[] possibleRoomSet = null;
     private ArrayList<Integer> cohorts = null;
 
-    GenericClass(ClassType classType, double duration, Classroom classroom) {
+    GenericClass(ClassType classType, double duration, Classroom[] classroom) {
         this.classType = classType;
         this.duration = duration;
-        this.classroom = classroom;
+        this.possibleRoomSet = classroom;
     }
 
-    GenericClass(ClassType classType, double duration, Classroom classroom, ArrayList<Integer> cohorts) {
+    GenericClass(ClassType classType, double duration, Classroom[] classroom, ArrayList<Integer> cohorts) {
         this.classType = classType;
         this.duration = duration;
-        this.classroom = classroom;
+        this.possibleRoomSet = classroom;
         this.cohorts = cohorts;
     }
 
-    public Classroom getClassroom() {
-        return classroom;
+    public Classroom[] getClassroom() {
+        return possibleRoomSet;
     }
 
     public ClassType getClassType() {
@@ -106,12 +106,17 @@ class GenericClass {
     public ArrayList<Integer> getCohorts() {
         return cohorts;
     }
+
+    public Classroom[] getPossibleRoomSet() {
+        return possibleRoomSet;
+    }
 }
 
 class SpecificClass {
     private ClassType type;
     private double duration;
     private Classroom classroom;
+    private Classroom[] possibleRoomSet;
     private ArrayList<Integer> cohortNo; // lecture can have multiple cohorts
     private int session;
     private Subject subject;
@@ -124,6 +129,10 @@ class SpecificClass {
     // for printing
     private boolean printed = false;
 
+    // for generate ics
+    private ArrayList<Professor> professors = new ArrayList<>();
+    private  ArrayList<StudentGroup> studentGroups = new ArrayList<>();
+
     SpecificClass(GenericClass gclass, int session, int cohortNo,
                   Subject subject, Classroom room) {
         this.cohortNo = new ArrayList<>();
@@ -134,11 +143,12 @@ class SpecificClass {
         }
         this.type = gclass.getClassType();
         this.duration = gclass.getDuration();
-        if (gclass.getClassroom() == null) {
-            this.classroom = room;
-        }else {
-            this.classroom = gclass.getClassroom();
-        }
+//        if (gclass.getClassroom().length == 0) {
+//            this.classroom = room;
+//        }else {
+//            this.classroom = gclass.getClassroom()[0];
+//        }
+        possibleRoomSet = gclass.getClassroom();
         this.session = session;
         this.subject = subject;
     }
@@ -173,6 +183,10 @@ class SpecificClass {
         return classroom;
     }
 
+    public Classroom[] getPossibleRoomSet() {
+        return possibleRoomSet;
+    }
+
     public ClassType getType() {
         return type;
     }
@@ -189,16 +203,41 @@ class SpecificClass {
         return subject;
     }
 
+    public void setProfessor(Professor professor) {
+        this.professors.add(professor);
+    }
+
+    public ArrayList<Professor> getProfessor() {
+        return professors;
+    }
+
+    public void setStudentGroup(StudentGroup studentGroup) {
+        this.studentGroups.add(studentGroup);
+    }
+
+    public ArrayList<StudentGroup> getStudentGroup() {
+        return studentGroups;
+    }
+
     public void printInfo() {
+        String profs = "";
+        for (Professor p: this.getProfessor()) {
+            profs += p.getName() + " ";
+        }
         if (specialType == null) {
             System.out.println("name: " + this.subject.name + "; cohort: " + this.cohortNo + "; session: " + this.session
-                    + "; Weekday: " + this.weekday + "; startTime: " + this.startTime + " Classroom: " + this.classroom.getName());
+                    + "; Weekday: " + this.weekday + "; startTime: " + this.startTime + " Classroom: " + this.classroom.getName()
+            + " Prof: " + profs);
         }
     }
     public void printInfoWithoutRoom() {
+        String profs = "";
+        for (Professor p: this.getProfessor()) {
+            profs += p.getName() + " ";
+        }
         if (specialType == null) {
             System.out.println("name: " + this.subject.name + "; cohort: " + this.cohortNo + "; session: " + this.session
-                    + "; Weekday: " + this.weekday + "; startTime: " + this.startTime );
+                    + "; Weekday: " + this.weekday + "; startTime: " + this.startTime + " Prof: " + profs);
         }
     }
 }

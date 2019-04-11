@@ -116,37 +116,41 @@ public class Calendar {
                         // Randomly choose a classroom
                         // Policy: if the specific class has been assigned a classroom (case 1)
                         //         if has not been assigned, then get type and randomly choose (case 2)
-                        int[] possibleRoomSelect;
-                        if (input3D[s[i]][j][k].getClassroom() != null) {
-                            possibleRoomSelect = new int[]{input3D[s[i]][j][k].getClassroom().getId()};
-                        }else {
-                            roomType = input3D[s[i]][j][k].getType();
-                            switch (roomType) {
-                                case CBL:
-                                    possibleRoomSelect = new int[lecRoomStart];
-                                    for (int idx = 0; idx < lecRoomStart; idx++) {
-                                        possibleRoomSelect[idx] = idx;
-                                    }
-                                    possibleRoomSelect = randomSort(possibleRoomSelect);
-                                    break;
-                                case LEC:
-                                    possibleRoomSelect = new int[labRoomStart - lecRoomStart];
-                                    for (int idx = 0; idx < labRoomStart - lecRoomStart; idx++) {
-                                        possibleRoomSelect[idx] = idx+lecRoomStart;
-                                    }
-                                    possibleRoomSelect = randomSort(possibleRoomSelect);
-                                    break;
-                                case LAB:
-                                    possibleRoomSelect = new int[roomNum - labRoomStart];
-                                    for (int idx = 0; idx < roomNum - labRoomStart; idx++) {
-                                        possibleRoomSelect[idx] = idx + lecRoomStart;
-                                    }
-                                    possibleRoomSelect = randomSort(possibleRoomSelect);
-                                    break;
-                                    default: possibleRoomSelect = new int[0];
-                                    break;
-                            }
+                        int[] possibleRoomSelect = new int[input3D[s[i]][j][k].getPossibleRoomSet().length];
+                        for (int d = 0; d < input3D[s[i]][j][k].getPossibleRoomSet().length; d++) {
+                            possibleRoomSelect[d] = input3D[s[i]][j][k].getPossibleRoomSet()[d].getId();
                         }
+                        possibleRoomSelect = randomSort(possibleRoomSelect);
+//                        if (input3D[s[i]][j][k].getClassroom() != null) {
+//                            possibleRoomSelect = new int[]{input3D[s[i]][j][k].getClassroom().getId()};
+//                        }else {
+//                            roomType = input3D[s[i]][j][k].getType();
+//                            switch (roomType) {
+//                                case CBL:
+//                                    possibleRoomSelect = new int[lecRoomStart];
+//                                    for (int idx = 0; idx < lecRoomStart; idx++) {
+//                                        possibleRoomSelect[idx] = idx;
+//                                    }
+//                                    possibleRoomSelect = randomSort(possibleRoomSelect);
+//                                    break;
+//                                case LEC:
+//                                    possibleRoomSelect = new int[labRoomStart - lecRoomStart];
+//                                    for (int idx = 0; idx < labRoomStart - lecRoomStart; idx++) {
+//                                        possibleRoomSelect[idx] = idx+lecRoomStart;
+//                                    }
+//                                    possibleRoomSelect = randomSort(possibleRoomSelect);
+//                                    break;
+//                                case LAB:
+//                                    possibleRoomSelect = new int[roomNum - labRoomStart];
+//                                    for (int idx = 0; idx < roomNum - labRoomStart; idx++) {
+//                                        possibleRoomSelect[idx] = idx + lecRoomStart;
+//                                    }
+//                                    possibleRoomSelect = randomSort(possibleRoomSelect);
+//                                    break;
+//                                    default: possibleRoomSelect = new int[0];
+//                                    break;
+//                            }
+//                        }
                         //select a room id
                         int possibleRoomPointer = 0; // cannot larger than the specific room number
                         roomID = possibleRoomSelect[possibleRoomPointer];

@@ -13,6 +13,8 @@ public class Scheduler {
 
     public static void main(String[] args) {
 
+        JsonUtils.writeInput();
+
         importDatabase();
 
         Chromosome[] currentGen = new Chromosome[25];
@@ -39,16 +41,15 @@ public class Scheduler {
         }
         System.out.println();
 
-        Chromosome answer = evolution(1500, currentGen);
-//        JsonUtils.writeToJson(answer);
+        Chromosome answer = evolution(5000, currentGen);
+        JsonUtils.writeToJson(answer);
 
-
-//        printChromosome(answer, 0);
-//        System.out.println("---------------");
-//        printChromosome(answer, 1);
-//        System.out.println("---------------");
-//        printChromosome(answer, 2);
-//        System.out.println("---------------");
+        printChromosome(answer, 0);
+        System.out.println("---------------");
+        printChromosome(answer, 1);
+        System.out.println("---------------");
+        printChromosome(answer, 2);
+        System.out.println("---------------");
 
 //        for (StudentGroup sg: studentGroupSet) {
 //            System.out.println(sg.getCohort());
@@ -67,38 +68,6 @@ public class Scheduler {
 //            }
 //            System.out.println("-------------");
 //        }
-//        JsonUtils.readJson(roomList, subjects, studentGroupSet, professorSet);
-//        int[] d = {2, 2, 2, 1, 1, 2, 1};
-//        ArrayList<Integer> s = findThreeSmallestPos(scoreSet);
-//
-//        tempPool[0] = Chromosome.merge(currentGen[s.get(0)],currentGen[s.get(1)]);
-//        System.out.println(rate(tempPool[0])[0]);
-//        tempPool[1] = Chromosome.merge(currentGen[s.get(1)],currentGen[s.get(0)]);
-//        System.out.println(rate(tempPool[1])[0]);
-//        tempPool[2] = Chromosome.merge(currentGen[s.get(1)],currentGen[s.get(2)]);
-//        System.out.println(rate(tempPool[2])[0]);
-//        tempPool[3] = Chromosome.merge(currentGen[s.get(2)],currentGen[s.get(1)]);
-//        System.out.println(rate(tempPool[3])[0]);
-//        tempPool[4] = Chromosome.merge(currentGen[s.get(0)],currentGen[s.get(2)]);
-//        System.out.println(rate(tempPool[4])[0]);
-//        tempPool[5] = Chromosome.merge(currentGen[s.get(2)],currentGen[s.get(0)]);
-//        System.out.println(rate(tempPool[5])[0]);
-//
-//        ArrayList<Integer> usedNextGen = new ArrayList<>();
-//        for (int i = 0; i < currentGen.length; i++) {
-//            for (int j = 0; j < tempPool.length; j++) {
-//                if (currentGen[i].getScore() > tempPool[j].getScore() && !usedNextGen.contains(j)) {
-//                    currentGen[i] = tempPool[j];
-//                    usedNextGen.add(j);
-//                    break;
-//                }
-//            }
-//            scoreSet[i] = currentGen[i].getScore();
-//        }
-//        for(int i: scoreSet) {
-//            System.out.print(i + " ");
-//        }
-//        System.out.println();
     }
 
     private static Chromosome evolution(int gen, Chromosome[] initGen) {
@@ -234,17 +203,17 @@ public class Scheduler {
 
 //        ---------------------------------------\\
 //         import classrooms info
-        Classroom cohort1 = new Classroom("cohort1", "2.501", 50, ClassType.CBL, 0);
-        Classroom cohort2 = new Classroom("cohort2", "2.501", 50, ClassType.CBL, 1);
-        Classroom cohort3 = new Classroom("cohort3", "2.501", 50, ClassType.CBL, 2);
-        Classroom lecture = new Classroom("Lec", "2.501", 150, ClassType.LEC, 1);
-        Classroom lab = new Classroom("lab", "2.501", 50, ClassType.LAB, 2);
-        classrooms = new Classroom[4];
-        classrooms[0] = cohort1;
-        classrooms[1] = cohort2;
-        classrooms[2] = lecture;
-        classrooms[3] = lab;
-        roomList = new RoomList(classrooms, 2, 3);
+//        Classroom cohort1 = new Classroom("cohort1", "2.501", 50, ClassType.CBL, 0);
+//        Classroom cohort2 = new Classroom("cohort2", "2.501", 50, ClassType.CBL, 1);
+//        Classroom cohort3 = new Classroom("cohort3", "2.501", 50, ClassType.CBL, 2);
+//        Classroom lecture = new Classroom("Lec", "2.501", 150, ClassType.LEC, 1);
+//        Classroom lab = new Classroom("lab", "2.501", 50, ClassType.LAB, 2);
+//        classrooms = new Classroom[4];
+//        classrooms[0] = cohort1;
+//        classrooms[1] = cohort2;
+//        classrooms[2] = lecture;
+//        classrooms[3] = lab;
+//        roomList = new RoomList(classrooms, 2, 3);
 
 
 //        ---------------------------------------\\
@@ -326,11 +295,21 @@ public class Scheduler {
 //        sj.addSubject(prob, t5c3);
 //        professorSet.add(tq);
 
-
         roomList = JsonUtils.readJsonRoomList();
         subjects = JsonUtils.readJsonSubject(roomList);
         studentGroupSet = JsonUtils.readJsonStudentGroup(subjects);
         professorSet = JsonUtils.readJsonProfessor(subjects, studentGroupSet);
+
+//        for (Subject s: subjects) {
+//            System.out.println(s.getName());
+//            for (GenericClass g: s.getClassComponent()) {
+//                for (Classroom c: g.getPossibleRoomSet()) {
+//                    System.out.print(c.getId() + " ");
+//                }
+//                System.out.println();
+//            }
+//            System.out.println("-------");
+//        }
 
     }
 
