@@ -64,7 +64,7 @@ public class JsonUtils {
 
             JSONObject subjectCSE = new JSONObject();
             subjectCSE.put("name", "Computer System Engineering");
-            subjectCSE.put("courseId", "50.005");
+            subjectCSE.put("courseId", 50005);
             subjectCSE.put("type", 0); // 0: CORE; 1: ELECTIVE
             subjectCSE.put("term", 5);
             subjectCSE.put("pillar", 4); // 0: HASS; 1: ASD; 2: EPD; 3: ESD; 4: ISTD
@@ -96,7 +96,7 @@ public class JsonUtils {
 
             JSONObject subjectESC = new JSONObject();
             subjectESC.put("name", "Elements of Software Construction");
-            subjectESC.put("courseId", "50.003");
+            subjectESC.put("courseId", 50003);
             subjectESC.put("type", 0); // 0: CORE; 1: ELECTIVE
             subjectESC.put("term", 5);
             subjectESC.put("pillar", 4); // 0: HASS; 1: ASD; 2: EPD; 3: ESD; 4: ISTD
@@ -119,7 +119,7 @@ public class JsonUtils {
 
             JSONObject subjectPROB = new JSONObject();
             subjectPROB.put("name", "Probability and Statistics");
-            subjectPROB.put("courseId", "50.034");
+            subjectPROB.put("courseId", 50034);
             subjectPROB.put("type", 0); // 0: CORE; 1: ELECTIVE
             subjectPROB.put("term", 5);
             subjectPROB.put("pillar", 4); // 0: HASS; 1: ASD; 2: EPD; 3: ESD; 4: ISTD
@@ -393,7 +393,7 @@ public class JsonUtils {
                         break;
                 }
 
-                String courseId = subject.getString("courseId");
+                int courseId = subject.getInt("courseId");
                 int type = subject.getInt("type");
                 SubjectType subjectType;
                 if (type == 0) {
@@ -435,10 +435,8 @@ public class JsonUtils {
                         subjectComp[j] = new GenericClass(stype, duration, rooms, s);
                     }
                 }
-                String s = String.valueOf(courseId.charAt(0)) + String.valueOf(courseId.charAt(1)) +
-                        String.valueOf(courseId.charAt(3)) + String.valueOf(courseId.charAt(4)) +
-                        String.valueOf(courseId.charAt(5));
-                int id = Integer.valueOf(s);
+
+                int id = courseId;
 //                System.out.println(id);
                 Subject subject1 = new Subject(name, id, subjectType, term, totalEnrollNumber/cohortNum,
                         cohortNum, subjectComp);
