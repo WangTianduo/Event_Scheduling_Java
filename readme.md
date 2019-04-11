@@ -2,6 +2,10 @@ A repo for learning java web and developing scheduler algorithm use java
 
 Add event function:
 users (Prof, student) can submit a proposal and admin will determine whether grant
+# 11/04/2019
+- 完成教室范围限定
+- 可查询每个 sclass 的 prof and studentG
+- 明天计划：写自动生成 ics 的 python 脚本
 # 01/04/2019
 - 实现自动化评分
 - 添加评分标准：different session， different day
