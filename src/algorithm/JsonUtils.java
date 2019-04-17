@@ -55,6 +55,13 @@ public class JsonUtils {
 
     }
 
+    private static JSONObject writeASubejct(String name, int courseId, int type, int term,
+                                            int pillar, int cohortNum, int totalEnrollNumber,
+                                            int sessionNumber) {
+        JSONObject subject = new JSONObject();
+        return null;
+    }
+
     private static JSONArray writeSubjects(){
         JSONArray subjectSet = new JSONArray();
         try {

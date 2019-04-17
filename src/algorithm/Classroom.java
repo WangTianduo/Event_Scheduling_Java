@@ -51,4 +51,8 @@ class RoomList {
     public Classroom[] getRoomList() {
         return roomList;
     }
+
+    public Classroom getFreshmoreRoom(int cohort) { // cohort = {0, 1, ..., 9}
+        return roomList[cohort]; // assume 0-9 is the freshman classrooms
+    }
 }

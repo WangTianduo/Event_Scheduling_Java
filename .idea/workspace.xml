@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="98cc51b5-bed0-4b3d-bc66-3a2b6d62185b" name="Default Changelist" comment="" />
+    <list default="true" id="98cc51b5-bed0-4b3d-bc66-3a2b6d62185b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/algorithm/JsonUtilsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algorithm/CalendarTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithm/CalendarTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algorithm/Classroom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithm/Classroom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algorithm/JsonUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithm/JsonUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algorithm/ProfessorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithm/ProfessorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algorithm/Scheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithm/Scheduler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algorithm/Subject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithm/Subject.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,19 +22,19 @@
     <session id="1802718760">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="3" />
+          <entry key="project.closed" value="4" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.12" value="1" />
           <entry key="project.open.time.3" value="1" />
-          <entry key="project.open.time.6" value="1" />
-          <entry key="project.opened" value="5" />
+          <entry key="project.open.time.6" value="2" />
+          <entry key="project.opened" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="iml" value="1" />
-          <entry key="java" value="21" />
+          <entry key="java" value="30" />
           <entry key="json" value="1" />
           <entry key="md" value="3" />
         </counts>
@@ -33,20 +42,20 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="IDEA_MODULE" value="1" />
-          <entry key="JAVA" value="21" />
+          <entry key="JAVA" value="30" />
           <entry key="JSON" value="1" />
           <entry key="PLAIN_TEXT" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="30886" />
+          <entry key="java" value="31720" />
           <entry key="md" value="1353" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="30886" />
+          <entry key="JAVA" value="31720" />
           <entry key="PLAIN_TEXT" value="1353" />
         </counts>
       </usages-collector>
@@ -54,19 +63,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/algorithm/Scheduler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="215">
-              <caret line="45" selection-start-line="45" selection-end-line="45" />
+            <state relative-caret-position="481">
+              <caret line="338" column="68" lean-forward="true" selection-start-line="338" selection-start-column="68" selection-end-line="338" selection-end-column="68" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1069#1087#0" />
+                <element signature="e#1645#1695#0" />
                 <element signature="method#evolution#0;class#Scheduler#0" />
                 <element signature="method#findThreeSmallestPos#0;class#Scheduler#0" />
-                <element signature="e#8638#8689#0" />
-                <element signature="e#12557#12594#0" />
-                <element signature="method#init#0;class#Scheduler#0" />
-                <element signature="method#randomGen#0;class#Scheduler#0" />
+                <element signature="e#8656#8707#0" />
+                <element signature="e#12527#12564#0" />
                 <element signature="method#printChromosome#0;class#Scheduler#0" />
                 <element signature="method#printChromosome#1;class#Scheduler#0" />
                 <element signature="method#rate#0;class#Scheduler#0" />
@@ -83,32 +92,24 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/algorithm/Calendar.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
+            <state relative-caret-position="51">
               <caret line="122" column="76" selection-start-line="122" selection-start-column="76" selection-end-line="122" selection-end-column="76" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#initTimeTable#0;class#Calendar#0" />
+                <element signature="e#5183#5258#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/algorithm/JsonUtils.java">
+        <entry file="file://$PROJECT_DIR$/src/algorithm/Classroom.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
-              <caret line="438" column="33" selection-start-line="438" selection-start-column="33" selection-end-line="438" selection-end-column="33" />
+            <state relative-caret-position="643">
+              <caret line="55" column="62" selection-start-line="55" selection-start-column="62" selection-end-line="55" selection-end-column="62" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#writeToJson#0;class#JsonUtils#0" />
-                <element signature="method#writeSubjects#0;class#JsonUtils#0" />
-                <element signature="method#writeClassroom#0;class#JsonUtils#0" />
-                <element signature="method#writeStudentGroup#0;class#JsonUtils#0" />
-                <element signature="method#writeProfessor#0;class#JsonUtils#0" />
-                <element signature="method#writeInput#0;class#JsonUtils#0" />
-                <element signature="method#readJsonRoomList#0;class#JsonUtils#0" />
-                <element signature="method#readJsonStudentGroup#0;class#JsonUtils#0" />
-                <element signature="method#readJsonProfessor#0;class#JsonUtils#0" />
+                <element signature="e#1159#1160#0" expanded="true" />
+                <element signature="e#1230#1231#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -117,14 +118,33 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/algorithm/Subject.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
-              <caret line="221" selection-start-line="221" selection-end-line="221" />
+            <state relative-caret-position="-4">
+              <caret line="115" column="27" lean-forward="true" selection-start-line="115" selection-start-column="27" selection-end-line="115" selection-end-column="27" />
               <folding>
                 <element signature="method#Subject#0;class#Subject#0" />
-                <element signature="e#4439#4440#0" expanded="true" />
-                <element signature="e#4473#4474#0" expanded="true" />
                 <element signature="method#printInfo#0;class#SpecificClass#0" />
                 <element signature="method#printInfoWithoutRoom#0;class#SpecificClass#0" />
+                <element signature="method#isHass#0;class#SpecificClass#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/algorithm/JsonUtils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="61" column="20" selection-start-line="61" selection-start-column="20" selection-end-line="61" selection-end-column="20" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#writeToJson#0;class#JsonUtils#0" />
+                <element signature="method#writeClassroom#0;class#JsonUtils#0" />
+                <element signature="method#writeStudentGroup#0;class#JsonUtils#0" />
+                <element signature="method#writeProfessor#0;class#JsonUtils#0" />
+                <element signature="method#writeInput#0;class#JsonUtils#0" />
+                <element signature="method#readJsonRoomList#0;class#JsonUtils#0" />
+                <element signature="method#readJsonStudentGroup#0;class#JsonUtils#0" />
+                <element signature="method#readJsonProfessor#0;class#JsonUtils#0" />
               </folding>
             </state>
           </provider>
@@ -139,41 +159,13 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/algorithm/StudentGroup.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="47" column="71" selection-start-line="47" selection-start-column="71" selection-end-line="47" selection-end-column="71" />
-              <folding>
-                <element signature="method#StudentGroup#0;class#StudentGroup#0" />
-                <element signature="method#StudentGroup#1;class#StudentGroup#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/algorithm/Professor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="46" column="84" selection-start-line="46" selection-start-column="84" selection-end-line="46" selection-end-column="84" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#addSubject#0;class#Professor#0" />
-                <element signature="method#addSpecificClass#0;class#Professor#0" />
-                <element signature="method#addSpecificClass#1;class#Professor#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JUnit4 Test Class" />
         <option value="Class" />
+        <option value="JUnit4 Test Class" />
       </list>
     </option>
   </component>
@@ -197,25 +189,26 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/algorithm/CalendarTest.java" />
-        <option value="$PROJECT_DIR$/src/algorithm/Classroom.java" />
-        <option value="$PROJECT_DIR$/src/algorithm/ProfessorTest.java" />
         <option value="$PROJECT_DIR$/src/toDel/TestError.java" />
         <option value="$PROJECT_DIR$/src/toDel/TestErrorTest.java" />
         <option value="$PROJECT_DIR$/src/algorithm/Calendar.java" />
-        <option value="$PROJECT_DIR$/src/algorithm/Subject.java" />
         <option value="$PROJECT_DIR$/src/algorithm/Professor.java" />
-        <option value="$PROJECT_DIR$/src/algorithm/Scheduler.java" />
         <option value="$PROJECT_DIR$/src/algorithm/StudentGroup.java" />
         <option value="$PROJECT_DIR$/readme.md" />
+        <option value="$PROJECT_DIR$/src/algorithm/CalendarTest.java" />
+        <option value="$PROJECT_DIR$/src/algorithm/ProfessorTest.java" />
+        <option value="$PROJECT_DIR$/src/algorithm/JsonUtilsTest.java" />
+        <option value="$PROJECT_DIR$/src/algorithm/Subject.java" />
+        <option value="$PROJECT_DIR$/src/algorithm/Classroom.java" />
+        <option value="$PROJECT_DIR$/src/algorithm/Scheduler.java" />
         <option value="$PROJECT_DIR$/src/algorithm/JsonUtils.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="x" value="34" />
     <option name="y" value="23" />
-    <option name="width" value="703" />
+    <option name="width" value="1406" />
     <option name="height" value="877" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -237,6 +230,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -267,25 +262,16 @@
               <item name="Event_Scheduling_Java" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="algorithm" type="462c0819:PsiDirectoryNode" />
-              <item name="StudentGroup.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
-            </path>
-            <path>
-              <item name="Event_Scheduling_Java" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Event_Scheduling_Java" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="algorithm" type="462c0819:PsiDirectoryNode" />
               <item name="Subject.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555038319766" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555149501419" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="create.test.in.the.same.root" value="true" />
@@ -296,8 +282,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
-      <recent name="toDel" />
       <recent name="algorithm" />
+      <recent name="toDel" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -345,6 +331,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ProfessorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Event_Scheduling_Java" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="algorithm.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="algorithm" />
+      <option name="MAIN_CLASS_NAME" value="algorithm.ProfessorTest" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ProfessorTest.testProfAddsubject" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Event_Scheduling_Java" />
       <extension name="coverage">
@@ -361,49 +361,35 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestErrorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ProfessorTest.testProfAddsubject3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Event_Scheduling_Java" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="toDel.*" />
+          <option name="PATTERN" value="algorithm.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="toDel" />
-      <option name="MAIN_CLASS_NAME" value="toDel.TestErrorTest" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestErrorTest.ss" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Event_Scheduling_Java" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="toDel.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="toDel" />
-      <option name="MAIN_CLASS_NAME" value="toDel.TestErrorTest" />
-      <option name="METHOD_NAME" value="ss" />
+      <option name="PACKAGE_NAME" value="algorithm" />
+      <option name="MAIN_CLASS_NAME" value="algorithm.ProfessorTest" />
+      <option name="METHOD_NAME" value="testProfAddsubject3" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.Scheduler" />
       <item itemvalue="JUnit.CalendarTest.testRamdomGenerateList" />
+      <item itemvalue="JUnit.ProfessorTest" />
+      <item itemvalue="JUnit.ProfessorTest.testProfAddsubject3" />
       <item itemvalue="JUnit.ProfessorTest.testProfAddsubject" />
-      <item itemvalue="JUnit.TestErrorTest.ss" />
-      <item itemvalue="JUnit.TestErrorTest" />
+      <item itemvalue="Application.Scheduler" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Scheduler" />
-        <item itemvalue="JUnit.TestErrorTest" />
-        <item itemvalue="JUnit.TestErrorTest.ss" />
+        <item itemvalue="JUnit.ProfessorTest" />
         <item itemvalue="JUnit.ProfessorTest.testProfAddsubject" />
+        <item itemvalue="JUnit.ProfessorTest.testProfAddsubject3" />
         <item itemvalue="JUnit.CalendarTest.testRamdomGenerateList" />
       </list>
     </recent_temporary>
@@ -422,42 +408,42 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="CalendarTest_testRamdomGenerateList - 2019.03.29 at 21h 47m 58s.xml">
-      <configuration name="CalendarTest.testRamdomGenerateList" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ProfessorTest_testProfAddsubject - 2019.03.30 at 20h 06m 01s.xml">
-      <configuration name="ProfessorTest.testProfAddsubject" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestErrorTest_ss - 2019.04.02 at 15h 15m 41s.xml">
-      <configuration name="TestErrorTest.ss" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestErrorTest_ss - 2019.04.02 at 15h 16m 21s.xml">
-      <configuration name="TestErrorTest.ss" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestErrorTest - 2019.04.02 at 15h 17m 49s.xml">
-      <configuration name="TestErrorTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestErrorTest - 2019.04.02 at 15h 20m 47s.xml">
-      <configuration name="TestErrorTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestErrorTest - 2019.04.02 at 15h 21m 06s.xml">
-      <configuration name="TestErrorTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestErrorTest - 2019.04.02 at 15h 21m 47s.xml">
-      <configuration name="TestErrorTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestErrorTest - 2019.04.02 at 15h 22m 00s.xml">
-      <configuration name="TestErrorTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="TestErrorTest - 2019.04.02 at 15h 22m 17s.xml">
       <configuration name="TestErrorTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="CalendarTest_testRamdomGenerateList1 - 2019.04.12 at 19h 12m 42s.xml">
+      <configuration name="CalendarTest.testRamdomGenerateList1" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CalendarTest_testRamdomGenerateList4 - 2019.04.12 at 19h 14m 03s.xml">
+      <configuration name="CalendarTest.testRamdomGenerateList4" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CalendarTest_testRamdomGenerateList - 2019.04.12 at 19h 14m 19s.xml">
+      <configuration name="CalendarTest.testRamdomGenerateList" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CalendarTest_testRamdomGenerateListr - 2019.04.12 at 19h 16m 40s.xml">
+      <configuration name="CalendarTest.testRamdomGenerateListr" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CalendarTest_testRamdomGenerateList - 2019.04.12 at 19h 16m 47s.xml">
+      <configuration name="CalendarTest.testRamdomGenerateList" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ProfessorTest - 2019.04.12 at 19h 17m 43s.xml">
+      <configuration name="ProfessorTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ProfessorTest_testProfAddsubject3 - 2019.04.12 at 19h 19m 56s.xml">
+      <configuration name="ProfessorTest.testProfAddsubject3" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ProfessorTest_testProfAddsubject - 2019.04.12 at 19h 20m 12s.xml">
+      <configuration name="ProfessorTest.testProfAddsubject" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ProfessorTest - 2019.04.12 at 19h 20m 16s.xml">
+      <configuration name="ProfessorTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="34" y="23" width="1406" height="877" extended-state="6" />
+    <frame x="34" y="23" width="1406" height="877" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2639296" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26759532" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -466,7 +452,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.39363056" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.39363056" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -530,48 +516,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/algorithm/CalendarTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/algorithm/ProfessorTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="20" column="1" lean-forward="true" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/toDel/TestError.java" />
     <entry file="file://$PROJECT_DIR$/src/toDel/TestErrorTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/algorithm/Classroom.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test_create.json">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/algorithm/Calendar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="122" column="76" selection-start-line="122" selection-start-column="76" selection-end-line="122" selection-end-column="76" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#initTimeTable#0;class#Calendar#0" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/algorithm/StudentGroup.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -597,6 +545,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/algorithm/CalendarTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="9" lean-forward="true" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algorithm/ProfessorTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="70">
+          <caret line="7" column="28" lean-forward="true" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/readme.md">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
@@ -604,51 +566,63 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/algorithm/Subject.java">
+    <entry file="file://$PROJECT_DIR$/src/algorithm/JsonUtilsTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="221" selection-start-line="221" selection-end-line="221" />
+        <state relative-caret-position="228">
+          <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
           <folding>
-            <element signature="method#Subject#0;class#Subject#0" />
-            <element signature="e#4439#4440#0" expanded="true" />
-            <element signature="e#4473#4474#0" expanded="true" />
-            <element signature="method#printInfo#0;class#SpecificClass#0" />
-            <element signature="method#printInfoWithoutRoom#0;class#SpecificClass#0" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/algorithm/JsonUtils.java">
+    <entry file="file://$PROJECT_DIR$/src/algorithm/Subject.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="438" column="33" selection-start-line="438" selection-start-column="33" selection-end-line="438" selection-end-column="33" />
+        <state relative-caret-position="-4">
+          <caret line="115" column="27" lean-forward="true" selection-start-line="115" selection-start-column="27" selection-end-line="115" selection-end-column="27" />
+          <folding>
+            <element signature="method#Subject#0;class#Subject#0" />
+            <element signature="method#printInfo#0;class#SpecificClass#0" />
+            <element signature="method#printInfoWithoutRoom#0;class#SpecificClass#0" />
+            <element signature="method#isHass#0;class#SpecificClass#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algorithm/Calendar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="122" column="76" selection-start-line="122" selection-start-column="76" selection-end-line="122" selection-end-column="76" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#writeToJson#0;class#JsonUtils#0" />
-            <element signature="method#writeSubjects#0;class#JsonUtils#0" />
-            <element signature="method#writeClassroom#0;class#JsonUtils#0" />
-            <element signature="method#writeStudentGroup#0;class#JsonUtils#0" />
-            <element signature="method#writeProfessor#0;class#JsonUtils#0" />
-            <element signature="method#writeInput#0;class#JsonUtils#0" />
-            <element signature="method#readJsonRoomList#0;class#JsonUtils#0" />
-            <element signature="method#readJsonStudentGroup#0;class#JsonUtils#0" />
-            <element signature="method#readJsonProfessor#0;class#JsonUtils#0" />
+            <element signature="e#5183#5258#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algorithm/Classroom.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="643">
+          <caret line="55" column="62" selection-start-line="55" selection-start-column="62" selection-end-line="55" selection-end-column="62" />
+          <folding>
+            <element signature="e#1159#1160#0" expanded="true" />
+            <element signature="e#1230#1231#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/algorithm/Scheduler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="45" selection-start-line="45" selection-end-line="45" />
+        <state relative-caret-position="481">
+          <caret line="338" column="68" lean-forward="true" selection-start-line="338" selection-start-column="68" selection-end-line="338" selection-end-column="68" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1069#1087#0" />
+            <element signature="e#1645#1695#0" />
             <element signature="method#evolution#0;class#Scheduler#0" />
             <element signature="method#findThreeSmallestPos#0;class#Scheduler#0" />
-            <element signature="e#8638#8689#0" />
-            <element signature="e#12557#12594#0" />
-            <element signature="method#init#0;class#Scheduler#0" />
-            <element signature="method#randomGen#0;class#Scheduler#0" />
+            <element signature="e#8656#8707#0" />
+            <element signature="e#12527#12564#0" />
             <element signature="method#printChromosome#0;class#Scheduler#0" />
             <element signature="method#printChromosome#1;class#Scheduler#0" />
             <element signature="method#rate#0;class#Scheduler#0" />
@@ -657,6 +631,24 @@
             <element signature="method#convertToArray#0;class#Chromosome#0" />
             <element signature="method#convertTo3d#0;class#Chromosome#0" />
             <element signature="method#merge#0;class#Chromosome#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algorithm/JsonUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="61" column="20" selection-start-line="61" selection-start-column="20" selection-end-line="61" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#writeToJson#0;class#JsonUtils#0" />
+            <element signature="method#writeClassroom#0;class#JsonUtils#0" />
+            <element signature="method#writeStudentGroup#0;class#JsonUtils#0" />
+            <element signature="method#writeProfessor#0;class#JsonUtils#0" />
+            <element signature="method#writeInput#0;class#JsonUtils#0" />
+            <element signature="method#readJsonRoomList#0;class#JsonUtils#0" />
+            <element signature="method#readJsonStudentGroup#0;class#JsonUtils#0" />
+            <element signature="method#readJsonProfessor#0;class#JsonUtils#0" />
           </folding>
         </state>
       </provider>

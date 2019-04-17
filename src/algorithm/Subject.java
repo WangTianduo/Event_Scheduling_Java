@@ -240,4 +240,12 @@ class SpecificClass {
                     + "; Weekday: " + this.weekday + "; startTime: " + this.startTime + " Prof: " + profs);
         }
     }
+
+    public boolean isHass() {
+        if (specialType != null) {
+            return specialType == "HASS";
+        }else {
+            return false;
+        }
+    }
 }

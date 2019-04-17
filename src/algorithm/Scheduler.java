@@ -329,11 +329,18 @@ public class Scheduler {
             gClassSet = subjects.get(i).getClassComponent();
             cohortNum = subjects.get(i).getNumOfCohort();
             sessionNum = gClassSet.length;
+            int term = subjects.get(i).getTerm();
             for (int j = 0; j < cohortNum; j++) {
                 for (int k = 0; k < sessionNum; k++) {
                     if (gClassSet[k].getClassType() == ClassType.LEC) {
                         if (j == 0) {
-                            sClass = new SpecificClass(gClassSet[k], k, j, subjects.get(i), null);
+                            Classroom room;
+                            if (term <= 3) {
+                                room = roomList.getFreshmoreRoom(j);
+                            }else {
+                                room = null;
+                            }
+                            sClass = new SpecificClass(gClassSet[k], k, j, subjects.get(i), room);
                             result[i][j][k] = sClass;
                         }
                     }else {
