@@ -31,15 +31,15 @@ public class Scheduler {
         }
         System.out.println();
 
-        Chromosome answer = evolution(10000, currentGen);
+        Chromosome answer = evolution(200000, currentGen);
         JsonUtils.writeToJson(answer);
 
-        printChromosome(answer, 3, 5);
+        printChromosome(answer, 3, 0);
         System.out.println("---------------");
-//        printChromosome(answer, 1);
-//        System.out.println("---------------");
-//        printChromosome(answer, 2);
-//        System.out.println("---------------");
+        printChromosome(answer, 3, 1);
+        System.out.println("---------------");
+        printChromosome(answer, 3, 2);
+        System.out.println("---------------");
 
 //        for (StudentGroup sg: studentGroupSet) {
 //            System.out.println(sg.getCohort());
@@ -334,13 +334,13 @@ public class Scheduler {
                             result[i][j][k] = sClass;
                         }
                     }else {
-//                        Classroom room;
-//                        if (term <= 3) {
-//                            room = roomList.getFreshmoreRoom(j);
-//                        }else {
-//                            room = null;
-//                        }
-                        sClass = new SpecificClass(gClassSet[k], k, j, subjects.get(i), null);
+                        Classroom room;
+                        if (term <= 3) {
+                            room = roomList.getFreshmoreRoom(j);
+                        }else {
+                            room = null;
+                        }
+                        sClass = new SpecificClass(gClassSet[k], k, j, subjects.get(i), room);
                         result[i][j][k] = sClass;
                     }
                 }

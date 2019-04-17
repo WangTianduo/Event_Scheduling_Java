@@ -39,14 +39,43 @@ def genrate_ics(sClassSet, role, id, calendar): # role = {studentG, prof}
 			e.begin = ics_start
 			e.duration = {'days':0, 'hours':duration}
 			calendar.events.add(e)
-			
+
+c0 = Calendar()			
+c1 = Calendar()			
+c2 = Calendar()			
+c3 = Calendar()			
+c4 = Calendar()			
+c5 = Calendar()
+c6 = Calendar()
+c7 = Calendar()		
+	
 with open("timetable.json",'r') as load_f:
 	load_dict = json.load(load_f)
 	
 	sClassSet = load_dict['specific class']
-	genrate_ics(sClassSet, 'professor', 0, c)
-	print(c.events)
+	genrate_ics(sClassSet, 'professor', 0, c0)
+	genrate_ics(sClassSet, 'professor', 1, c1)
+	genrate_ics(sClassSet, 'professor', 2, c2)
+	genrate_ics(sClassSet, 'professor', 3, c3)
+	genrate_ics(sClassSet, 'professor', 4, c4)
+	genrate_ics(sClassSet, 'professor', 5, c5)
+	genrate_ics(sClassSet, 'professor', 6, c6)
+	genrate_ics(sClassSet, 'professor', 7, c7)
 	
-with open('my.ics', 'w') as f:
-	f.writelines(c)		
+with open('my0.ics', 'w') as f:
+	f.writelines(c0)		
+with open('my1.ics', 'w') as f:
+	f.writelines(c1)	
+with open('my2.ics', 'w') as f:
+	f.writelines(c2)	
+with open('my3.ics', 'w') as f:
+	f.writelines(c3)	
+with open('my4.ics', 'w') as f:
+	f.writelines(c4)	
+with open('my5.ics', 'w') as f:
+	f.writelines(c5)	
+with open('my6.ics', 'w') as f:
+	f.writelines(c6)	
+with open('my7.ics', 'w') as f:
+	f.writelines(c7)	
 	

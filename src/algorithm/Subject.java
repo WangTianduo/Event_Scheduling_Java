@@ -148,7 +148,11 @@ class SpecificClass {
 //        }else {
 //            this.classroom = gclass.getClassroom()[0];
 //        }
-        possibleRoomSet = gclass.getClassroom();
+        if(room == null) {
+            possibleRoomSet = gclass.getClassroom();
+        }else {
+            possibleRoomSet = new Classroom[]{room};
+        }
         this.session = session;
         this.subject = subject;
     }

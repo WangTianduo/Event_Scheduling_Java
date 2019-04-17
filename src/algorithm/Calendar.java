@@ -85,10 +85,15 @@ public class Calendar {
         for (int i = 0; i < subjectNum; i++) {
             sessionNum = input3D[s[i]][0][0].getSubject().getClassComponent().length;
             cohortNum = input3D[s[i]][0][0].getSubject().getNumOfCohort();
+            int[] randomCoh = new int[cohortNum];
+            for (int f = 0; f < cohortNum; f++) {
+                randomCoh[f] = f;
+            }
+            randomCoh = randomSort(randomCoh);
             for (int j = 0; j < cohortNum; j++) {
                 preWeekDay = -1;
                 for (int k = 0; k < sessionNum; k++) {
-                    if (input3D[s[i]][j][k] == null) {
+                    if (input3D[s[i]][randomCoh[j]][k] == null) {
                         preWeekDay = 2;
                         continue;
                     }else{
@@ -116,9 +121,9 @@ public class Calendar {
                         // Randomly choose a classroom
                         // Policy: if the specific class has been assigned a classroom (case 1)
                         //         if has not been assigned, then get type and randomly choose (case 2)
-                        int[] possibleRoomSelect = new int[input3D[s[i]][j][k].getPossibleRoomSet().length];
-                        for (int d = 0; d < input3D[s[i]][j][k].getPossibleRoomSet().length; d++) {
-                            possibleRoomSelect[d] = input3D[s[i]][j][k].getPossibleRoomSet()[d].getId();
+                        int[] possibleRoomSelect = new int[input3D[s[i]][randomCoh[j]][k].getPossibleRoomSet().length];
+                        for (int d = 0; d < input3D[s[i]][randomCoh[j]][k].getPossibleRoomSet().length; d++) {
+                            possibleRoomSelect[d] = input3D[s[i]][randomCoh[j]][k].getPossibleRoomSet()[d].getId();
                         }
                         possibleRoomSelect = randomSort(possibleRoomSelect);
 //                        if (input3D[s[i]][j][k].getClassroom() != null) {
@@ -158,7 +163,7 @@ public class Calendar {
                         // below random choose a begin time slot
                         int timeSlotPointer = 0;
                         int putIn = 0;
-                        classDuration = input3D[s[i]][j][k].getDuration();
+                        classDuration = input3D[s[i]][randomCoh[j]][k].getDuration();
                         numOfSlot = (int) (classDuration / 0.5);
 
                         while(timeSlotPointer < 18) {
@@ -170,10 +175,10 @@ public class Calendar {
                                 }
                             }
                             if (putIn == numOfSlot) {
-                                input3D[s[i]][j][k].setTimeAndPos(currentWeekday, timeSlotPointer, roomList.getRoomList()[roomID]);
+                                input3D[s[i]][randomCoh[j]][k].setTimeAndPos(currentWeekday, timeSlotPointer, roomList.getRoomList()[roomID]);
                                 for (int sln = 0; sln < numOfSlot; sln++) {
                                     timetable[roomID][currentWeekday][timeSlotPointer+sln] =
-                                            input3D[s[i]][j][k];
+                                            input3D[s[i]][randomCoh[j]][k];
                                 }
                                 break;
                             }else {
