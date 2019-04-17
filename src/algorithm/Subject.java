@@ -151,7 +151,8 @@ class SpecificClass {
         if(room == null) {
             possibleRoomSet = gclass.getClassroom();
         }else {
-            possibleRoomSet = new Classroom[]{room};
+//            possibleRoomSet = new Classroom[]{room};
+            possibleRoomSet = gclass.getClassroom();
         }
         this.session = session;
         this.subject = subject;

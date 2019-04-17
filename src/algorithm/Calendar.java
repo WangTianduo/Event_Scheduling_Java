@@ -23,6 +23,7 @@ public class Calendar {
         timetable = new SpecificClass[roomNum][5][21]; //  room, weekday, half-hour
         this.input3D = sClass;
         initTimeTable();
+//        initTerm3TimeTable();
     }
 
     private void initTimeTable() {
@@ -63,6 +64,19 @@ public class Calendar {
 //        }
     }
 
+    private void initTerm3TimeTable() {
+        SpecificClass fifthRow = new SpecificClass("fifthRow");
+
+        int[] fifthRowWeekday = {2, 4}; // Wednesday and Friday
+        for (int i = 0; i < roomNum; i++) {
+            for (int j : fifthRowWeekday) {
+                for (int k = 9; k < 20; k++) { // start from 13:00
+                    timetable[i][j][k] = fifthRow;
+                }
+            }
+        }
+    }
+
     public boolean randomInit() {
         // assume the instance has been created and classrooms are assigned already
         Random rand = new Random();
@@ -89,6 +103,8 @@ public class Calendar {
             for (int f = 0; f < cohortNum; f++) {
                 randomCoh[f] = f;
             }
+            boolean isTerm3 = input3D[i][0][0].getSubject().getTerm() == 3;
+
             randomCoh = randomSort(randomCoh);
             for (int j = 0; j < cohortNum; j++) {
                 preWeekDay = -1;

@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98cc51b5-bed0-4b3d-bc66-3a2b6d62185b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/generate_ics.py" beforeDir="false" afterPath="$PROJECT_DIR$/generate_ics.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/algorithm/Calendar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithm/Calendar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algorithm/Scheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithm/Scheduler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/algorithm/Subject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithm/Subject.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -46,13 +43,13 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="34595" />
+          <entry key="java" value="34655" />
           <entry key="md" value="1353" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="34595" />
+          <entry key="JAVA" value="34655" />
           <entry key="PLAIN_TEXT" value="1353" />
         </counts>
       </usages-collector>
@@ -60,7 +57,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/algorithm/Scheduler.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="149">
@@ -87,11 +84,14 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/algorithm/Calendar.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="226">
-              <caret line="177" column="58" selection-start-line="177" selection-start-column="58" selection-end-line="177" selection-end-column="58" />
+            <state relative-caret-position="53">
+              <caret line="68" lean-forward="true" selection-start-line="68" selection-end-line="68" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#initTimeTable#0;class#Calendar#0" />
                 <element signature="e#5183#5258#0" />
+                <element signature="e#13173#13174#0" expanded="true" />
+                <element signature="e#13219#13220#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -100,7 +100,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/algorithm/Classroom.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3">
+            <state relative-caret-position="171">
               <caret line="9" column="59" selection-start-line="9" selection-start-column="59" selection-end-line="9" selection-end-column="59" />
               <folding>
                 <element signature="e#1159#1160#0" expanded="true" />
@@ -110,11 +110,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/algorithm/Subject.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2435">
-              <caret line="153" column="52" selection-start-line="153" selection-start-column="52" selection-end-line="153" selection-end-column="52" />
+            <state relative-caret-position="354">
+              <caret line="154" column="52" selection-start-line="154" selection-start-column="52" selection-end-line="154" selection-end-column="52" />
               <folding>
                 <element signature="method#Subject#0;class#Subject#0" />
                 <element signature="method#printInfo#0;class#SpecificClass#0" />
@@ -196,9 +196,9 @@
         <option value="$PROJECT_DIR$/src/algorithm/JsonUtilsTest.java" />
         <option value="$PROJECT_DIR$/src/algorithm/Classroom.java" />
         <option value="$PROJECT_DIR$/src/algorithm/JsonUtils.java" />
-        <option value="$PROJECT_DIR$/src/algorithm/Subject.java" />
-        <option value="$PROJECT_DIR$/src/algorithm/Calendar.java" />
         <option value="$PROJECT_DIR$/src/algorithm/Scheduler.java" />
+        <option value="$PROJECT_DIR$/src/algorithm/Calendar.java" />
+        <option value="$PROJECT_DIR$/src/algorithm/Subject.java" />
       </list>
     </option>
   </component>
@@ -601,35 +601,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/algorithm/Calendar.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="177" column="58" selection-start-line="177" selection-start-column="58" selection-end-line="177" selection-end-column="58" />
+        <state relative-caret-position="53">
+          <caret line="68" lean-forward="true" selection-start-line="68" selection-end-line="68" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#initTimeTable#0;class#Calendar#0" />
             <element signature="e#5183#5258#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/algorithm/Classroom.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3">
-          <caret line="9" column="59" selection-start-line="9" selection-start-column="59" selection-end-line="9" selection-end-column="59" />
-          <folding>
-            <element signature="e#1159#1160#0" expanded="true" />
-            <element signature="e#1230#1231#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/algorithm/Subject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2435">
-          <caret line="153" column="52" selection-start-line="153" selection-start-column="52" selection-end-line="153" selection-end-column="52" />
-          <folding>
-            <element signature="method#Subject#0;class#Subject#0" />
-            <element signature="method#printInfo#0;class#SpecificClass#0" />
-            <element signature="method#printInfoWithoutRoom#0;class#SpecificClass#0" />
-            <element signature="method#isHass#0;class#SpecificClass#0" />
+            <element signature="e#13173#13174#0" expanded="true" />
+            <element signature="e#13219#13220#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -652,6 +631,30 @@
             <element signature="method#Chromosome#2;class#Chromosome#0" />
             <element signature="method#convertTo3d#0;class#Chromosome#0" />
             <element signature="method#merge#0;class#Chromosome#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algorithm/Classroom.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" column="59" selection-start-line="9" selection-start-column="59" selection-end-line="9" selection-end-column="59" />
+          <folding>
+            <element signature="e#1159#1160#0" expanded="true" />
+            <element signature="e#1230#1231#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algorithm/Subject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="354">
+          <caret line="154" column="52" selection-start-line="154" selection-start-column="52" selection-end-line="154" selection-end-column="52" />
+          <folding>
+            <element signature="method#Subject#0;class#Subject#0" />
+            <element signature="method#printInfo#0;class#SpecificClass#0" />
+            <element signature="method#printInfoWithoutRoom#0;class#SpecificClass#0" />
+            <element signature="method#isHass#0;class#SpecificClass#0" />
           </folding>
         </state>
       </provider>
