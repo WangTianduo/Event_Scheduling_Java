@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="98cc51b5-bed0-4b3d-bc66-3a2b6d62185b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/src/algorithm/JsonUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithm/JsonUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algorithm/Scheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithm/Scheduler.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -42,13 +43,13 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="32357" />
+          <entry key="java" value="34421" />
           <entry key="md" value="1353" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="32357" />
+          <entry key="JAVA" value="34421" />
           <entry key="PLAIN_TEXT" value="1353" />
         </counts>
       </usages-collector>
@@ -56,25 +57,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/algorithm/Scheduler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="262">
-              <caret line="15" column="31" lean-forward="true" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+            <state relative-caret-position="152">
+              <caret line="31" column="29" lean-forward="true" selection-start-line="31" selection-start-column="29" selection-end-line="31" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1069#1087#0" />
                 <element signature="e#1645#1695#0" />
                 <element signature="method#evolution#0;class#Scheduler#0" />
                 <element signature="method#findThreeSmallestPos#0;class#Scheduler#0" />
+                <element signature="method#importDatabase#0;class#Scheduler#0" />
                 <element signature="e#8656#8707#0" />
-                <element signature="e#12527#12564#0" />
+                <element signature="method#init#0;class#Scheduler#0" />
+                <element signature="method#randomGen#0;class#Scheduler#0" />
                 <element signature="method#printChromosome#0;class#Scheduler#0" />
-                <element signature="method#printChromosome#1;class#Scheduler#0" />
-                <element signature="method#rate#0;class#Scheduler#0" />
+                <element signature="e#17050#17130#0" />
                 <element signature="method#Chromosome#1;class#Chromosome#0" />
                 <element signature="method#Chromosome#2;class#Chromosome#0" />
-                <element signature="method#convertToArray#0;class#Chromosome#0" />
                 <element signature="method#convertTo3d#0;class#Chromosome#0" />
                 <element signature="method#merge#0;class#Chromosome#0" />
               </folding>
@@ -98,8 +98,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/algorithm/Classroom.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="643">
-              <caret line="55" column="62" selection-start-line="55" selection-start-column="62" selection-end-line="55" selection-end-column="62" />
+            <state relative-caret-position="-3">
+              <caret line="9" column="59" selection-start-line="9" selection-start-column="59" selection-end-line="9" selection-end-column="59" />
               <folding>
                 <element signature="e#1159#1160#0" expanded="true" />
                 <element signature="e#1230#1231#0" expanded="true" />
@@ -111,7 +111,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/algorithm/Subject.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4">
+            <state relative-caret-position="75">
               <caret line="115" column="27" lean-forward="true" selection-start-line="115" selection-start-column="27" selection-end-line="115" selection-end-column="27" />
               <folding>
                 <element signature="method#Subject#0;class#Subject#0" />
@@ -123,18 +123,19 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/algorithm/JsonUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="219" column="49" lean-forward="true" selection-start-line="219" selection-start-column="49" selection-end-line="219" selection-end-column="49" />
+            <state relative-caret-position="138">
+              <caret line="416" column="49" selection-start-line="416" selection-start-column="49" selection-end-line="416" selection-end-column="49" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#writeToJson#0;class#JsonUtils#0" />
                 <element signature="method#writeSubjects#0;class#JsonUtils#0" />
                 <element signature="method#writeARoom#0;class#JsonUtils#0" />
+                <element signature="method#writeClassroom#0;class#JsonUtils#0" />
+                <element signature="method#writeAStudentGroup#0;class#JsonUtils#0" />
                 <element signature="method#writeStudentGroup#0;class#JsonUtils#0" />
-                <element signature="method#writeProfessor#0;class#JsonUtils#0" />
                 <element signature="method#writeInput#0;class#JsonUtils#0" />
                 <element signature="method#readJsonRoomList#0;class#JsonUtils#0" />
                 <element signature="method#readJsonStudentGroup#0;class#JsonUtils#0" />
@@ -194,15 +195,15 @@
         <option value="$PROJECT_DIR$/src/algorithm/JsonUtilsTest.java" />
         <option value="$PROJECT_DIR$/src/algorithm/Subject.java" />
         <option value="$PROJECT_DIR$/src/algorithm/Classroom.java" />
-        <option value="$PROJECT_DIR$/src/algorithm/Scheduler.java" />
         <option value="$PROJECT_DIR$/src/algorithm/JsonUtils.java" />
+        <option value="$PROJECT_DIR$/src/algorithm/Scheduler.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="34" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="33" />
     <option name="y" value="23" />
-    <option name="width" value="1406" />
+    <option name="width" value="704" />
     <option name="height" value="877" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -434,10 +435,10 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="34" y="23" width="1406" height="877" extended-state="0" />
+    <frame x="33" y="23" width="1407" height="877" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26759532" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.0" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -550,6 +551,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="70">
           <caret line="7" column="28" lean-forward="true" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -570,19 +574,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/algorithm/Subject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4">
-          <caret line="115" column="27" lean-forward="true" selection-start-line="115" selection-start-column="27" selection-end-line="115" selection-end-column="27" />
-          <folding>
-            <element signature="method#Subject#0;class#Subject#0" />
-            <element signature="method#printInfo#0;class#SpecificClass#0" />
-            <element signature="method#printInfoWithoutRoom#0;class#SpecificClass#0" />
-            <element signature="method#isHass#0;class#SpecificClass#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/algorithm/Calendar.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -594,10 +585,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/algorithm/Subject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="115" column="27" lean-forward="true" selection-start-line="115" selection-start-column="27" selection-end-line="115" selection-end-column="27" />
+          <folding>
+            <element signature="method#Subject#0;class#Subject#0" />
+            <element signature="method#printInfo#0;class#SpecificClass#0" />
+            <element signature="method#printInfoWithoutRoom#0;class#SpecificClass#0" />
+            <element signature="method#isHass#0;class#SpecificClass#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/algorithm/Classroom.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="643">
-          <caret line="55" column="62" selection-start-line="55" selection-start-column="62" selection-end-line="55" selection-end-column="62" />
+        <state relative-caret-position="-3">
+          <caret line="9" column="59" selection-start-line="9" selection-start-column="59" selection-end-line="9" selection-end-column="59" />
           <folding>
             <element signature="e#1159#1160#0" expanded="true" />
             <element signature="e#1230#1231#0" expanded="true" />
@@ -605,45 +609,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/algorithm/Scheduler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="15" column="31" lean-forward="true" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1069#1087#0" />
-            <element signature="e#1645#1695#0" />
-            <element signature="method#evolution#0;class#Scheduler#0" />
-            <element signature="method#findThreeSmallestPos#0;class#Scheduler#0" />
-            <element signature="e#8656#8707#0" />
-            <element signature="e#12527#12564#0" />
-            <element signature="method#printChromosome#0;class#Scheduler#0" />
-            <element signature="method#printChromosome#1;class#Scheduler#0" />
-            <element signature="method#rate#0;class#Scheduler#0" />
-            <element signature="method#Chromosome#1;class#Chromosome#0" />
-            <element signature="method#Chromosome#2;class#Chromosome#0" />
-            <element signature="method#convertToArray#0;class#Chromosome#0" />
-            <element signature="method#convertTo3d#0;class#Chromosome#0" />
-            <element signature="method#merge#0;class#Chromosome#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/algorithm/JsonUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="219" column="49" lean-forward="true" selection-start-line="219" selection-start-column="49" selection-end-line="219" selection-end-column="49" />
+        <state relative-caret-position="138">
+          <caret line="416" column="49" selection-start-line="416" selection-start-column="49" selection-end-line="416" selection-end-column="49" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#writeToJson#0;class#JsonUtils#0" />
             <element signature="method#writeSubjects#0;class#JsonUtils#0" />
             <element signature="method#writeARoom#0;class#JsonUtils#0" />
+            <element signature="method#writeClassroom#0;class#JsonUtils#0" />
+            <element signature="method#writeAStudentGroup#0;class#JsonUtils#0" />
             <element signature="method#writeStudentGroup#0;class#JsonUtils#0" />
-            <element signature="method#writeProfessor#0;class#JsonUtils#0" />
             <element signature="method#writeInput#0;class#JsonUtils#0" />
             <element signature="method#readJsonRoomList#0;class#JsonUtils#0" />
             <element signature="method#readJsonStudentGroup#0;class#JsonUtils#0" />
             <element signature="method#readJsonProfessor#0;class#JsonUtils#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algorithm/Scheduler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="31" column="29" lean-forward="true" selection-start-line="31" selection-start-column="29" selection-end-line="31" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1645#1695#0" />
+            <element signature="method#evolution#0;class#Scheduler#0" />
+            <element signature="method#findThreeSmallestPos#0;class#Scheduler#0" />
+            <element signature="method#importDatabase#0;class#Scheduler#0" />
+            <element signature="e#8656#8707#0" />
+            <element signature="method#init#0;class#Scheduler#0" />
+            <element signature="method#randomGen#0;class#Scheduler#0" />
+            <element signature="method#printChromosome#0;class#Scheduler#0" />
+            <element signature="e#17050#17130#0" />
+            <element signature="method#Chromosome#1;class#Chromosome#0" />
+            <element signature="method#Chromosome#2;class#Chromosome#0" />
+            <element signature="method#convertTo3d#0;class#Chromosome#0" />
+            <element signature="method#merge#0;class#Chromosome#0" />
           </folding>
         </state>
       </provider>
