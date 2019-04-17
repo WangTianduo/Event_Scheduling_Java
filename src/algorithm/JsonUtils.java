@@ -143,7 +143,7 @@ public class JsonUtils {
             JSONObject component6 = new JSONObject();
             component6.put("sessionType", 1); // 0: cohort; 1: lecture; 2: lab
             component6.put("duration", 1.5); // value type is double
-            component6.put("classroom", new int[]{0,1}); // every classroom has an integer id; 0 means null
+            component6.put("classroom", new int[]{2}); // every classroom has an integer id; 0 means null
             component6.put("cohorts", cohorts);
             JSONObject component7 = new JSONObject();
             component7.put("sessionType", 0); // 0: cohort; 1: lecture; 2: lab
@@ -163,29 +163,75 @@ public class JsonUtils {
         return subjectSet;
     }
 
+    private static JSONObject writeARoom(int id, String name, String location, int capacity, int roomType) {
+        JSONObject room = new JSONObject();
+        room.put("id", id); // -1 means empty
+        room.put("name", name);
+        room.put("location", location);
+        room.put("capacity", capacity);
+        room.put("roomType", roomType); //0: cohort; 1: lecture; 2: lab
+
+        return room;
+    }
+
     private static JSONArray writeClassroom() {
+        // 0 - 9: freshman cohort rooms
+        // 10, 11: term 5 ISTD cohort room
+        // 12, 13, 14: term 7 ISTD electives
+        // 15, 16, 17: empty cohort room
+        // 18: LT2; 19: LT4; 20: LT5
+        // 21: bio lab; 22: physics lab; 23: safety lab
         JSONArray classroomSet = new JSONArray();
-        JSONObject classroom1 = new JSONObject();
-        classroom1.put("id", 0); // -1 means empty
-        classroom1.put("name", "CC13");
-        classroom1.put("location", "2.503");
-        classroom1.put("capacity", 50);
-        classroom1.put("roomType", 0); //0: cohort; 1: lecture; 2: lab
-        classroomSet.put(classroom1);
-        JSONObject classroom2 = new JSONObject();
-        classroom2.put("id", 1); // 0 means empty
-        classroom2.put("name", "CC14");
-        classroom2.put("location", "2.504");
-        classroom2.put("capacity", 50);
-        classroom2.put("roomType", 0); //0: cohort; 1: lecture; 2: lab
-        classroomSet.put(classroom2);
-        JSONObject classroom3 = new JSONObject();
-        classroom3.put("id", 2); // 0 means empty
-        classroom3.put("name", "LT5");
-        classroom3.put("location", "2.501");
-        classroom3.put("capacity", 50);
-        classroom3.put("roomType", 1); //0: cohort; 1: lecture; 2: lab
-        classroomSet.put(classroom3);
+        JSONObject room;
+        room = writeARoom(0, "CC1", "1.301", 50, 0);
+        classroomSet.put(room);
+        room = writeARoom(1, "CC2", "1.302", 50, 0);
+        classroomSet.put(room);
+        room = writeARoom(2, "CC3", "2.505", 50, 0);
+        classroomSet.put(room);
+        room = writeARoom(3, "CC4", "1.301", 50, 0);
+        classroomSet.put(room);
+        room = writeARoom(4, "CC5", "1.302", 50, 0);
+        classroomSet.put(room);
+        room = writeARoom(5, "CC6", "2.505", 50, 0);
+        classroomSet.put(room);
+        room = writeARoom(6, "CC7", "1.301", 50, 0);
+        classroomSet.put(room);
+        room = writeARoom(7, "CC8", "1.302", 50, 0);
+        classroomSet.put(room);
+        room = writeARoom(8, "CC9", "2.505", 50, 0);
+        classroomSet.put(room);
+        room = writeARoom(9, "CC10", "1.301", 50, 0);
+        classroomSet.put(room);
+        room = writeARoom(10, "CC13", "1.302", 50, 0);
+        classroomSet.put(room);
+        room = writeARoom(11, "CC14", "2.505", 50, 0);
+        classroomSet.put(room);
+        room = writeARoom(12, "CC15", "1.301", 50, 0);
+        classroomSet.put(room);
+        room = writeARoom(13, "CC16", "1.302", 50, 0);
+        classroomSet.put(room);
+        room = writeARoom(14, "CC17", "2.505", 50, 0);
+        classroomSet.put(room);
+        room = writeARoom(15, "Empty1", "1.301", 50, 0);
+        classroomSet.put(room);
+        room = writeARoom(16, "Empty2", "1.302", 50, 0);
+        classroomSet.put(room);
+        room = writeARoom(17, "Empty3", "2.505", 50, 0);
+        classroomSet.put(room);
+        room = writeARoom(18, "LT2", "1.302", 150, 1);
+        classroomSet.put(room);
+        room = writeARoom(19, "LT4", "2.505", 150, 1);
+        classroomSet.put(room);
+        room = writeARoom(20, "LT5", "1.302", 150, 1);
+        classroomSet.put(room);
+        room = writeARoom(21, "BioLab", "2.505", 50, 2);
+        classroomSet.put(room);
+        room = writeARoom(22, "PhysicsLab", "1.302", 50, 2);
+        classroomSet.put(room);
+        room = writeARoom(23, "SafetyLab", "2.505", 50, 2);
+        classroomSet.put(room);
+
         return classroomSet;
     }
 

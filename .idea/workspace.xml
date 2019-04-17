@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98cc51b5-bed0-4b3d-bc66-3a2b6d62185b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/algorithm/JsonUtilsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algorithm/CalendarTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithm/CalendarTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algorithm/Classroom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithm/Classroom.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/algorithm/JsonUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithm/JsonUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algorithm/ProfessorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithm/ProfessorTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algorithm/Scheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithm/Scheduler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algorithm/Subject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithm/Subject.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -49,13 +42,13 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="31720" />
+          <entry key="java" value="32357" />
           <entry key="md" value="1353" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="31720" />
+          <entry key="JAVA" value="32357" />
           <entry key="PLAIN_TEXT" value="1353" />
         </counts>
       </usages-collector>
@@ -66,8 +59,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/algorithm/Scheduler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="481">
-              <caret line="338" column="68" lean-forward="true" selection-start-line="338" selection-start-column="68" selection-end-line="338" selection-end-column="68" />
+            <state relative-caret-position="262">
+              <caret line="15" column="31" lean-forward="true" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1069#1087#0" />
@@ -133,12 +126,13 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/algorithm/JsonUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="61" column="20" selection-start-line="61" selection-start-column="20" selection-end-line="61" selection-end-column="20" />
+            <state relative-caret-position="250">
+              <caret line="219" column="49" lean-forward="true" selection-start-line="219" selection-start-column="49" selection-end-line="219" selection-end-column="49" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#writeToJson#0;class#JsonUtils#0" />
-                <element signature="method#writeClassroom#0;class#JsonUtils#0" />
+                <element signature="method#writeSubjects#0;class#JsonUtils#0" />
+                <element signature="method#writeARoom#0;class#JsonUtils#0" />
                 <element signature="method#writeStudentGroup#0;class#JsonUtils#0" />
                 <element signature="method#writeProfessor#0;class#JsonUtils#0" />
                 <element signature="method#writeInput#0;class#JsonUtils#0" />
@@ -443,7 +437,7 @@
     <frame x="34" y="23" width="1406" height="877" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26759532" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26759532" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -452,7 +446,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.39363056" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.39363056" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -613,8 +607,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/algorithm/Scheduler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="481">
-          <caret line="338" column="68" lean-forward="true" selection-start-line="338" selection-start-column="68" selection-end-line="338" selection-end-column="68" />
+        <state relative-caret-position="262">
+          <caret line="15" column="31" lean-forward="true" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1069#1087#0" />
@@ -637,12 +631,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/algorithm/JsonUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="61" column="20" selection-start-line="61" selection-start-column="20" selection-end-line="61" selection-end-column="20" />
+        <state relative-caret-position="250">
+          <caret line="219" column="49" lean-forward="true" selection-start-line="219" selection-start-column="49" selection-end-line="219" selection-end-column="49" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#writeToJson#0;class#JsonUtils#0" />
-            <element signature="method#writeClassroom#0;class#JsonUtils#0" />
+            <element signature="method#writeSubjects#0;class#JsonUtils#0" />
+            <element signature="method#writeARoom#0;class#JsonUtils#0" />
             <element signature="method#writeStudentGroup#0;class#JsonUtils#0" />
             <element signature="method#writeProfessor#0;class#JsonUtils#0" />
             <element signature="method#writeInput#0;class#JsonUtils#0" />
