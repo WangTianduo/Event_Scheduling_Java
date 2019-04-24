@@ -72,9 +72,9 @@ public class FuzzingInput {
         for (int i = 0; i < split; i++) {
             cohorts[i] = i;
         }
-        int[] lectures = new int[roomList.length() - split+1];
+        int[] lectures = new int[roomList.length() - split];
         for (int i = split; i < roomList.length(); i++) {
-            lectures[i] = i;
+            lectures[i-split] = i;
         }
         c = JsonUtils.writeComponents(0, 1.5, cohorts, zeroCohort);
         compoent.put(c);

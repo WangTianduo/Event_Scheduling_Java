@@ -45,8 +45,8 @@ public class JsonUtils {
                 }
             }
             json.put("specific class", sClassSet);
-        }catch(JSONException ex){
-            ex.printStackTrace();
+        }catch(Exception ex){
+            System.out.println("Testing finished!");
         }
 
         String jsonStr = json.toString(); //将JSON对象转化为字符串
