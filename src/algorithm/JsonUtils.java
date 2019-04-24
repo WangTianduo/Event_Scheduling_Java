@@ -13,7 +13,10 @@ import java.util.HashMap;
 import java.util.List;
 
 public class JsonUtils {
-    public static void writeToJson(Chromosome c) {
+    public static void writeToJson(Chromosome c) throws Exception{
+        if (c == null) {
+            throw new Exception();
+        }
         JSONObject json = new JSONObject();
         JSONArray sClassSet = new JSONArray();
         try {
@@ -57,7 +60,7 @@ public class JsonUtils {
 
     }
 
-    private static JSONObject writeComponents(int sessionType, double duration,
+    public static JSONObject writeComponents(int sessionType, double duration,
                                             int[] classrooms, ArrayList<Integer> cohorts) {
 
         JSONObject component = new JSONObject();
@@ -67,7 +70,7 @@ public class JsonUtils {
         component.put("cohorts", cohorts);
         return component;
     }
-    private static JSONObject writeASubejct(String name, int courseId, int type, int term,
+    public static JSONObject writeASubejct(String name, int courseId, int type, int term,
                                             int pillar, int cohortNum, int totalEnrollNumber,
                                             int sessionNumber, JSONArray componets ) {
 
@@ -86,7 +89,7 @@ public class JsonUtils {
         return subject;
     }
 
-    private static JSONArray writeSubjects(){
+    public static JSONArray writeSubjects(){
         JSONArray subjectSet = new JSONArray();
         try {
             JSONObject c;
@@ -200,7 +203,7 @@ public class JsonUtils {
         return subjectSet;
     }
 
-    private static JSONObject writeARoom(int id, String name, String location, int capacity, int roomType) {
+    public static JSONObject writeARoom(int id, String name, String location, int capacity, int roomType) {
         JSONObject room = new JSONObject();
         room.put("id", id); // -1 means empty
         room.put("name", name);
@@ -217,7 +220,7 @@ public class JsonUtils {
     // 15, 16, 17: empty cohort room
     // 18: LT2; 19: LT4; 20: LT5
     // 21: bio lab; 22: physics lab; 23: safety lab
-    private static JSONArray writeClassroom() {
+    public static JSONArray writeClassroom() {
         JSONArray classroomSet = new JSONArray();
         JSONObject room;
         room = writeARoom(0, "CC1", "1.301", 50, 0);
@@ -272,7 +275,7 @@ public class JsonUtils {
         return classroomSet;
     }
 
-    private static JSONObject writeAStudentGroup(int term, int cohort, String name, int size,
+    public static JSONObject writeAStudentGroup(int term, int cohort, String name, int size,
                                                  List<Integer> subjects, int pillar, int id) {
         JSONObject sg = new JSONObject();
         sg.put("term", term);
@@ -284,7 +287,7 @@ public class JsonUtils {
         sg.put("id", id);
         return sg;
     }
-    private static JSONArray writeStudentGroup() {
+    public static JSONArray writeStudentGroup() {
         ArrayList<Integer> subjects = new ArrayList<>();
         subjects.add(50005);
         subjects.add(50003);
@@ -348,7 +351,7 @@ public class JsonUtils {
         return studentGroupSet;
     }
 
-    private static JSONObject writeAProf(int id, String name, HashMap<Integer, List> courseTable) {
+    public static JSONObject writeAProf(int id, String name, HashMap<Integer, List> courseTable) {
         JSONObject prof = new JSONObject();
         prof.put("id", id);
         prof.put("name", name);
@@ -358,7 +361,7 @@ public class JsonUtils {
         return prof;
     }
 
-    private static JSONArray writeProfessor() {
+    public static JSONArray writeProfessor() {
         ArrayList<Integer> cohortLs1 = new ArrayList<>();
         cohortLs1.add(0);cohortLs1.add(1);cohortLs1.add(2);
         ArrayList<Integer> cohortLs2 = new ArrayList<>();

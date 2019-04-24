@@ -11,7 +11,7 @@ public class Scheduler {
     private static ArrayList<StudentGroup> studentGroupSet;
     private static ArrayList<Professor> professorSet;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         JsonUtils.writeInput();
 
@@ -324,6 +324,12 @@ public class Scheduler {
 
     //TODO: a function that input is list of subject and output is 3-d mat of SpecificClass (x:subject; y:cohort; z:session)
     public static SpecificClass[][][] init(int MaxCohortNum, int MaxSessionNum) {
+        if (subjects == null) {
+            return null;
+        }
+        if (roomList == null) {
+            return null;
+        }
         GenericClass[] gClassSet;
         SpecificClass sClass;
         int cohortNum;
