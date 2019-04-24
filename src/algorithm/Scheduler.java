@@ -41,6 +41,18 @@ public class Scheduler {
         printChromosome(answer, 3, 2);
         System.out.println("---------------");
 
+        for (SpecificClass s: answer.getLineChromosome()) {
+            if (s != null && s.getSubject().getTerm() == 3) {
+                s.setClassroom(roomList.getFreshmoreRoom(s.getCohortNo().get(0)));
+            }
+        }
+        printChromosome(answer, 3, 0);
+        System.out.println("---------------");
+        printChromosome(answer, 3, 1);
+        System.out.println("---------------");
+        printChromosome(answer, 3, 2);
+        System.out.println("---------------");
+
 //        for (StudentGroup sg: studentGroupSet) {
 //            System.out.println(sg.getCohort());
 //            for (Subject sub: sg.getSubjects()) {

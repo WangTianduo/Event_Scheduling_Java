@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98cc51b5-bed0-4b3d-bc66-3a2b6d62185b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/algorithm/Calendar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithm/Calendar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algorithm/Scheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithm/Scheduler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/algorithm/Subject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithm/Subject.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -16,7 +16,7 @@
     <session id="1802718760">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="4" />
+          <entry key="project.closed" value="5" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.12" value="1" />
@@ -43,13 +43,13 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="34655" />
+          <entry key="java" value="34744" />
           <entry key="md" value="1353" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="34655" />
+          <entry key="JAVA" value="34744" />
           <entry key="PLAIN_TEXT" value="1353" />
         </counts>
       </usages-collector>
@@ -57,11 +57,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/algorithm/Scheduler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="149">
-              <caret line="33" column="39" selection-start-line="33" selection-start-column="39" selection-end-line="33" selection-end-column="39" />
+            <state relative-caret-position="171">
+              <caret line="44" column="29" selection-start-line="44" selection-start-column="29" selection-end-line="44" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1645#1695#0" />
@@ -110,11 +110,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/algorithm/Subject.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="354">
-              <caret line="154" column="52" selection-start-line="154" selection-start-column="52" selection-end-line="154" selection-end-column="52" />
+            <state relative-caret-position="220">
+              <caret line="227" column="8" selection-start-line="227" selection-start-column="8" selection-end-line="227" selection-end-column="35" />
               <folding>
                 <element signature="method#Subject#0;class#Subject#0" />
                 <element signature="method#printInfo#0;class#SpecificClass#0" />
@@ -196,16 +196,16 @@
         <option value="$PROJECT_DIR$/src/algorithm/JsonUtilsTest.java" />
         <option value="$PROJECT_DIR$/src/algorithm/Classroom.java" />
         <option value="$PROJECT_DIR$/src/algorithm/JsonUtils.java" />
-        <option value="$PROJECT_DIR$/src/algorithm/Scheduler.java" />
         <option value="$PROJECT_DIR$/src/algorithm/Calendar.java" />
         <option value="$PROJECT_DIR$/src/algorithm/Subject.java" />
+        <option value="$PROJECT_DIR$/src/algorithm/Scheduler.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="33" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="30" />
     <option name="y" value="23" />
-    <option name="width" value="704" />
+    <option name="width" value="1410" />
     <option name="height" value="877" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -449,7 +449,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.39363056" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.39363056" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -613,10 +613,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/algorithm/Classroom.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" column="59" selection-start-line="9" selection-start-column="59" selection-end-line="9" selection-end-column="59" />
+          <folding>
+            <element signature="e#1159#1160#0" expanded="true" />
+            <element signature="e#1230#1231#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algorithm/Subject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="227" column="8" selection-start-line="227" selection-start-column="8" selection-end-line="227" selection-end-column="35" />
+          <folding>
+            <element signature="method#Subject#0;class#Subject#0" />
+            <element signature="method#printInfo#0;class#SpecificClass#0" />
+            <element signature="method#printInfoWithoutRoom#0;class#SpecificClass#0" />
+            <element signature="method#isHass#0;class#SpecificClass#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/algorithm/Scheduler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="33" column="39" selection-start-line="33" selection-start-column="39" selection-end-line="33" selection-end-column="39" />
+        <state relative-caret-position="171">
+          <caret line="44" column="29" selection-start-line="44" selection-start-column="29" selection-end-line="44" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1645#1695#0" />
@@ -631,30 +655,6 @@
             <element signature="method#Chromosome#2;class#Chromosome#0" />
             <element signature="method#convertTo3d#0;class#Chromosome#0" />
             <element signature="method#merge#0;class#Chromosome#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/algorithm/Classroom.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" column="59" selection-start-line="9" selection-start-column="59" selection-end-line="9" selection-end-column="59" />
-          <folding>
-            <element signature="e#1159#1160#0" expanded="true" />
-            <element signature="e#1230#1231#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/algorithm/Subject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="154" column="52" selection-start-line="154" selection-start-column="52" selection-end-line="154" selection-end-column="52" />
-          <folding>
-            <element signature="method#Subject#0;class#Subject#0" />
-            <element signature="method#printInfo#0;class#SpecificClass#0" />
-            <element signature="method#printInfoWithoutRoom#0;class#SpecificClass#0" />
-            <element signature="method#isHass#0;class#SpecificClass#0" />
           </folding>
         </state>
       </provider>

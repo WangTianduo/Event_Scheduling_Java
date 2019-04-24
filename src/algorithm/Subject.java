@@ -224,6 +224,10 @@ class SpecificClass {
         return studentGroups;
     }
 
+    public void setClassroom(Classroom classroom) {
+        this.classroom = classroom;
+    }
+
     public void printInfo() {
         String profs = "";
         for (Professor p: this.getProfessor()) {
